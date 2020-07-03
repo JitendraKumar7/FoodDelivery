@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorBackground"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+            android:id="@+id/time_date_selector"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            app:picker_curved="true"
+            app:picker_textSize="@dimen/normal_text_size"
+            app:picker_textColor="?attr/colorNormal"
+            app:picker_mustBeOnFuture="true"
+            app:picker_typeface="@font/ubunt_regular"
+            app:picker_cyclic="true"
+            app:picker_visibleItemCount="7" />
+
+
+        <com.haris.meal4u.TextviewUtil.NormalTextview
+            android:id="@+id/txt_done"
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_call_to_action"
+            android:textSize="@dimen/normal_text_size"
+            android:textColor="@color/white"
+            android:text="@string/order"></com.haris.meal4u.TextviewUtil.NormalTextview>
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

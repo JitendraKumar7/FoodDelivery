@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorCard"
+        android:gravity="center_horizontal"
+        android:minHeight="180dp"
+        android:orientation="vertical">
+
+
+        <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/review_dialog"
+            android:textAlignment="center"
+            android:textColor="?attr/colorHeading"
+            android:textSize="14sp" />
+
+
+        <com.hsalf.smilerating.SmileRating
+            android:id="@+id/smile_rating"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:placeHolderSmileColor="@color/white"
+            app:placeHolderBackgroundColor="?attr/colorTagline"
+            app:textNonSelectionColor="?attr/colorTagline"
+            app:textSelectionColor="?attr/colorHeading"
+            app:normalColor="?attr/colorButton"
+            app:drawingColor="@color/white"
+            app:angryColor="?attr/colorButton"
+            />
+
+
+        <RelativeLayout
+            android:layout_width="220dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="25dp"
+            android:id="@+id/layout_review"
+            android:visibility="gone"
+            android:background="@drawable/bg_share_outline">
+
+            <com.haris.meal4u.EditTextUtil.UbuntuRegularEditText
+                android:id="@+id/txt_review"
+                android:layout_width="220dp"
+                android:layout_height="80dp"
+                android:gravity="top"
+                android:background="@color/transparent"
+                android:hint="@string/write_your_review_hint"
+                android:paddingStart="10dp"
+                android:paddingEnd="5dp"
+                android:paddingTop="10dp"
+                android:textColor="?attr/colorButton"
+                android:textColorHint="?attr/colorButton"
+                android:textSize="12sp"
+                android:visibility="visible" />
+
+
+            <ImageView
+                android:id="@+id/image_attach"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:padding="6dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/ic_attachment"
+                ></ImageView>
+
+        </RelativeLayout>
+
+
+
+
+        <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+            android:id="@+id/txt_submit"
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_submit"
+            android:gravity="center"
+            android:text="@string/submit"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

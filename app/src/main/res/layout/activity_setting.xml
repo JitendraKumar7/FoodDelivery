@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentUtil.Setting">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorBackgroundLight"
+        android:orientation="vertical">
+
+
+        <include
+            layout="@layout/menu_layout"
+            android:layout_width="match_parent"
+            android:layout_height="51dp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="?attr/colorCard"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="4dp"
+                    app:cardUseCompatPadding="true">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:paddingStart="15dp">
+
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/image_user"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="15dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/app_icon"
+                            app:riv_corner_radius="50dp" />
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@+id/image_user"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+                                android:id="@+id/txt_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Awesome Developers"
+                                android:textColor="?attr/colorHeading"
+                                android:textSize="15sp" />
+
+                            <com.haris.meal4u.TextviewUtil.UbuntuLightTextview
+                                android:id="@+id/txt_email"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginTop="5dp"
+                                android:text="testing123@gmail.com"
+                                android:textColor="?attr/colorTagline"
+                                android:textSize="12sp" />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/layout_edit"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="15dp"
+                            android:background="@drawable/bg_edit"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:padding="2dp"
+                                android:src="@drawable/ic_edit"
+                                android:tint="?attr/colorButton" />
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+
+                </android.support.v7.widget.CardView>
+
+                <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/general"
+                    android:textColor="?attr/colorHeading"
+                    android:textSize="18sp" />
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="100dp"
+                    android:layout_marginStart="5dp"
+                    app:cardBackgroundColor="?attr/colorCard"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="4dp"
+                    app:cardUseCompatPadding="true">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <RelativeLayout
+                            android:id="@+id/layout_profile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"
+                            android:clickable="true"
+                            android:paddingEnd="15dp"
+                            android:paddingStart="15dp">
+
+                            <ImageView
+                                android:id="@+id/image_profile"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:padding="2dp"
+                                android:src="@drawable/ic_profile"
+                                android:tint="?attr/colorHeading" />
+
+                            <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="18dp"
+                                android:layout_toEndOf="@+id/image_profile"
+                                android:text="@string/my_profile"
+                                android:textColor="?attr/colorHeading"
+                                android:textSize="14sp" />
+
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:padding="3dp"
+                                android:rotation="0"
+                                android:rotationY="@integer/locale_mirror_flip"
+                                android:src="@drawable/ic_next"
+                                android:tint="?attr/colorHeading" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:background="?attr/colorHeading" />
+
+                        <RelativeLayout
+                            android:id="@+id/layout_fvt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"
+                            android:clickable="true"
+                            android:paddingEnd="15dp"
+                            android:paddingStart="15dp">
+
+                            <ImageView
+                                android:id="@+id/image_fvt"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:padding="2dp"
+                                android:src="@drawable/ic_shopping_cart_outline"
+                                android:tint="?attr/colorHeading" />
+
+                            <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="18dp"
+                                android:layout_toEndOf="@+id/image_fvt"
+                                android:text="@string/my_cart"
+                                android:textColor="?attr/colorHeading"
+                                android:textSize="14sp" />
+
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:padding="3dp"
+                                android:rotation="0"
+                                android:rotationY="@integer/locale_mirror_flip"
+                                android:src="@drawable/ic_next"
+                                android:tint="?attr/colorHeading" />
+
+                        </RelativeLayout>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:background="?attr/colorHeading" />
+
+                        <RelativeLayout
+                            android:id="@+id/layout_payment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"
+                            android:clickable="true"
+                            android:paddingEnd="15dp"
+                            android:paddingStart="15dp">
+
+                            <ImageView
+                                android:id="@+id/image_payment"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:padding="2dp"
+                                android:src="@drawable/ic_credit_card_outline"
+                                android:tint="?attr/colorHeading" />
+
+                            <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="18dp"
+                                android:layout_toEndOf="@+id/image_payment"
+                                android:text="@string/my_payment_cards"
+                                android:textColor="?attr/colorHeading"
+                                android:textSize="14sp" />
+
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:padding="3dp"
+                                android:rotation="0"
+                                android:rotationY="@integer/locale_mirror_flip"
+                                android:src="@drawable/ic_next"
+                                android:tint="?attr/colorHeading" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:background="?attr/colorHeading"
+                            android:visibility="gone" />
+
+                        <RelativeLayout
+                            android:id="@+id/layout_download"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"
+                            android:clickable="true"
+                            android:paddingEnd="15dp"
+                            android:paddingStart="15dp"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:id="@+id/image_download"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:padding="2dp"
+                                android:src="@drawable/ic_download"
+                                android:tint="?attr/colorHeading" />
+
+                            <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="18dp"
+                                android:layout_toEndOf="@+id/image_download"
+                                android:text="@string/my_download"
+                                android:textColor="?attr/colorHeading"
+                                android:textSize="14sp" />
+
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:padding="3dp"
+                                android:rotation="0"
+                                android:rotationY="@integer/locale_mirror_flip"
+                                android:src="@drawable/ic_next"
+                                android:tint="?attr/colorHeading" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:background="?attr/colorHeading"
+                            android:visibility="visible" />
+
+                        <RelativeLayout
+                            android:id="@+id/layout_playlist"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"
+                            android:clickable="true"
+                            android:paddingEnd="15dp"
+                            android:paddingStart="15dp"
+                            android:visibility="visible">
+
+                            <ImageView
+                                android:id="@+id/image_playlist"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:padding="2dp"
+                                android:src="@drawable/ic_clock_outline"
+                                android:tint="?attr/colorHeading" />
+
+                            <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="18dp"
+                                android:layout_toEndOf="@+id/image_playlist"
+                                android:text="@string/my_order_history"
+                                android:textColor="?attr/colorHeading"
+                                android:textSize="14sp" />
+
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:padding="3dp"
+                                android:rotation="0"
+                                android:rotationY="@integer/locale_mirror_flip"
+                                android:src="@drawable/ic_next"
+                                android:tint="?attr/colorHeading" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:visibility="gone"
+                            android:background="?attr/colorHeading" />
+
+                        <RelativeLayout
+                            android:id="@+id/layout_feed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"
+                            android:clickable="true"
+                            android:visibility="gone"
+                            android:paddingEnd="15dp"
+                            android:paddingStart="15dp">
+
+                            <ImageView
+                                android:id="@+id/image_feed"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:padding="2dp"
+                                android:src="@drawable/ic_latest"
+                                android:tint="?attr/colorHeading" />
+
+                            <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="18dp"
+                                android:layout_toEndOf="@+id/image_feed"
+                                android:text="@string/my_feed"
+                                android:textColor="?attr/colorHeading"
+                                android:textSize="14sp" />
+
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:padding="3dp"
+                                android:rotation="0"
+                                android:rotationY="@integer/locale_mirror_flip"
+                                android:src="@drawable/ic_next"
+                                android:tint="?attr/colorHeading" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:background="?attr/colorHeading" />
+
+                        <RelativeLayout
+                            android:id="@+id/layout_rate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"
+                            android:clickable="true"
+                            android:paddingEnd="15dp"
+                            android:paddingStart="15dp">
+
+                            <ImageView
+                                android:id="@+id/image_rate"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:padding="2dp"
+                                android:src="@drawable/ic_rate"
+                                android:tint="?attr/colorHeading" />
+
+                            <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="18dp"
+                                android:layout_toEndOf="@+id/image_rate"
+                                android:text="@string/rate"
+                                android:textColor="?attr/colorHeading"
+                                android:textSize="14sp" />
+
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:padding="3dp"
+                                android:rotation="0"
+                                android:rotationY="@integer/locale_mirror_flip"
+                                android:src="@drawable/ic_next"
+                                android:tint="?attr/colorHeading" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:background="?attr/colorHeading" />
+
+                        <RelativeLayout
+                            android:id="@+id/layout_share"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"
+                            android:clickable="true"
+                            android:paddingEnd="15dp"
+                            android:paddingStart="15dp">
+
+                            <ImageView
+                                android:id="@+id/image_share"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:padding="2dp"
+                                android:src="@drawable/ic_share"
+                                android:tint="?attr/colorHeading" />
+
+                            <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="18dp"
+                                android:layout_toEndOf="@+id/image_share"
+                                android:text="@string/share"
+                                android:textColor="?attr/colorHeading"
+                                android:textSize="14sp" />
+
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:padding="3dp"
+                                android:rotation="0"
+                                android:rotationY="@integer/locale_mirror_flip"
+                                android:src="@drawable/ic_next"
+                                android:tint="?attr/colorHeading" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:background="?attr/colorHeading" />
+
+                        <RelativeLayout
+                            android:id="@+id/layout_privacy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"
+                            android:clickable="true"
+                            android:paddingEnd="15dp"
+                            android:paddingStart="15dp">
+
+                            <ImageView
+                                android:id="@+id/image_privacy"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:padding="2dp"
+                                android:src="@drawable/ic_privacy"
+                                android:tint="?attr/colorHeading" />
+
+                            <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="18dp"
+                                android:layout_toEndOf="@+id/image_privacy"
+                                android:text="@string/privacy_policy"
+                                android:textColor="?attr/colorHeading"
+                                android:textSize="14sp" />
+
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:padding="3dp"
+                                android:rotation="0"
+                                android:rotationY="@integer/locale_mirror_flip"
+                                android:src="@drawable/ic_next"
+                                android:tint="?attr/colorHeading" />
+
+                        </RelativeLayout>
+
+
+                        <TextView
+                            android:id="@+id/txt_divider_logout"
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:background="?attr/colorHeading"
+                            android:visibility="gone" />
+
+                        <RelativeLayout
+                            android:id="@+id/layout_logout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp"
+                            android:paddingEnd="15dp"
+                            android:paddingStart="15dp"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:id="@+id/image_logout"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:padding="2dp"
+                                android:src="@drawable/ic_logout"
+                                android:tint="?attr/colorHeading" />
+
+                            <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="18dp"
+                                android:layout_toEndOf="@+id/image_logout"
+                                android:text="@string/logout"
+                                android:textColor="?attr/colorHeading"
+                                android:textSize="14sp" />
+
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:padding="3dp"
+                                android:rotation="0"
+                                android:rotationY="@integer/locale_mirror_flip"
+                                android:src="@drawable/ic_next"
+                                android:tint="?attr/colorHeading" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

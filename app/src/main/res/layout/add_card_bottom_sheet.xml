@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="30dp"
+        android:gravity="center"
+        android:paddingEnd="30dp"
+        android:minHeight="260dp"
+        android:orientation="vertical">
+
+        <com.haris.meal4u.TextviewUtil.LabelTextview
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/colorLabel"
+            android:layout_gravity="start"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:textSize="@dimen/label_text_size"
+            android:text="@string/enter_detail"></com.haris.meal4u.TextviewUtil.LabelTextview>
+
+
+
+        <com.haris.meal4u.EditTextUtil.NormalEditText
+            android:id="@+id/edit_card_holder"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="@dimen/tagline_text_size"
+            android:textColor="?attr/colorTagline"
+            android:textColorHint="?attr/colorTagline"
+            android:hint="@string/card_holder_name"
+            android:background="@drawable/bg_edit_text"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"></com.haris.meal4u.EditTextUtil.NormalEditText>
+
+        <com.haris.meal4u.EditTextUtil.NormalEditText
+            android:id="@+id/edit_card_number"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="@dimen/tagline_text_size"
+            android:textColor="?attr/colorTagline"
+            android:layout_marginTop="10dp"
+            android:inputType="number"
+            android:layout_marginBottom="10dp"
+            android:textColorHint="?attr/colorTagline"
+            android:hint="@string/card_number"
+            android:background="@drawable/bg_edit_text"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"></com.haris.meal4u.EditTextUtil.NormalEditText>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <com.haris.meal4u.EditTextUtil.NormalEditText
+                android:id="@+id/edit_expiry_month"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:textSize="@dimen/tagline_text_size"
+                android:inputType="number"
+                android:textColor="?attr/colorTagline"
+                android:textColorHint="?attr/colorTagline"
+                android:hint="@string/expiry_month"
+                android:background="@drawable/bg_edit_text"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"></com.haris.meal4u.EditTextUtil.NormalEditText>
+
+            <com.haris.meal4u.EditTextUtil.NormalEditText
+                android:id="@+id/edit_expiry_year"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:inputType="number"
+                android:layout_marginStart="10dp"
+                android:textSize="@dimen/tagline_text_size"
+                android:textColor="?attr/colorTagline"
+                android:textColorHint="?attr/colorTagline"
+                android:hint="@string/expire_year"
+                android:background="@drawable/bg_edit_text"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"></com.haris.meal4u.EditTextUtil.NormalEditText>
+
+
+
+            <com.haris.meal4u.EditTextUtil.NormalEditText
+                android:id="@+id/edit_cvv"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:textSize="@dimen/tagline_text_size"
+                android:inputType="number"
+                android:textColor="?attr/colorTagline"
+                android:textColorHint="?attr/colorTagline"
+                android:hint="@string/cvv"
+                android:background="@drawable/bg_edit_text"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"></com.haris.meal4u.EditTextUtil.NormalEditText>
+
+
+
+        </LinearLayout>
+
+       <!-- <com.stripe.android.view.CardMultilineWidget
+            android:id="@+id/card_multiline_widget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:shouldShowPostalCode="true"
+            />-->
+
+        <LinearLayout
+            android:id="@+id/layout_done"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/bg_call_to_action"
+            android:gravity="center">
+
+
+
+            <com.haris.meal4u.TextviewUtil.NormalTextview
+                android:id="@+id/txt_done"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:gravity="center"
+                android:visibility="visible"
+                android:textSize="@dimen/normal_text_size"
+                android:textColor="@color/white"
+                android:text="@string/done"></com.haris.meal4u.TextviewUtil.NormalTextview>
+
+
+            <net.bohush.geometricprogressview.GeometricProgressView
+                android:id="@+id/progress_bar"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                app:gp_color="@color/white"
+                app:gp_duration="800"
+                android:visibility="gone"
+                app:gp_figure_padding="1dp"
+                app:gp_number_of_angles="20"
+                app:gp_type="triangle" />
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

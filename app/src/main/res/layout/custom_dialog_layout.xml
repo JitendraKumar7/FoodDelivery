@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:visibility="gone"
+            android:background="@drawable/bg_dialog_menu"
+            android:gravity="center_vertical"
+            android:paddingStart="15dp">
+
+            <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/picture_selector"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:background="@drawable/bg_dialog_bottom"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:id="@+id/layout_camera"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="3dp"
+                    android:src="@drawable/ic_camera"
+                    android:tint="?attr/colorHeading" />
+
+
+                <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/using_camera"
+                    android:textColor="?attr/colorHeading"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="18dp"
+                android:layout_marginTop="18dp"
+                android:background="?attr/colorHeading" />
+
+
+            <LinearLayout
+                android:id="@+id/layout_gallery"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_gallery"
+                    android:tint="?attr/colorHeading" />
+
+
+                <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/using_gallery"
+                    android:textColor="?attr/colorHeading"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

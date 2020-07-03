@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorBackground"
+    tools:context=".ActivityUtil.TrackOrder">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/menu_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_rider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:visibility="gone"
+        android:background="@drawable/bg_rounded"
+        android:layout_marginBottom="30dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        
+        
+        
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/image_profile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/app_icon"
+            app:riv_corner_radius="30dp"></com.makeramen.roundedimageview.RoundedImageView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:paddingTop="15dp"
+            android:gravity="top">
+
+
+            <com.haris.meal4u.TextviewUtil.NormalTextview
+                android:id="@+id/txt_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/normal_text_size"
+                android:layout_marginStart="15dp"
+                android:textColor="?attr/colorNormal"
+                android:text="Rider Name 01"
+                ></com.haris.meal4u.TextviewUtil.NormalTextview>
+
+            <com.haris.meal4u.TextviewUtil.TaglineTextview
+                android:id="@+id/txt_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/tagline_text_size"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="2dp"
+                android:textColor="?attr/colorTagline"
+                android:text="25 km - 5 min"
+                ></com.haris.meal4u.TextviewUtil.TaglineTextview>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:minHeight="60dp"
+            android:layout_marginEnd="15dp"
+            >
+
+            <LinearLayout
+                android:id="@+id/layout_call"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:orientation="vertical"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bg_call"
+                android:gravity="center">
+
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/ic_sms"
+                    android:tint="@color/white"></ImageView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_counter"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:visibility="gone"
+                android:background="@drawable/bg_counter"
+                android:gravity="center">
+
+                <com.haris.meal4u.TextviewUtil.TaglineTextview
+                    android:id="@+id/txt_counter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="1"
+                    android:textSize="@dimen/tagline_text_size"></com.haris.meal4u.TextviewUtil.TaglineTextview>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        
+    </LinearLayout>
+
+</RelativeLayout>

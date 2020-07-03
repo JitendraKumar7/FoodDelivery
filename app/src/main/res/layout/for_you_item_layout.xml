@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:id="@+id/layout_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="14dp"
+        android:paddingStart="10dp">
+
+
+        <com.haris.meal4u.TextviewUtil.LabelTextview
+            android:id="@+id/txt_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="Featured"
+            android:layout_centerVertical="true"
+            android:textColor="?attr/colorLabel"
+            android:textSize="@dimen/label_text_size" />
+
+
+        <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Radio"
+            android:textColor="?attr/colorHeading"
+            android:textSize="16sp"
+            android:layout_toRightOf="@+id/txt_label"
+            android:layout_toEndOf="@+id/txt_label"
+            android:visibility="gone" />
+
+
+
+        <ImageView
+            android:id="@+id/image_layout"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_layout_01"
+            android:tint="?attr/colorBottomNavigation"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            ></ImageView>
+
+
+        <com.haris.meal4u.TextviewUtil.NormalTextview
+            android:id="@+id/txt_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:visibility="gone"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/more"
+            android:textColor="?attr/colorNormal"
+            android:textSize="@dimen/normal_text_size" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

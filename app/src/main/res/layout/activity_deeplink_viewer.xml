@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityUtil.DeeplinkViewer">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_on_board" />
+
+
+        <ImageView
+            android:id="@+id/image_app"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_centerInParent="true"
+            android:padding="0dp"
+            android:src="@drawable/app_icon" />
+
+        <com.haris.meal4u.TextviewUtil.NeuroTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image_app"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:visibility="gone"
+            android:text="@string/app_name"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="22sp" />
+
+
+        <LinearLayout
+            android:id="@+id/layout_configure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/loading_configuration"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp" />
+
+            <net.bohush.geometricprogressview.GeometricProgressView
+                android:id="@+id/progressView"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginBottom="15dp"
+                app:gp_color="@color/colorPrimaryDark"
+                app:gp_duration="800"
+                app:gp_figure_padding="3dp"
+                app:gp_number_of_angles="20"
+                app:gp_type="triangle" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

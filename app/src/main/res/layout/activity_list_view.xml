@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+       <!-- <include
+            layout="@layout/menu_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:paddingStart="10dp"
+                android:background="@drawable/bg_search"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:padding="3dp"
+                    android:src="@drawable/ic_search"
+                    android:tint="?attr/colorBottomNavigation" />
+
+                <com.haris.meal4u.EditTextUtil.NormalEditText
+                    android:id="@+id/edit_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="?attr/colorBackground"
+                    android:textColor="?attr/colorBottomNavigation"
+                    android:hint="@string/search_restaurant"
+                    android:imeOptions="actionSearch"
+                    android:maxLines="1"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/normal_text_size" />
+
+                <ImageView
+                    android:id="@+id/img_close"
+                    android:layout_width="20dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_height="match_parent"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_close"
+                    android:tint="?attr/colorBottomNavigation"
+                    android:visibility="gone" />
+
+
+            </LinearLayout>
+
+
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginStart="5dp"
+                android:id="@+id/spinner_view_type"
+                ></android.support.v7.widget.AppCompatSpinner>
+
+
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_places"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:layout_weight="1"
+            android:paddingStart="5dp"
+            android:paddingTop="5dp"></android.support.v7.widget.RecyclerView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"></LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

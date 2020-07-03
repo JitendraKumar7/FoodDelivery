@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorBackground"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_schedule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardUseCompatPadding="true"
+                >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_coupon"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:src="@drawable/ic_calendar"
+                                android:padding="5dp"
+                                android:tint="?attr/colorBottomNavigation"
+                                ></ImageView>
+
+
+                        </LinearLayout>
+
+                        <com.haris.meal4u.TextviewUtil.NormalTextview
+                            android:id="@+id/txt_date_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_weight="1"
+                            android:text="@string/schedule_order"
+                            android:textSize="@dimen/normal_text_size"
+                            android:textColor="?attr/colorNormal"></com.haris.meal4u.TextviewUtil.NormalTextview>
+
+                        <ImageView
+                            android:id="@+id/image_schedule"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:padding="5dp"
+                            android:visibility="gone"
+                            android:src="@drawable/ic_done"
+                            android:tint="?attr/colorBottomNavigation"></ImageView>
+
+                    </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_weight="1"
+                    android:background="?attr/colorTagline"></TextView>
+
+
+                <com.haris.meal4u.TextviewUtil.NormalTextview
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/alternative_method"
+                    android:layout_marginStart="10dp"
+                    android:textSize="@dimen/normal_text_size"
+                    android:textColor="?attr/colorNormal"
+                    android:layout_marginEnd="10dp"
+                    ></com.haris.meal4u.TextviewUtil.NormalTextview>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_weight="1"
+                    android:background="?attr/colorTagline"></TextView>
+
+
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_now"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardUseCompatPadding="true"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_coupon"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:src="@drawable/ic_now"
+                                android:padding="5dp"
+                                android:tint="?attr/colorBottomNavigation"
+                                ></ImageView>
+
+
+                        </LinearLayout>
+
+                        <com.haris.meal4u.TextviewUtil.NormalTextview
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_weight="1"
+                            android:text="@string/order_now"
+                            android:textSize="@dimen/normal_text_size"
+                            android:textColor="?attr/colorNormal"></com.haris.meal4u.TextviewUtil.NormalTextview>
+
+                        <ImageView
+                            android:id="@+id/image_now"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:padding="5dp"
+                            android:visibility="gone"
+                            android:src="@drawable/ic_done"
+                            android:tint="?attr/colorBottomNavigation"></ImageView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+            <com.haris.meal4u.TextviewUtil.NormalTextview
+                android:id="@+id/txt_done"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/bg_call_to_action"
+                android:textSize="@dimen/normal_text_size"
+                android:textColor="@color/white"
+                android:text="@string/order"></com.haris.meal4u.TextviewUtil.NormalTextview>
+
+        </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
+    >
+
+
+    <TextView
+        android:id="@+id/txt_line"
+        android:layout_width="0dp"
+        android:layout_height="1px"
+        android:layout_marginTop="10dp"
+        android:background="?attr/colorDefaultFavouriteIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+
+    <com.haris.meal4u.TextviewUtil.NormalTextview
+        android:id="@+id/txt_heading"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/special_instructions"
+        android:textColor="?attr/colorNormal"
+        android:textSize="@dimen/normal_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_line" />
+
+    <com.haris.meal4u.TextviewUtil.TaglineTextview
+        android:id="@+id/txt_tagline"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/special_instructions_tagline"
+        android:layout_marginTop="5dp"
+        android:textColor="?attr/colorTagline"
+        android:textSize="@dimen/tagline_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txt_heading"
+        app:layout_constraintTop_toBottomOf="@+id/txt_heading" />
+
+    <com.haris.meal4u.EditTextUtil.NormalEditText
+        android:id="@+id/edit_instruction"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="100dp"
+        android:layout_marginTop="12dp"
+        android:gravity="top"
+        android:paddingTop="10dp"
+        android:paddingStart="10dp"
+        android:textColorHint="?attr/colorTagline"
+        android:textColor="?attr/colorTagline"
+        android:textSize="@dimen/tagline_text_size"
+        android:background="@drawable/bg_special_instructions"
+        android:hint="@string/write_special_instructions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_tagline" />
+
+
+</android.support.constraint.ConstraintLayout>

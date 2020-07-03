@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_radio"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
+    >
+
+    <RadioButton
+        android:id="@+id/radio_attr"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:textSize="@dimen/tagline_text_size"
+        android:textColor="?attr/colorTagline"
+        android:buttonTint="?attr/colorNormal"
+        android:paddingStart="20dp"
+        android:clickable="false"
+        app:layout_constraintEnd_toStartOf="@+id/txt_attr_price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.haris.meal4u.TextviewUtil.TaglineTextview
+        android:id="@+id/txt_attr_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:textColor="?attr/colorTagline"
+        android:textSize="@dimen/tagline_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    
+    
+</android.support.constraint.ConstraintLayout>

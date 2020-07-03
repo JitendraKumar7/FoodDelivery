@@ -1,0 +1,144 @@
+<resources>
+
+    <!-- Keywords application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:itemTextAppearance">@style/menu_item_color</item>
+
+        <item name="colorHeading">@color/colorHeading</item>
+        <item name="colorTagline">@color/tagline</item>
+        <item name="colorNormal">@color/colorNormal</item>
+        <item name="colorLabel">@color/colorLabel</item>
+        <item name="colorBackgroundLight">@color/colorBackgroundLightDay</item>
+
+        <item name="colorDefaultNavigationIcon">@color/colorDefaultNavigationIconDay</item>
+        <item name="colorSelectedNavigationIcon">@color/colorSelectedNavigationIconDay</item>
+        <item name="colorBottomNavigation">@color/colorBottomNavigationDay</item>
+
+        <item name="colorDefaultFavouriteIcon">@color/colorDefaultFavouriteDay</item>
+        <item name="colorSelectedFavouriteIcon">@color/colorSelectedFavouriteDay</item>
+
+        <item name="colorRatingIcon">@color/colorRatingIconDay</item>
+        <item name="colorRequired">@color/colorRequiredDay</item>
+        <item name="colorRequiredBackground">@color/colorRequiredBackgroundDay</item>
+        <item name="colorTransparentBackground">@color/colorTransparentBackgroundDay</item>
+
+        <item name="colorBackground">@color/white</item>
+        <item name="colorButton">@color/colorButtonDay</item>
+        <item name="colorArrow">@color/yellow</item>
+        <item name="colorProgress">@color/colorProgressDay</item>
+        <item name="colorCard">@color/colorCardDay</item>
+        <item name="colorSelector">@color/colorSelectorDay</item>
+        <item name="colorTrackOn">@color/colorSwitchTrackOnDay</item>
+        <item name="colorTrackOff">@color/colorSwitchTrackOffDay</item>
+
+        <item name="colorReadingBar">@color/colorReadingBarDay</item>
+        <item name="colorMenuBackground">@color/colorMenuBackgroundDay</item>
+        <item name="colorControlNormal">@color/colorHeading</item>
+        <item name="colorControlActivated">@color/colorReadingBarDay</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="colorLink">@color/colorLinkDay</item>
+        <item name="colorNutritionBackground">@color/colorNutritionBackgroundDay</item>
+        <item name="colorDelete">@color/colorDeleteDay</item>
+
+    </style>
+
+    <!-- Night application theme. -->
+    <style name="AppTheme.Base.Night" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryNight</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkNight</item>
+        <item name="colorAccent">@color/colorAccentNight</item>
+        <item name="android:itemTextAppearance">@style/menu_item_color</item>
+
+        <item name="colorHeading">@color/colorHeadingNight</item>
+        <item name="colorTagline">@color/colorTaglineNight</item>
+        <item name="colorNormal">@color/colorHeading</item>
+        <item name="colorLabel">@color/tagline</item>
+        <item name="colorBackgroundLight">@color/colorBackgroundLightNight</item>
+
+        <item name="colorDefaultNavigationIcon">@color/colorDefaultNavigationIconNight</item>
+        <item name="colorSelectedNavigationIcon">@color/colorSelectedNavigationIconNight</item>
+        <item name="colorBottomNavigation">@color/colorBottomNavigationNight</item>
+
+        <item name="colorDefaultFavouriteIcon">@color/colorDefaultFavouriteNight</item>
+        <item name="colorSelectedFavouriteIcon">@color/colorSelectedFavouriteNight</item>
+
+        <item name="colorRatingIcon">@color/colorRatingIconNight</item>
+        <item name="colorRequired">@color/colorRequiredNight</item>
+        <item name="colorRequiredBackground">@color/colorRequiredBackgroundNight</item>
+        <item name="colorTransparentBackground">@color/colorTransparentBackgroundNight</item>
+
+        <item name="colorBackground">@color/colorBackgroundNight</item>
+        <item name="colorButton">@color/colorButtonNight</item>
+        <item name="colorArrow">@color/colorArrowNight</item>
+        <item name="colorProgress">@color/colorProgressNight</item>
+        <item name="colorCard">@color/colorCardNight</item>
+        <item name="colorSelector">@color/colorSelectorNight</item>
+        <item name="colorTrackOn">@color/colorSwitchTrackOnNight</item>
+        <item name="colorTrackOff">@color/colorSwitchTrackOffNight</item>
+        <item name="colorReadingBar">@color/colorReadingBarNight</item>
+        <item name="colorMenuBackground">@color/colorMenuBackgroundNight</item>
+        <item name="colorControlNormal">@color/colorHeadingNight</item>
+        <item name="colorControlActivated">@color/colorReadingBarNight</item>
+        <item name="colorLink">@color/colorLinkNight</item>
+        <item name="colorNutritionBackground">@color/colorNutritionBackgroundNight</item>
+        <item name="colorDelete">@color/colorDeleteNight</item>
+
+    </style>
+
+
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottom_sheet</item>
+    </style>
+
+
+    <!-- Base application theme. -->
+
+
+    <style name="menu_item_color">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+
+    <declare-styleable name="ExpandableTextView">
+        <attr name="trimLength" format="integer" />
+    </declare-styleable>
+
+
+    <declare-styleable name="MusicCoverView">
+        <attr name="shape" format="enum">
+            <enum name="rectangle" value="0" />
+            <enum name="circle" value="1" />
+        </attr>
+        <attr name="trackColor" format="color" />
+    </declare-styleable>
+
+
+    <declare-styleable name="ImageScaleView">
+        <attr name="matrixType" format="enum">
+            <enum name="top_center" value="0" />
+            <enum name="bottom_center" value="1" />
+        </attr>
+    </declare-styleable>
+
+
+    <style name="AppTheme.MainActivity">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowShowWallpaper">true</item>
+    </style>
+
+
+    <!-- Text Appearances -->
+
+
+</resources>

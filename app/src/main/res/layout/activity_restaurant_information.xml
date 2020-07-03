@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorBackground"
+    tools:context=".ActivityUtil.RestaurantInformation">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/menu_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/image_cover"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                app:riv_corner_radius="5dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:src="@drawable/app_icon"
+                android:layout_gravity="bottom"
+                android:scaleType="centerCrop" />
+
+
+            <com.haris.meal4u.TextviewUtil.NormalTextview
+                android:id="@+id/txt_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pizza Hut"
+                android:layout_marginStart="6dp"
+                android:textSize="@dimen/normal_text_size"
+                android:textColor="?attr/colorTagline"></com.haris.meal4u.TextviewUtil.NormalTextview>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical">
+
+
+                <com.haris.meal4u.TextviewUtil.LemonMilkTextview
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:layout_marginStart="6dp"
+                    android:textSize="12sp"
+                    android:textColor="?attr/colorNormal"></com.haris.meal4u.TextviewUtil.LemonMilkTextview>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginStart="7dp"
+                    android:background="?attr/colorTagline"
+                    ></TextView>
+
+
+            </LinearLayout>
+
+
+            <com.haris.meal4u.TextviewUtil.NormalTextview
+                android:id="@+id/txt_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pizza Hut"
+                android:layout_marginStart="6dp"
+                android:textSize="@dimen/normal_text_size"
+                android:textColor="?attr/colorTagline"></com.haris.meal4u.TextviewUtil.NormalTextview>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical">
+
+
+                <com.haris.meal4u.TextviewUtil.LemonMilkTextview
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Schedule"
+                    android:layout_marginStart="6dp"
+                    android:textSize="12sp"
+                    android:textColor="?attr/colorNormal"></com.haris.meal4u.TextviewUtil.LemonMilkTextview>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginStart="7dp"
+                    android:background="?attr/colorTagline"
+                    ></TextView>
+
+
+            </LinearLayout>
+
+
+           <android.support.v7.widget.RecyclerView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="6dp"
+               android:layout_marginEnd="6dp"
+               android:id="@+id/recycler_view_schedule"></android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

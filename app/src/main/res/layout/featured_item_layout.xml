@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager_featured"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="0dp"
+
+            android:paddingEnd="0dp"
+            android:paddingStart="0dp"></android.support.v4.view.ViewPager>
+
+
+        <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
+            android:id="@+id/indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view_pager_featured"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="0dp"
+            app:spi_dotColor="?attr/colorDefaultNavigationIcon"
+            app:spi_dotSelectedColor="?attr/colorBottomNavigation"
+            app:spi_dotSelectedSize="5dp"
+            android:layout_marginTop="14dp"
+            app:spi_dotSize="5dp"
+            app:spi_dotSpacing="2dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

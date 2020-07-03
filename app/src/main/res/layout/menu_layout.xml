@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:id="@+id/layout_menu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="?attr/colorBottomNavigation"
+        android:paddingEnd="6dp">
+
+
+        <ImageView
+            android:id="@+id/image_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            android:rotationY="@integer/locale_mirror_flip"
+            android:src="@drawable/ic_menu"
+            android:tint="?attr/colorCard"
+            android:visibility="gone" />
+
+
+        <com.haris.meal4u.TextviewUtil.NormalTextview
+            android:id="@+id/txt_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="?attr/colorCard"
+            android:textSize="@dimen/normal_text_size" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/txt_menu"
+            android:gravity="end|center_vertical"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:padding="12dp"
+                android:tint="?attr/colorCard"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/image_favourite"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:padding="12dp"
+                android:tint="?attr/colorCard"
+                android:visibility="gone" />
+
+
+            <ImageView
+                android:id="@+id/image_filter"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:padding="12dp"
+                android:tint="?attr/colorCard"
+                android:visibility="gone" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <!--<TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/layout_menu"
+        android:background="?attr/colorCard" />-->
+
+
+</RelativeLayout>

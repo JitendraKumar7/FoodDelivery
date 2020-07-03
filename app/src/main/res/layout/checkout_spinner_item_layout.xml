@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="?attr/colorBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="15dp">
+
+
+        <ImageView
+            android:id="@+id/img_objective"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:visibility="gone" />
+
+        <com.haris.meal4u.TextviewUtil.NormalTextview
+            android:id="@+id/txt_objective"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textSize="@dimen/tagline_text_size"
+            android:text="@string/select_category"
+            android:textColor="?attr/colorBottomNavigation" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

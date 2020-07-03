@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/layout_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
+            android:paddingStart="10dp">
+
+
+            <com.haris.meal4u.TextviewUtil.LabelTextview
+                android:id="@+id/txt_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="Featured"
+                android:layout_centerVertical="true"
+                android:textColor="?attr/colorLabel"
+                android:textSize="@dimen/label_text_size" />
+
+
+            <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Radio"
+                android:textColor="?attr/colorHeading"
+                android:textSize="16sp"
+                android:layout_toRightOf="@+id/txt_label"
+                android:layout_toEndOf="@+id/txt_label"
+                android:visibility="gone" />
+
+
+
+
+            <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+                android:id="@+id/txt_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:visibility="gone"
+                android:text="@string/more"
+                android:textColor="?attr/colorTagline"
+                android:textSize="14sp" />
+
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_radio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="0dp"
+            android:clipToPadding="false"
+            android:paddingStart="5dp"></android.support.v7.widget.RecyclerView>
+
+        <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:text="Radio"
+            android:textColor="?attr/colorHeading"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

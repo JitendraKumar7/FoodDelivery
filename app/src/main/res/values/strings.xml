@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <color name="black_transparent">#3f000000</color>
+
+    <!--String for Error Messages-->
+
+    <string name="app_name">Meal4u</string>
+    <string name="internet_not_available">Internet not available</string>
+
+    <!--String for General Messages-->
+
+    <string name="download_error">Error while downloading</string>
+    <string name="downloading">Downloading</string>
+    <string name="forgot">We just need your registered Email id to sent you \n password reset instructions</string>
+
+    <!--String for Toast Messages-->
+
+
+    <string name="update">Update</string>
+    <string name="email_empty">Email is empty</string>
+    <string name="password_empty">Password Empty</string>
+    <string name="empty_first_name">Empty First Name</string>
+    <string name="empty_last_name">Empty Last Name</string>
+    <string name="password_mis_match">Password did not match</string>
+
+    <!--String for Base Fragment-->
+
+    <string name="select_picture">Kindly select picture</string>
+
+    <!--String for Navigation Drawer-->
+
+    <string name="favourites">Favourite</string>
+    <string name="download">Download</string>
+    <string name="share">Share with friends</string>
+
+    <!--String for Menu Text-->
+
+    <string name="rate">Rate our app</string>
+    <string name="about_us">Privacy Policy</string>
+    <string name="using_camera">Using Camera</string>
+    <string name="using_gallery">Using Gallery</string>
+    <string name="picture_selector">Select Picture</string>
+    <string name="create_account">Create Account</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+
+    <string name="reset">Reset</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="already_have_account">Already have an account ?</string>
+
+    <!--String for Place Holder-->
+
+    <string name="did_not_create_account">Don\'t have an account\t?</string>
+
+    <string name="no_book">No Recipe Available</string>
+
+
+    <!--String for Onboarding Message-->
+
+
+    <string name="no_book_tagline">Currently recipe are not available\nKindly check out at another time</string>
+    <string name="title_01">Find Restaurants</string>
+
+    <string name="board_01">Find the best Restaurant\nin your neighborhood</string>
+    <string name="title_02">Choose your Food</string>
+
+    <string name="board_02">Find the best deals &amp; food\naccording to your desire</string>
+    <string name="title_03">Orders ara Delivered</string>
+
+    <!--String for Permission Messages-->
+
+    <string name="board_03">Get Ready and comfortable while\nour biker bring your order at door</string>
+    <string name="external_storage_permission">It need Storage permission for app to work</string>
+
+
+    <!--String for Edit Text hint-->
+
+    <string name="read_phone_state_permission">It need network state permission for app to work</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="profile">Profile</string>
+    <string name="submit">Submit</string>
+    <string name="logout">Logout</string>
+    <string name="progress">Progress</string>
+
+    <!--String for HomeFragment screen-->
+
+    <string name="setting">Setting</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="loading_configuration">Loading</string>
+    <string name="my_download">My Downloads</string>
+    <string name="my_favourites">My Favourites</string>
+    <string name="my_playlist">Redeem Coupon</string>
+    <string name="more">More</string>
+    <string name="review_dialog">How would you rate the quality\nand taste of Restaurant ?</string>
+    <string name="report_dialog">Kindly write which thing is not\nappropriate in this wallpaper ?</string>
+    <string name="write_your_review_hint">Kindly write your reviews in given box</string>
+    <string name="general">General</string>
+
+    <string name="my_profile">My Profile</string>
+    <string name="my_feed">My Feed</string>
+
+
+    <!--String for Chef Bot-->
+
+    <string name="google_login">Google</string>
+    <string name="facebook_login">Facebook</string>
+
+
+    <!--String for Facebook App Id-->
+
+    <string name="or">OR</string>
+
+    <string name="facebook_app_id">facebook_app_id</string>
+    <string name="fb_login_protocol_scheme">fb_facebook_app_id</string>
+
+    <string name="youtube_api_key">youtube_api_key</string>
+    <string name="error_player">Youtube player have some error %s</string>
+
+
+    <!--String for Live Wallpaper-->
+
+
+    <string name="downloading_tagline">Downloading</string>
+    <string name="need_camera_permission">It need camera permission for app to run</string>
+    <string name="select_category">Select Category</string>
+    <string name="popular_brands">Popular Brands</string>
+    <string name="delivery">Delivery</string>
+    <string name="minimum">Minimum</string>
+    <string name="cost">Cost</string>
+    <string name="most_nearest">Most Nearest</string>
+    <string name="km">Km</string>
+    <string name="map_view">Map View</string>
+
+    <string name="google_map_key">YOUR_GOOGLE_MAP_API_KEY</string>
+
+    <string name="select_view_type">Select</string>
+    <string name="list_view">List View</string>
+    <string name="card_view">Card View</string>
+    <string name="select_screen_type">Select</string>
+    <string name="discover_view">Discover</string>
+    <string name="search_restaurant">Search Restaurant</string>
+    <string name="current_location">Current Location</string>
+    <string name="rating_filter">Rating</string>
+    <string name="select_cuisine_filter">Select Cuisines</string>
+    <string name="expense_filter">Expense</string>
+    <string name="manage_radius">Manage Radius</string>
+    <string name="radius">Radius</string>
+    <string name="search_restaurant_cuisine"><![CDATA[Search Restaurants & Cuisines]]></string>
+    <string name="restaurant_detail">Restaurant Detail</string>
+    <string name="rating">Rating</string>
+    <string name="cart">Cart</string>
+    <string name="detail">Detail</string>
+    <string name="required">Required</string>
+    <string name="optional">Optional</string>
+    <string name="review_tagline">people give\nreviews on it</string>
+    <string name="special_instructions">Special Instructions</string>
+    <string name="special_instructions_tagline">Please let us know if you are allergic to anything or if we need to avoid anything</string>
+    <string name="write_special_instructions">Write Special Instructions</string>
+    <string name="add_to_cart">Add To Cart</string>
+    <string name="select_quantity">Kindly Select Quantity</string>
+    <string name="view_your_cart">View Your Cart</string>
+    <string name="apply_coupon">Apply Coupon</string>
+    <string name="coupon_tagline">Redeem &amp; Earn Discounts</string>
+    <string name="grand_total">Grand Total</string>
+    <string name="delivery_charges">Delivery Charges</string>
+    <string name="total">Total</string>
+    <string name="proceed_to_checkout">Proceed to Checkout</string>
+    <string name="coupon_title">Redeem Your Coupons</string>
+    <string name="coupon_tagline_01">Enter your Voucher or Coupon code to\nget the discount on all over the budget</string>
+    <string name="redeem_it">Redeem Now</string>
+    <string name="coupon_code_tagline">Write Coupon Code</string>
+    <string name="redeem_success">Redeem Successfully</string>
+    <string name="success_coupon_tagline">Congrats , You get %s  discount</string>
+    <string name="checkout">Check out</string>
+    <string name="schedule_order">Schedule Order</string>
+    <string name="address">Address</string>
+    <string name="billing">Billing</string>
+    <string name="building">House No / Building </string>
+    <string name="street_address">Street Address</string>
+    <string name="area">Area Name</string>
+    <string name="floor_unit">Floor (Optional)</string>
+    <string name="proceed_to_billing">Proceed to Billing</string>
+    <string name="note_to_rider">Note to Rider (Optional)</string>
+    <string name="credit_debit_card">Credit / Debit Cards</string>
+    <string name="add_new_card">Add New Card</string>
+    <string name="alternative_method">OR</string>
+    <string name="cash_on_delivery">Cash On Delivery (COD)</string>
+    <string name="continue_to_schedule">Continue to Schedule</string>
+    <string name="visa">Visa</string>
+    <string name="master_card">MasterCard</string>
+    <string name="discovery_network">Discover</string>
+    <string name="american_express">American Express</string>
+    <string name="jcb">JCB</string>
+    <string name="union_pay">UnionPay</string>
+    <string name="card_holder_name">Cardholder Name</string>
+    <string name="card_number">Card Number</string>
+    <string name="cvv">CVV</string>
+    <string name="done">Done</string>
+    <string name="enter_detail">Enter your Credit Card Details</string>
+    <string name="no_card_avaialble">No Card Available Right Now !</string>
+    <string name="successfully_added">Successfully Added !</string>
+    <string name="try_again">Try Again !</string>
+    <string name="expiry_month">MM (06)</string>
+    <string name="expire_year">YY (19)</string>
+    <string name="fill_holder_name">Kindly fill holder name</string>
+    <string name="fill_card_no">Kindly fill card number</string>
+    <string name="fill_expiry_month">Kinldy fill month expiry</string>
+    <string name="fill_expiry_year">Kindly fill year expiry</string>
+    <string name="fill_cvv">Kindly fill cvv</string>
+    <string name="validate_card">Invalid Card Number</string>
+    <string name="validate_cvc">invalid CVC</string>
+    <string name="validate_expiry_date">Invalid Expiry Date</string>
+    <string name="validate_expiry_month">Invalid Expiry Month</string>
+    <string name="cod">Cash On Delivery (COD)</string>
+    <string name="cod_not_supported">Restaurant did not support Cash On Delivery</string>
+    <string name="cards_not_supported">Credit / Debit Cards are not supported</string>
+    <string name="select_payment_method">Kindly select payment method</string>
+    <string name="order">Done</string>
+    <string name="order_now">Order Now</string>
+    <string name="wait">Kindly wait...</string>
+
+    <string name="order_placed">Order Placed</string>
+    <string name="order_place_tagline">We have received your order</string>
+    <string name="process_order">Order Processing</string>
+    <string name="process_order_tagline">We are processing your order</string>
+    <string name="on_the_way">On the way</string>
+    <string name="on_the_Way_tagline">Riders on its way to deliver</string>
+    <string name="received_successfully">Received Successfully</string>
+    <string name="success_tagline">Customer received their meal</string>
+    <string name="give_rating">Give Rating</string>
+    <string name="forgot_to_pay"><![CDATA[Don\'t forgot to give reviews & ratings]]></string>
+    <string name="track_it">Track</string>
+    <string name="rider">Rider</string>
+    <string name="restaurant_review">Restaurant Reviews</string>
+    <string name="loading">Loading</string>
+    <string name="phone_authentication">Authenticate Your Phone</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="verify">Verify Phone</string>
+    <string name="verification_code">Verification Code</string>
+    <string name="email_phone">Empty Phone</string>
+    <string name="upload_picture">Upload Picture</string>
+    <string name="upload_picture_tagline">Kindly add the pictures</string>
+    <string name="picture_uploader">Picture Uploader</string>
+    <string name="status">Status</string>
+    <string name="list_of_order">List of Order</string>
+
+    <string name="project_status_schedule">schedule</string>
+    <string name="project_status_ready">ready</string>
+    <string name="project_status_received">received</string>
+    <string name="project_status_completed">completed</string>
+    <string name="order_id">Order Id</string>
+    <string name="eta">ETA</string>
+    <string name="order_status">Order Status</string>
+    <string name="my_cart">My Carts</string>
+    <string name="my_payment_cards">My Credit / Debit Cards</string>
+    <string name="list_of_credit_debit">List of Credit / Debit Cards</string>
+    <string name="my_order_history">My Order History</string>
+    <string name="select_location">Location Picker</string>
+    <string name="location_picker">Select Location</string>
+    <string name="search_location">Search Location</string>
+    <string name="start_searching">Start Searching</string>
+    <string name="searching_tagline"><![CDATA[Kindly search the required \nRestaurant and Cuisines]]></string>
+    <string name="no_search_result">No Search Result</string>
+    <string name="no_search_tagline">Currently there is no item found</string>
+    <string name="no_favourite_found">No Favourites Found</string>
+    <string name="no_favourite_tagline">You did not favourites anything</string>
+    <string name="no_debit_card">No Cards Found</string>
+    <string name="no_debit_tagline">You did not add any Credit / Debit Cards</string>
+    <string name="no_order">No Order Found</string>
+    <string name="no_order_tagline">Currently you did not make any order</string>
+    <string name="important_notice">Important Notice</string>
+    <string name="cart_important_notice">Already added items would be removed from Cart  press \'Done\' if you agree</string>
+    <string name="cancel">Cancel</string>
+    <string name="required_building">Kinldy fill house / building name</string>
+    <string name="required_street_address">Kindly fill street address</string>
+    <string name="required_area_name">Kindly fill area name</string>
+    <string name="project_status_delivered">delivered</string>
+    <string name="track_rider">Track Rider</string>
+    <string name="currently_in_preparationg">Currently your order is under processing</string>
+    <string name="chatting">Chatting</string>
+    <string name="write_message">Type a message</string>
+    <string name="typing_tagline">is typing ......</string>
+    <string name="you_already_rate_order">You already rate the order , you can\'t rate multiple times</string>
+    <string name="order_detail">Order Detail</string>
+    <string name="rate_rider">Rate the Rider</string>
+    <string name="forgot_to_rider_rating">Don\'t forgot to give rating to rider</string>
+    <string name="open">Open</string>
+    <string name="closed">Closed</string>
+    <string name="order_value_low">Order value is low</string>
+
+
+</resources>

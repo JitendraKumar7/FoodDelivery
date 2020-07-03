@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorBackground"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/menu_layout"
+            android:layout_width="match_parent"
+            android:layout_height="51dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="0dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/image_profile"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/profile_picture"
+                    app:riv_border_color="?attr/colorHeading"
+                    app:riv_border_width="1px"
+                    app:riv_corner_radius="60dip"
+                    app:riv_mutate_background="false"
+                    app:riv_oval="true" />
+
+                <LinearLayout
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_below="@+id/image_profile"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@drawable/small_profile_camera"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:padding="3dp"
+                        android:src="@drawable/ic_camera"
+                        android:tint="?attr/colorButton" />
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="6dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <com.haris.meal4u.EditTextUtil.UbuntuRegularEditText
+                    android:id="@+id/edit_fName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edit_text_login"
+                    android:gravity="center_vertical"
+                    android:hint="@string/first_name"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="5dp"
+                    android:textColor="?attr/colorButton"
+                    android:textColorHint="?attr/colorButton"
+                    android:textSize="14sp"
+
+                    />
+
+
+                <com.haris.meal4u.EditTextUtil.UbuntuRegularEditText
+                    android:id="@+id/edit_lName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edit_text_login"
+                    android:gravity="center_vertical"
+                    android:hint="@string/last_name"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="5dp"
+                    android:textColor="?attr/colorButton"
+                    android:textSize="14sp"
+                    android:textColorHint="?attr/colorButton"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:visibility="gone"
+                android:layout_marginBottom="6dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:orientation="horizontal">
+
+                <com.haris.meal4u.EditTextUtil.UbuntuRegularEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/bg_edit_text_login"
+                    android:gravity="center_vertical"
+                    android:hint="@string/email_address"
+                    android:inputType="textPhonetic"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="5dp"
+                    android:textColor="?attr/colorButton"
+                    android:textColorHint="?attr/colorButton"
+                    android:textSize="14sp"
+
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="6dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:orientation="horizontal">
+
+                <com.haris.meal4u.EditTextUtil.UbuntuRegularEditText
+                    android:id="@+id/edit_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:enabled="false"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edit_text_login"
+                    android:gravity="center_vertical"
+                    android:hint="@string/phone_number"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="5dp"
+                    android:textColor="?attr/colorButton"
+                    android:textColorHint="?attr/colorButton"
+                    android:textSize="14sp"
+
+                    />
+
+
+                <com.haris.meal4u.EditTextUtil.UbuntuRegularEditText
+                    android:id="@+id/edit_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@drawable/bg_edit_text_login"
+                    android:gravity="center_vertical"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="5dp"
+                    android:textColor="?attr/colorButton"
+                    android:textColorHint="?attr/colorButton"
+                    android:textSize="14sp"
+
+                    />
+
+            </LinearLayout>
+
+
+            <com.haris.meal4u.EditTextUtil.UbuntuRegularEditText
+                android:id="@+id/edit_email"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/bg_edit_text_login"
+                android:gravity="center_vertical"
+                android:hint="@string/email_address"
+                android:inputType="textEmailAddress"
+                android:paddingStart="13dp"
+                android:paddingEnd="5dp"
+                android:textColor="?attr/colorButton"
+                android:textColorHint="?attr/colorButton"
+                android:textSize="14sp"
+
+                />
+
+
+
+            <!-- <com.haris.meal4u.EditTextUtil.UbuntuRegularEditText
+                 android:id="@+id/edit_bio"
+                 android:layout_width="match_parent"
+                 android:layout_height="150dp"
+                 android:background="@drawable/bg_edit_text_login"
+                 android:gravity="top"
+                 android:visibility="gone"
+                 android:layout_marginStart="30dp"
+                 android:layout_marginEnd="30dp"
+                 android:hint="@string/bio"
+                 android:paddingStart="13dp"
+                 android:paddingTop="5dp"
+                 android:paddingEnd="5dp"
+                 android:textColor="?attr/colorButton"
+                 android:textColorHint="?attr/colorButton"
+                 android:textSize="14sp"
+
+                 />
+ -->
+
+
+            <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+                android:id="@+id/txt_update"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_internet"
+                android:gravity="center"
+                android:minHeight="45dp"
+                android:text="@string/update"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    
+    
+</RelativeLayout>

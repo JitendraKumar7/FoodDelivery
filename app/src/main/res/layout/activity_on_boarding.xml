@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorBackground"
+    tools:context=".ActivityUtil.OnBoarding">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_on_board" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+          <!--
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_bottom"></LinearLayout>
+-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical|end"
+                android:orientation="vertical"
+                android:paddingEnd="20dp"
+                android:paddingTop="0dp">
+
+
+                <ImageView
+                    android:id="@+id/image_close"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:padding="4dp"
+                    android:tint="@color/colorPrimaryDark"
+                    android:src="@drawable/ic_close" />
+
+
+            </LinearLayout>
+
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/view_pager_boarding"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:clipToPadding="false"
+                android:minHeight="250dp"
+                android:layout_weight="1"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"></android.support.v4.view.ViewPager>
+
+            <com.haris.meal4u.CustomUtil.ExtensiblePageIndicator
+                android:id="@+id/flexibleIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_pager_boarding"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="0dp"
+                android:visibility="visible"
+                app:indicatorActiveColor="@color/colorPrimaryDark"
+                app:indicatorInactiveColor="@color/pager_unselected"
+                app:indicatorPadding="3dp"
+                app:indicatorRadius="2dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="170dp"
+            android:orientation="vertical">
+
+            <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+                android:id="@+id/txt_login"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginStart="45dp"
+                android:background="@drawable/bg_login"
+                android:gravity="center"
+                android:text="@string/login"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingEnd="45dp"
+                android:paddingStart="45dp"
+                android:visibility="gone">
+
+
+                <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+                    android:id="@+id/txt_sign_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_register"
+                    android:gravity="center"
+                    android:minHeight="40dp"
+                    android:text="@string/sign_up"
+                    android:textColor="?attr/colorButton"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingEnd="40dp"
+                android:paddingStart="40dp">
+
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="1px"
+                    android:background="?attr/colorTagline" />
+
+                <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/or"
+                    android:textColor="?attr/colorHeading"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="1px"
+                    android:background="?attr/colorTagline" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingEnd="45dp"
+                android:paddingStart="45dp">
+
+
+                <LinearLayout
+                    android:id="@+id/layout_google"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_google"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="15dp"
+
+                        android:src="@drawable/ic_google_login" />
+
+                    <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/google_login"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_facebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_facebook"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_marginEnd="15dp"
+                        android:src="@drawable/ic_facebook_login" />
+
+                    <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/facebook_login"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <com.facebook.login.widget.LoginButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:visibility="gone"
+        />
+
+
+</RelativeLayout>

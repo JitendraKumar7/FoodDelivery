@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <dimen name="label_text_size">16sp</dimen>
+    <dimen name="tagline_text_size">12sp</dimen>
+    <dimen name="normal_text_size">14sp</dimen>
+
+    <!-- Library dimensions -->
+    <dimen name="fvp_default_circle_radius">4dp</dimen>
+    <dimen name="fvp_default_circle_padding">12dp</dimen>
+
+    <!--<dimen name="design_bottom_navigation_text_size" tools:override="true">14sp</dimen>
+    <dimen name="design_bottom_navigation_icon_size" tools:override="true">18dp</dimen>-->
+
+    <!--Floating action button-->
+    <dimen name="design_fab_image_size" tools:override="true">18dp</dimen>
+
+</resources>

@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorBackground"
+    tools:context=".ActivityUtil.SignUp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <include
+            layout="@layout/menu_layout"
+            android:layout_width="match_parent"
+            android:layout_height="51dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="170dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/bg_edit_text_login"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="12dp"
+                            android:padding="4dp"
+                            android:src="@drawable/ic_profile"
+                            android:tint="?attr/colorButton" />
+
+
+                        <com.haris.meal4u.EditTextUtil.UbuntuRegularEditText
+                            android:id="@+id/edit_firstName"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginStart="13dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:background="@color/transparent"
+                            android:hint="@string/first_name"
+                            android:maxLines="1"
+                            android:textColor="?attr/colorButton"
+                            android:textColorHint="?attr/colorButton"
+                            android:textSize="14sp"
+
+                            />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="170dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_edit_text_login"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="12dp"
+                            android:padding="4dp"
+                            android:src="@drawable/ic_profile"
+                            android:tint="?attr/colorButton" />
+
+
+                        <com.haris.meal4u.EditTextUtil.UbuntuRegularEditText
+                            android:id="@+id/edit_lastName"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginStart="13dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:background="@color/transparent"
+                            android:hint="@string/last_name"
+                            android:maxLines="1"
+                            android:textColorHint="?attr/colorButton"
+                            android:textColor="?attr/colorButton"
+                            android:textSize="14sp"
+
+                            />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/image_profile"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/profile_picture"
+                        app:riv_border_color="@color/transparent"
+                        app:riv_border_width="0dip"
+                        app:riv_corner_radius="60dip"
+                        app:riv_mutate_background="false"
+                        app:riv_oval="true" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_edit_text_login"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="12dp"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_phone"
+                    android:tint="?attr/colorButton" />
+
+
+                <com.haris.meal4u.EditTextUtil.UbuntuRegularEditText
+                    android:id="@+id/edit_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:hint="@string/phone_number"
+                    android:inputType="textPhonetic"
+                    android:textColorHint="?attr/colorButton"
+                    android:maxLines="1"
+                    android:textColor="?attr/colorButton"
+                    android:textSize="14sp"
+
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_edit_text_login"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="12dp"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_email"
+                    android:tint="?attr/colorButton" />
+
+
+                <com.haris.meal4u.EditTextUtil.UbuntuRegularEditText
+                    android:id="@+id/edit_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:hint="@string/email_address"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="?attr/colorButton"
+                    android:maxLines="1"
+                    android:textColor="?attr/colorButton"
+                    android:textSize="14sp"
+
+                    />
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_edit_text_login"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="12dp"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_password"
+                    android:tint="?attr/colorButton" />
+
+
+                <com.haris.meal4u.EditTextUtil.UbuntuRegularEditText
+                    android:id="@+id/edit_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:textColorHint="?attr/colorButton"
+                    android:maxLines="1"
+                    android:textColor="?attr/colorButton"
+                    android:textSize="14sp"
+
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_edit_text_login"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="12dp"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_password"
+                    android:tint="?attr/colorButton" />
+
+
+                <com.haris.meal4u.EditTextUtil.UbuntuRegularEditText
+                    android:id="@+id/edit_confirm_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:hint="@string/confirm_password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:textColor="?attr/colorButton"
+                    android:textColorHint="?attr/colorButton"
+                    android:textSize="14sp"
+
+                    />
+
+
+            </LinearLayout>
+
+            <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+                android:id="@+id/txt_sign_up"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_internet"
+                android:gravity="center"
+                android:minHeight="45dp"
+                android:text="@string/sign_up"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/already_have_account"
+                    android:textColor="?attr/colorHeading"
+                    android:textSize="14sp" />
+
+                <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+                    android:id="@+id/txt_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/login"
+                    android:textColor="?attr/colorHeading"
+                    android:textSize="15sp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

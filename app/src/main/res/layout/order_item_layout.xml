@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="3dp"
+        app:cardUseCompatPadding="true"
+        >
+
+        <LinearLayout
+            android:id="@+id/layout_order"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/image_logo"
+                    android:layout_width="80dp"
+                    android:src="@drawable/app_icon"
+                    android:layout_height="80dp"></com.makeramen.roundedimageview.RoundedImageView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingStart="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    >
+
+
+                    <com.haris.meal4u.TextviewUtil.NormalTextview
+                        android:id="@+id/txt_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pizza Hut"
+                        android:layout_marginBottom="1dp"
+                        android:textSize="@dimen/normal_text_size"
+                        android:textColor="?attr/colorNormal"></com.haris.meal4u.TextviewUtil.NormalTextview>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_below="@+id/txt_name"
+                        android:gravity="center_vertical">
+
+
+                        <ImageView
+                            android:layout_width="9dp"
+                            android:layout_height="9dp"
+                            android:padding="0dp"
+                            android:layout_marginTop="0dp"
+                            android:src="@drawable/ic_calendar_outline"
+                            android:tint="?attr/colorTagline"></ImageView>
+
+                        <com.haris.meal4u.TextviewUtil.TaglineTextview
+                            android:id="@+id/txt_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="26 May 2019"
+                            android:textSize="@dimen/tagline_text_size"
+                            android:textColor="?attr/colorTagline"></com.haris.meal4u.TextviewUtil.TaglineTextview>
+
+
+
+                        <ImageView
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:padding="0dp"
+                            android:layout_marginStart="8dp"
+                            android:src="@drawable/ic_clock_outline"
+                            android:tint="?attr/colorTagline"></ImageView>
+
+                        <com.haris.meal4u.TextviewUtil.TaglineTextview
+                            android:id="@+id/txt_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="05:30 Pm"
+                            android:textSize="@dimen/tagline_text_size"
+                            android:textColor="?attr/colorTagline"></com.haris.meal4u.TextviewUtil.TaglineTextview>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="22dp"
+                        android:orientation="horizontal"
+                        android:minWidth="20dp"
+                        android:visibility="gone"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/bg_rating"
+                        android:gravity="center">
+
+
+                        <ImageView
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:padding="1dp"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginRight="5dp"
+                            android:tint="?attr/colorDefaultFavouriteIcon"
+                            android:src="@drawable/ic_rating"
+                            ></ImageView>
+
+
+
+                        <com.haris.meal4u.TextviewUtil.TaglineTextview
+                            android:id="@+id/txt_rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="4.5"
+                            android:layout_marginRight="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:textColor="?attr/colorCard"
+                            android:textSize="@dimen/tagline_text_size"
+                            ></com.haris.meal4u.TextviewUtil.TaglineTextview>
+
+
+                    </LinearLayout>
+
+
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+
+                        <com.haris.meal4u.TextviewUtil.TaglineTextview
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/delivery"
+                            android:textSize="@dimen/tagline_text_size"
+                            android:textColor="?attr/colorTagline"></com.haris.meal4u.TextviewUtil.TaglineTextview>
+
+                        <com.haris.meal4u.TextviewUtil.NormalTextview
+                            android:id="@+id/txt_delivery_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="45 min"
+                            android:textSize="@dimen/normal_text_size"
+                            android:textColor="?attr/colorNormal"></com.haris.meal4u.TextviewUtil.NormalTextview>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+
+                        <com.haris.meal4u.TextviewUtil.TaglineTextview
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cost"
+                            android:textSize="@dimen/tagline_text_size"
+                            android:textColor="?attr/colorTagline"></com.haris.meal4u.TextviewUtil.TaglineTextview>
+
+                        <com.haris.meal4u.TextviewUtil.NormalTextview
+                            android:id="@+id/txt_charges"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rs 200"
+                            android:textSize="@dimen/normal_text_size"
+                            android:textColor="?attr/colorNormal"></com.haris.meal4u.TextviewUtil.NormalTextview>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+
+                        <com.haris.meal4u.TextviewUtil.TaglineTextview
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/status"
+                            android:textSize="@dimen/tagline_text_size"
+                            android:textColor="?attr/colorTagline"></com.haris.meal4u.TextviewUtil.TaglineTextview>
+
+                        <com.haris.meal4u.TextviewUtil.NormalTextview
+                            android:id="@+id/txt_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Delivered"
+                            android:textSize="@dimen/normal_text_size"
+                            android:textColor="?attr/colorNormal"></com.haris.meal4u.TextviewUtil.NormalTextview>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:orientation="vertical">
+
+
+                        <ImageView
+                            android:id="@+id/image_favourite"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:padding="7dp"
+                            android:tint="?attr/colorDefaultFavouriteIcon"
+                            android:src="@drawable/ic_btn_mark_favourite"
+                            ></ImageView>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
