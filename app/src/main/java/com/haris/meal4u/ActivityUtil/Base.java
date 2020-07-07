@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.haris.meal4u.ConstantUtil.Constant;
 import com.haris.meal4u.CustomUtil.CurvedBottomNavigationView;
+import com.haris.meal4u.FragmentUtil.DashboardFragment;
 import com.haris.meal4u.FragmentUtil.DiscoverFragment;
 import com.haris.meal4u.FragmentUtil.Favourites;
 import com.haris.meal4u.FragmentUtil.HomeFragment;
@@ -156,12 +157,16 @@ public class Base extends AppCompatActivity implements View.OnClickListener, Con
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
         if (menuItem.getItemId() == R.id.action_home) {
-            openFragment(new HomeFragment());
+            openFragment(new DashboardFragment());
             return true;
-        } else if (menuItem.getItemId() == R.id.action_nearby) {
+        }
+        //
+        else if (menuItem.getItemId() == R.id.action_nearby) {
             openFragment(new DiscoverFragment());
             return true;
-        } else if (menuItem.getItemId() == R.id.action_favourite) {
+        }
+        //
+        else if (menuItem.getItemId() == R.id.action_favourite) {
 
             prefObject = management.getPreferences(new PrefObject()
                     .setRetrieveLogin(true)
@@ -174,7 +179,9 @@ public class Base extends AppCompatActivity implements View.OnClickListener, Con
 
             openFragment(new Favourites());
             return true;
-        } else if (menuItem.getItemId() == R.id.action_setting) {
+        }
+        //
+        else if (menuItem.getItemId() == R.id.action_setting) {
             openFragment(new Setting());
             return true;
         }

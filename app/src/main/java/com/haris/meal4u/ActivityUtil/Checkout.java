@@ -337,18 +337,18 @@ public class Checkout extends AppCompatActivity implements View.OnClickListener,
                             UserObject userObject = new UserObject(Integer.parseInt(prefObject.getUserId())
                                     , prefObject.getFirstName() + " " + prefObject.getLastName()
                                     , prefObject.getPictureUrl()
-                                    ,Double.parseDouble(restaurantDetail.getAddressObject().getLatitude())
-                                    ,Double.parseDouble(restaurantDetail.getAddressObject().getLongitude()));
+                                    , Double.parseDouble(restaurantDetail.getAddressObject().getLatitude())
+                                    , Double.parseDouble(restaurantDetail.getAddressObject().getLongitude()));
 
                             RiderObject riderObject = new RiderObject();
                             riderObject.setRider_latitude(Double.parseDouble(restaurantDetail.getObject_latitude()));
                             riderObject.setRider_longitude(Double.parseDouble(restaurantDetail.getObject_longitude()));
 
-                            TrackingObject trackingObject = new TrackingObject(0.0,0.0,"0 min","0 km");
+                            TrackingObject trackingObject = new TrackingObject(0.0, 0.0, "0 min", "0 km");
                             TypingObject typingObject = new TypingObject();
                             UserChattingObject userChattingObject = new UserChattingObject();
 
-                            usersRef.setValue(new RiderTrackingObject(userObject,riderObject,trackingObject,userChattingObject,typingObject));
+                            usersRef.setValue(new RiderTrackingObject(userObject, riderObject, trackingObject, userChattingObject, typingObject));
 
                         }
 

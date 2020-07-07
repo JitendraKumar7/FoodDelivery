@@ -65,7 +65,6 @@ import io.nlopez.smartlocation.OnLocationUpdatedListener;
 import io.nlopez.smartlocation.SmartLocation;
 import io.nlopez.smartlocation.location.config.LocationParams;
 
-
 public class HomeFragment extends Fragment implements View.OnClickListener, ConnectionCallback, HomeCallback, OnLocationUpdatedListener {
     private TextView editSearch;
     private Management management;

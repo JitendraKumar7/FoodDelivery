@@ -1,4 +1,4 @@
-package com.haris.meal4u.ActivityUtil;
+package com.haris.meal4u.FragmentUtil;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -25,6 +27,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.dynamiclinks.DynamicLink;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.dynamiclinks.ShortDynamicLink;
+import com.haris.meal4u.ActivityUtil.Base;
+import com.haris.meal4u.ActivityUtil.ListOfReviews;
+import com.haris.meal4u.ActivityUtil.OnBoarding;
+import com.haris.meal4u.ActivityUtil.ProductCart;
+import com.haris.meal4u.ActivityUtil.RestaurantInformation;
 import com.haris.meal4u.AdapterUtil.CategoriesTabPager;
 import com.haris.meal4u.BuildConfig;
 import com.haris.meal4u.ConstantUtil.Constant;
@@ -52,9 +59,8 @@ import java.util.HashMap;
 import cc.cloudist.acplibrary.ACProgressConstant;
 import cc.cloudist.acplibrary.ACProgressFlower;
 
-
-public class RestaurantDetail extends AppCompatActivity implements View.OnClickListener, ConnectionCallback {
-    private String TAG = RestaurantDetail.class.getName();
+public class DashboardFragment extends Fragment implements View.OnClickListener, ConnectionCallback {
+    private String TAG = DashboardFragment.class.getName();
     private TextView txtMenu;
     private ImageView imageBack;
     private Management management;
@@ -62,11 +68,9 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
     private HashMap<String, String> favouriteMap = new HashMap<>();
     private ArrayList<Object> recordList = new ArrayList<>();
     private PrefObject prefObject;
-    private DataObject dataObject;
     private ImageView imageShare;
     private ImageView imageDetail;
     private ImageView imageReport;
-    private boolean isAction;
     private ImageView imageLogo;
     private ImageView imageCover;
     private TextView txtName;
@@ -94,67 +98,39 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
     private TextView txtTotalBudget;
     private LinearLayout layoutComment;
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        Utility.changeAppTheme(this);
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        setContentView(R.layout.activity_restaurant_detail);
-
-        getIntentData(); //Retrieve Intent Data
-        initUI(); //Initialize UI
-
-
-
-
-    }
-
-
-    /**
-     * <p>It is used to retrieve intent data</p>
-     */
-    private void getIntentData() {
-
-        dataObject = getIntent().getParcelableExtra(Constant.IntentKey.RESTAURANT_DETAIL);
-        isAction = getIntent().getBooleanExtra(Constant.IntentKey.BACK_ACTION, false);
-    }
+    DataObject dataObject = new DataObject();
 
 
     /**
      * <p>It initialize the UI</p>
      */
-    private void initUI() {
+    private void initUI(View v) {
+        dataObject.setObject_id("1");
+        management = new Management(getActivity());
 
-        management = new Management(this);
-
-        imageBack = findViewById(R.id.image_back);
+        imageBack = v.findViewById(R.id.image_back);
         imageBack.setVisibility(View.VISIBLE);
         imageBack.setImageResource(R.drawable.ic_back);
 
-        imageCover = (ImageView) findViewById(R.id.image_cover);
-        imageShare = findViewById(R.id.image_share);
-        imageDetail = findViewById(R.id.image_detail);
-        txtName = (TextView) findViewById(R.id.txt_name);
-        txtTags = (TextView) findViewById(R.id.txt_tags);
-        txtStatus = findViewById(R.id.txt_status);
-        txtRating = (TextView) findViewById(R.id.txt_rating);
-        txtDeliveryTime = (TextView) findViewById(R.id.txt_delivery_time);
-        txtMinimumCharges = (TextView) findViewById(R.id.txt_minimum_charges);
-        txtExpense = (TextView) findViewById(R.id.txt_expense);
-        imageFavourite = (ImageView) findViewById(R.id.image_favourite);
+        imageCover = (ImageView) v.findViewById(R.id.image_cover);
+        imageShare = v.findViewById(R.id.image_share);
+        imageDetail = v.findViewById(R.id.image_detail);
+        txtName = (TextView) v.findViewById(R.id.txt_name);
+        txtTags = (TextView) v.findViewById(R.id.txt_tags);
+        txtStatus = v.findViewById(R.id.txt_status);
+        txtRating = (TextView) v.findViewById(R.id.txt_rating);
+        txtDeliveryTime = (TextView) v.findViewById(R.id.txt_delivery_time);
+        txtMinimumCharges = (TextView) v.findViewById(R.id.txt_minimum_charges);
+        txtExpense = (TextView) v.findViewById(R.id.txt_expense);
+        imageFavourite = (ImageView) v.findViewById(R.id.image_favourite);
 
-        layoutViewCart = (RelativeLayout) findViewById(R.id.layout_view_cart);
-        txtCount = (TextView) findViewById(R.id.txt_count);
-        txtTotalBudget = (TextView) findViewById(R.id.txt_total_budget);
+        layoutViewCart = (RelativeLayout) v.findViewById(R.id.layout_view_cart);
+        txtCount = (TextView) v.findViewById(R.id.txt_count);
+        txtTotalBudget = (TextView) v.findViewById(R.id.txt_total_budget);
 
-        layoutComment = findViewById(R.id.layout_comment);
+        layoutComment = v.findViewById(R.id.layout_comment);
 
-        for (int i = 0; i < dataObject.getSchedule().size(); i++) {
+        /*for (int i = 0; i < dataObject.getSchedule().size(); i++) {
 
             DataObject scheduleObject = (DataObject) dataObject.getSchedule().get(i);
 
@@ -178,39 +154,37 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
 
                 if (result.equalsIgnoreCase(DateConstraint.DateTimeResult.MATCH)) {
                     Utility.Logger(TAG, "Open");
-                    txtStatus.setText(Utility.getStringFromRes(this, R.string.open));
-                }
-                else {
+                    txtStatus.setText(Utility.getStringFromRes(getActivity(), R.string.open));
+                } else {
                     Utility.Logger(TAG, "Closed");
-                    txtStatus.setText(Utility.getStringFromRes(this, R.string.closed));
+                    txtStatus.setText(Utility.getStringFromRes(getActivity(), R.string.closed));
                 }
 
                 break;
 
+            } else {
+                txtStatus.setText(Utility.getStringFromRes(getActivity(), R.string.closed));
             }
-            else{
-                txtStatus.setText(Utility.getStringFromRes(this, R.string.closed));
-            }
 
-        }
+        }*/
 
 
-        reviewList.addAll(dataObject.getReviewerList());
+        //reviewList.addAll(dataObject.getReviewerList());
         reviewSize = reviewList.size() < 5 ? reviewList.size() :
                 reviewList.size() - (reviewList.size() - 5);
 
-        scrollerComment = findViewById(R.id.scroller_comment);
-        txtReviewTagline = findViewById(R.id.txt_review_tagline);
-        txtReviewTagline.setText(reviewSize + " " + Utility.getStringFromRes(this, R.string.review_tagline));
+        scrollerComment = v.findViewById(R.id.scroller_comment);
+        txtReviewTagline = v.findViewById(R.id.txt_review_tagline);
+        txtReviewTagline.setText(reviewSize + " " + Utility.getStringFromRes(getActivity(), R.string.review_tagline));
 
         for (int i = 0; i < reviewSize; i++) {
 
-            View view = LayoutInflater.from(this).inflate(R.layout.reviewer_item_layout, null, false);
+            View view = LayoutInflater.from(getActivity()).inflate(R.layout.reviewer_item_layout, null, false);
 
             ImageView imageUser = view.findViewById(R.id.image_reviewer);
             TextView txtCount = view.findViewById(R.id.txt_count);
 
-            GlideApp.with(this)
+            GlideApp.with(getActivity())
                     .load(Constant.ServerInformation.PICTURE_URL + reviewList.get(i))
                     .centerCrop().into(imageUser);
 
@@ -229,29 +203,29 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
             scrollerComment.addView(view);
         }
 
-        viewPagerCategories = (ViewPager) findViewById(R.id.view_pager_categories);
-        categoriesPager = new CategoriesTabPager(getSupportFragmentManager(), fragmentArrayList);
+        viewPagerCategories = (ViewPager) v.findViewById(R.id.view_pager_categories);
+        categoriesPager = new CategoriesTabPager(getChildFragmentManager(), fragmentArrayList);
         viewPagerCategories.setAdapter(categoriesPager);
 
-        layoutTab = findViewById(R.id.layout_tab);
+        layoutTab = v.findViewById(R.id.layout_tab);
         layoutTab.setupWithViewPager(viewPagerCategories);
 
-        txtName.setText(dataObject.getObject_name());
-        txtTags.setText(dataObject.getObject_tags());
-        txtDeliveryTime.setText(dataObject.getObject_min_delivery_time());
-        txtMinimumCharges.setText(dataObject.getObject_currency_symbol() + " " + dataObject.getObject_min_order_price());
-        txtExpense.setText(Utility.getBudgetType(this, dataObject.getObject_currency_symbol(), dataObject.getObject_expense()));
-        txtRating.setText(dataObject.getObject_rating());
+        //txtName.setText(dataObject.getObject_name());
+        //txtTags.setText(dataObject.getObject_tags());
+        //txtDeliveryTime.setText(dataObject.getObject_min_delivery_time());
+        //txtMinimumCharges.setText(dataObject.getObject_currency_symbol() + " " + dataObject.getObject_min_order_price());
+        //txtExpense.setText(Utility.getBudgetType(getActivity(), dataObject.getObject_currency_symbol(), dataObject.getObject_expense()));
+        //txtRating.setText(dataObject.getObject_rating());
 
 
-        GlideApp.with(this).load(Constant.ServerInformation.PICTURE_URL + dataObject.getObject_picture())
+        GlideApp.with(getActivity()).load(Constant.ServerInformation.PICTURE_URL + dataObject.getObject_picture())
                 .centerCrop().into(imageCover);
 
         management.sendRequestToServer(new RequestObject()
                 .setJson(getJson(dataObject.getObject_id()))
                 .setConnectionType(Constant.CONNECTION_TYPE.UI)
                 .setConnection(Constant.CONNECTION.RESTAURANT_DETAIL)
-                .setConnectionCallback(RestaurantDetail.this));
+                .setConnectionCallback(this));
 
         layoutViewCart.setOnClickListener(this);
         imageShare.setOnClickListener(this);
@@ -322,7 +296,7 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
 
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
 
 
@@ -348,7 +322,7 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
                 totalNoOfItem += Integer.parseInt(dataObject.getPost_quantity());
             }
 
-            txtTotalBudget.setText(dataObject.getObject_currency_symbol() + " " + String.valueOf(totalBudgetOfCart));
+            //txtTotalBudget.setText(dataObject.getObject_currency_symbol() + " " + String.valueOf(totalBudgetOfCart));
             txtCount.setText(String.valueOf(totalNoOfItem));
             layoutViewCart.setVisibility(View.VISIBLE);
 
@@ -359,7 +333,7 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
         if (!prefObject.isLogin())
             return;
 
-        //Check either this book is saved by userObject or not
+        //Check either getActivity() book is saved by userObject or not
         //It would send request to 'db' for checking it
 
         favouriteArraylist.clear();
@@ -378,9 +352,9 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
         }
 
         if (favouriteMap.containsKey(dataObject.getObject_id())) {
-            imageFavourite.setColorFilter(Utility.getAttrColor(this, R.attr.colorSelectedFavouriteIcon));
+            imageFavourite.setColorFilter(Utility.getAttrColor(getActivity(), R.attr.colorSelectedFavouriteIcon));
         } else {
-            imageFavourite.setColorFilter(Utility.getAttrColor(this, R.attr.colorDefaultFavouriteIcon));
+            imageFavourite.setColorFilter(Utility.getAttrColor(getActivity(), R.attr.colorDefaultFavouriteIcon));
         }
 
 
@@ -389,18 +363,10 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
 
-        if (v == imageBack) {
-
-            if (isAction) {
-                startActivity(new Intent(getApplicationContext(), Base.class));
-            }
-            finish();
-        }
-
         if (v == imageFavourite) {
 
             if (!prefObject.isLogin()) {
-                startActivity(new Intent(this, OnBoarding.class));
+                startActivity(new Intent(getActivity(), OnBoarding.class));
                 return;
             }
 
@@ -427,7 +393,7 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
                     , dataObject.getObject_id()
                     , Constant.PostType.POST_TYPE
                     , dataObject.getObject_name()
-                    , Utility.getAppPlaystoreUrl(this)));
+                    , Utility.getAppPlaystoreUrl(getActivity())));
 
             buildDeepLink(deepLinkUri, minVersion);
 
@@ -436,31 +402,31 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
         if (v == imageReport) {
 
             if (!prefObject.isLogin()) {
-                startActivity(new Intent(this, OnBoarding.class));
+                startActivity(new Intent(getActivity(), OnBoarding.class));
                 return;
             }
 
-            showReportSheet(this);
+            showReportSheet(getActivity());
 
         }
 
         if (v == layoutViewCart) {
-            Intent intent = new Intent(this, ProductCart.class);
+            Intent intent = new Intent(getActivity(), ProductCart.class);
             intent.putExtra(Constant.IntentKey.RESTAURANT_DETAIL, dataObject);
             startActivity(intent);
         }
 
         if (v == layoutComment) {
 
-            Intent intent = new Intent(this, ListOfReviews.class);
+            Intent intent = new Intent(getActivity(), ListOfReviews.class);
             intent.putExtra(Constant.IntentKey.RESTAURANT_DETAIL, dataObject.getObject_id());
             startActivity(intent);
         }
 
         if (v == imageDetail) {
 
-            Intent intent = new Intent(this,RestaurantInformation.class);
-            intent.putExtra(Constant.IntentKey.RESTAURANT_DETAIL,dataObject);
+            Intent intent = new Intent(getActivity(), RestaurantInformation.class);
+            intent.putExtra(Constant.IntentKey.RESTAURANT_DETAIL, dataObject);
             startActivity(intent);
 
         }
@@ -498,8 +464,8 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
 
                 for (int i = 0; i < layoutTab.getTabCount(); i++) {
 
-                    TextView tv = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab_item_layout, null);
-                    tv.setTextColor(Utility.getColourFromRes(this, R.color.colorPrimaryDark));
+                    TextView tv = (TextView) LayoutInflater.from(getActivity()).inflate(R.layout.custom_tab_item_layout, null);
+                    tv.setTextColor(Utility.getColourFromRes(getActivity(), R.color.colorPrimaryDark));
                     tv.setText(Utility.capitalize(fragmentArrayList.get(i).getTitle()));
                     layoutTab.getTabAt(i).setCustomView(tv);
 
@@ -524,7 +490,7 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
 
@@ -617,7 +583,7 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
                         .build())
                 .setLink(deepLink)
                 .buildShortDynamicLink()
-                .addOnCompleteListener(this, new OnCompleteListener<ShortDynamicLink>() {
+                .addOnCompleteListener(getActivity(), new OnCompleteListener<ShortDynamicLink>() {
                     @Override
                     public void onComplete(@NonNull Task<ShortDynamicLink> task) {
 
@@ -626,7 +592,7 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
                             uri[0] = task.getResult().getShortLink();
                             Uri flowchartLink = task.getResult().getPreviewLink();
                             Utility.Logger(TAG, "ShortLink = " + uri[0].toString() + " flowChartLink = " + flowchartLink.toString());
-                            Utility.shareApp(getApplicationContext(), uri[0].toString());
+                            Utility.shareApp(getActivity(), uri[0].toString());
 
                         } else {
                             Utility.Logger(TAG, "Error = " + task.getException().getMessage());
@@ -639,5 +605,19 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
 
     }
 
-}
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_dashboard, null);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        initUI(view); //Initialize UI
+    }
+
+
+}
