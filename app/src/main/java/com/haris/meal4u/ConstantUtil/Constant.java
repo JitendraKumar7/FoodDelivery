@@ -47,7 +47,7 @@ public class Constant {
         public static String DEFFERED_DEEP_LINK_URL = "DEFFERED_DEEP_LINK_URL";
 
         static String BASE_URL = "http://wowwishes.in/";
-        static String FOLDER = "/restaurants/";
+        static String FOLDER = "/rch/";
 
         public static String REST_API_URL = BASE_URL + FOLDER + "food_delivery_home.php";
 
