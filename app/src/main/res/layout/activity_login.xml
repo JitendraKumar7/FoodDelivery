@@ -52,7 +52,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:background="@color/transparent"
-                    android:hint="@string/email_address"
+                    android:hint="@string/phone_number"
                     android:textColor="?attr/colorButton"
                     android:textColorHint="?attr/colorButton"
                     android:textSize="14sp"

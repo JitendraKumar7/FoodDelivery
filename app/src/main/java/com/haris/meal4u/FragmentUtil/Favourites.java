@@ -2,6 +2,7 @@ package com.haris.meal4u.FragmentUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -111,14 +112,11 @@ public class Favourites extends Fragment implements View.OnClickListener, Connec
             public int getSpanSize(int position) {
                 if (objectArrayList.get(position) instanceof EmptyObject) {
                     return 1;
-                }
-                else if (objectArrayList.get(position) instanceof InternetObject) {
+                } else if (objectArrayList.get(position) instanceof InternetObject) {
                     return 1;
-                }
-                else if (objectArrayList.get(position) instanceof ProgressObject) {
+                } else if (objectArrayList.get(position) instanceof ProgressObject) {
                     return 1;
-                }
-                else {
+                } else {
                     return 1;
                 }
             }
@@ -139,7 +137,6 @@ public class Favourites extends Fragment implements View.OnClickListener, Connec
         recyclerViewNearby.setAdapter(nearbyListAdapter);
 
 
-
         //Send request to Server for retrieving TrendingPhotos Wallpapers
 
         management.sendRequestToServer(new RequestObject()
@@ -152,7 +149,6 @@ public class Favourites extends Fragment implements View.OnClickListener, Connec
 
 
     }
-
 
 
     /**
@@ -192,7 +188,7 @@ public class Favourites extends Fragment implements View.OnClickListener, Connec
      * @param
      * @return
      */
-    private String getFavouriteJson(String functionality,String user_id,String restaurant_id) {
+    private String getFavouriteJson(String functionality, String user_id, String restaurant_id) {
         String json = null;
 
         // 1. build jsonObject
@@ -227,7 +223,6 @@ public class Favourites extends Fragment implements View.OnClickListener, Connec
         super.onResume();
 
 
-
         favouriteArraylist.clear();
         favouriteArraylist.addAll(management.getDataFromDatabase(new DatabaseObject()
                 .setTypeOperation(Constant.TYPE.FAVOURITES)
@@ -251,8 +246,7 @@ public class Favourites extends Fragment implements View.OnClickListener, Connec
 
             if (requestObject.isFirstRequest()) {
                 objectArrayList.clear();
-            }
-            else {
+            } else {
                 stringBuilder.append(",");
                 int listLastItem = objectArrayList.size() - 1;
                 objectArrayList.remove(listLastItem);
@@ -272,7 +266,7 @@ public class Favourites extends Fragment implements View.OnClickListener, Connec
                 DataObject dtObject = dataObject.getObjectArrayList().get(i);
                 if (favouriteMap.containsKey(dtObject.getObject_id())) {
                     dtObject.setFavourite(true);
-                    Utility.Logger(TAG,"Data Object = Working");
+                    Utility.Logger(TAG, "Data Object = Working");
                 }
 
                 objectArrayList.add(dtObject);
@@ -291,6 +285,18 @@ public class Favourites extends Fragment implements View.OnClickListener, Connec
             cloneList.addAll(objectArrayList);
 
             nearbyListAdapter.notifyDataSetChanged();
+
+            new Handler().post(new Runnable() {
+                @Override
+                public void run() {
+                    if (objectArrayList.size() > 0) {
+
+                        Bundle bundle = new Bundle();
+                        DataObject dataObject = (DataObject) objectArrayList.get(0);
+                        bundle.putParcelable(Constant.IntentKey.RESTAURANT_DETAIL, dataObject);
+                    }
+                }
+            });
 
         }
     }
@@ -318,7 +324,7 @@ public class Favourites extends Fragment implements View.OnClickListener, Connec
     public void onSelect(int position) {
         DataObject dataObject = (DataObject) objectArrayList.get(position);
         Intent intent = new Intent(getActivity(), RestaurantDetail.class);
-        intent.putExtra(Constant.IntentKey.RESTAURANT_DETAIL,dataObject);
+        intent.putExtra(Constant.IntentKey.RESTAURANT_DETAIL, dataObject);
         startActivity(intent);
     }
 
@@ -340,9 +346,7 @@ public class Favourites extends Fragment implements View.OnClickListener, Connec
                             .setObject_id(dtObject.getObject_id())));
 
 
-
-        }
-        else {
+        } else {
 
             management.getDataFromDatabase(new DatabaseObject()
                     .setTypeOperation(Constant.TYPE.FAVOURITES)
@@ -353,14 +357,14 @@ public class Favourites extends Fragment implements View.OnClickListener, Connec
 
             management.sendRequestToServer(new RequestObject()
                     .setContext(getActivity())
-                    .setJson(getFavouriteJson("delete_favourites",prefObject.getUserId(),dtObject.getObject_id()))
+                    .setJson(getFavouriteJson("delete_favourites", prefObject.getUserId(), dtObject.getObject_id()))
                     .setConnection(Constant.CONNECTION.DELETE_FAVOURITES)
                     .setConnectionType(Constant.CONNECTION_TYPE.BACKGROUND));
 
         }
 
         objectArrayList.remove(position);
-        if (objectArrayList.size()<=1){
+        if (objectArrayList.size() <= 1) {
 
             objectArrayList.clear();
             objectArrayList.add(new EmptyObject()
@@ -374,6 +378,5 @@ public class Favourites extends Fragment implements View.OnClickListener, Connec
 
 
     }
-
 
 }

@@ -37,7 +37,7 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
     private ImageView imageBack;
     private TextView txtMenu;
     private Management management;
-    private DataObject dataObject;
+    private DataObject dataObjectProductDetails;
     private RecyclerView recyclerViewDetail;
     private ProductDetailAdapter productDetailAdapter;
     private GridLayoutManager gridLayoutManager;
@@ -67,20 +67,17 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
 
     private void getIntentData() {
 
-        dataObject = getIntent().getParcelableExtra(Constant.IntentKey.POST_DETAIL);
+        dataObjectProductDetails = getIntent().getParcelableExtra(Constant.IntentKey.POST_DETAIL);
 
     }
 
-    /**
-     * <p>It is used to initialize UI</p>
-     */
     private void initUI() {
 
         management = new Management(this);
 
-        objectArrayList.add(dataObject);
-        for (int i = 0; i < dataObject.getProductAttribute().size(); i++) {
-            ProductAttribute productAttribute = dataObject.getProductAttribute().get(i);
+        objectArrayList.add(dataObjectProductDetails);
+        for (int i = 0; i < dataObjectProductDetails.getProductAttribute().size(); i++) {
+            ProductAttribute productAttribute = dataObjectProductDetails.getProductAttribute().get(i);
             objectArrayList.add(productAttribute);
 
             boolean isSingle = false;
@@ -94,14 +91,14 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
                 Attribute attribute = productAttribute.getAttribute().get(j);
                 attribute.setRadio(isSingle);
                 attribute.setIdentificationNo(i);
-                attribute.setCurrencySymbol(dataObject.getObject_currency_symbol());
+                attribute.setCurrencySymbol(dataObjectProductDetails.getObject_currency_symbol());
                 objectArrayList.add(attribute);
             }
 
         }
 
         objectArrayList.add(new SpaceObject());
-        baseUnitPrice = dataObject.getPost_price();
+        baseUnitPrice = dataObjectProductDetails.getPost_price();
 
         imageBack = findViewById(R.id.image_back);
         imageBack.setVisibility(View.VISIBLE);
@@ -132,42 +129,6 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
         btnIncrease.setOnClickListener(this);
         txtAddToCart.setOnClickListener(this);
 
-    }
-
-
-    /**
-     * <p>It is used to convert Object into Json</p>
-     *
-     * @param
-     * @return
-     */
-    private String getJson(String user_id, String restaurant_id, String product_id, String quantity, String price, String attribute, String orderType, String couponId) {
-        String json = null;
-
-        // 1. build jsonObject
-        JSONObject jsonObject = new JSONObject();
-        try {
-
-            jsonObject.accumulate("functionality", "manage_order");
-            jsonObject.accumulate("user_id", user_id);
-            jsonObject.accumulate("restaurant_id", restaurant_id);
-            jsonObject.accumulate("product_id", product_id);
-            jsonObject.accumulate("quantity", quantity);
-            jsonObject.accumulate("price", price);
-            jsonObject.accumulate("attribute_id", attribute);
-            jsonObject.accumulate("order_type", orderType);
-            jsonObject.accumulate("coupon_id", couponId);
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        // 2. convert JSONObject to JSON to String
-        json = jsonObject.toString();
-        Utility.Logger(TAG, "JSON " + json);
-
-        return json;
     }
 
 
@@ -213,18 +174,18 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
         }
         if (v == txtAddToCart) {
 
-            if (dataObject.getObject_status().equalsIgnoreCase(Utility.getStringFromRes(this, R.string.closed))){
-                Utility.Toaster(getApplicationContext(),"Restaurant is closed right now",Toast.LENGTH_SHORT);
+            if (dataObjectProductDetails.getObject_status().equalsIgnoreCase(Utility.getStringFromRes(this, R.string.closed))) {
+                Utility.Toaster(getApplicationContext(), "Restaurant is closed right now", Toast.LENGTH_SHORT);
                 return;
             }
 
             /* Add the 'Product' into Cart table by getting
              * all of the required data of product */
 
-            for (int i = 0; i < dataObject.getProductAttribute().size(); i++) {
+            for (int i = 0; i < dataObjectProductDetails.getProductAttribute().size(); i++) {
 
                 ArrayList<String> selectedAttribute = new ArrayList<>();
-                ProductAttribute productAttribute = dataObject.getProductAttribute().get(i);
+                ProductAttribute productAttribute = dataObjectProductDetails.getProductAttribute().get(i);
 
                 if (productAttribute.getAttributeSelector().equalsIgnoreCase("0")) {
 
@@ -267,7 +228,7 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
 
                     int minNoOfSelection = 0;
                     if (productAttribute.getAttributeDescription().matches(".*\\d.*"))
-                      minNoOfSelection = Integer.parseInt(Utility.extractNumericDataFromString(productAttribute.getAttributeDescription()));
+                        minNoOfSelection = Integer.parseInt(Utility.extractNumericDataFromString(productAttribute.getAttributeDescription()));
 
                     if (selectedAttribute.size() < minNoOfSelection &&
                             productAttribute.getAttributeType().equalsIgnoreCase("1")) {
@@ -305,9 +266,9 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
             }
 
             StringBuilder paymentBuilder = new StringBuilder();
-            for (int i = 0; i < dataObject.getPaymentTypeList().size(); i++) {
-                paymentBuilder.append(dataObject.getPaymentTypeList().get(i));
-                if (i != (dataObject.getPaymentTypeList().size() - 1))
+            for (int i = 0; i < dataObjectProductDetails.getPaymentTypeList().size(); i++) {
+                paymentBuilder.append(dataObjectProductDetails.getPaymentTypeList().get(i));
+                if (i != (dataObjectProductDetails.getPaymentTypeList().size() - 1))
                     paymentBuilder.append(",");
             }
 
@@ -319,7 +280,7 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
             cartList.addAll(management.getDataFromDatabase(new DatabaseObject()
                     .setTypeOperation(Constant.TYPE.CART)
                     .setDbOperation(Constant.DB.SPECIFIC_ID)
-                    .setDataObject(dataObject)));
+                    .setDataObject(dataObjectProductDetails)));
 
             /* If cart is not empty then it would show
              * Alert Bottom Sheet Dialog  */
@@ -337,7 +298,7 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
             management.getDataFromDatabase(new DatabaseObject()
                     .setTypeOperation(Constant.TYPE.CART)
                     .setDbOperation(Constant.DB.INSERT)
-                    .setDataObject(dataObject
+                    .setDataObject(dataObjectProductDetails
                             .setUser_id("0")
                             .setPost_quantity(txtCount.getText().toString())
                             .setBasePrice(String.valueOf(basePrice))
@@ -358,7 +319,7 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
                     .setConnectionType(Constant.CONNECTION_TYPE.BACKGROUND)
                     .setConnectionCallback(null));*/
             Intent intent = new Intent();
-            intent.putExtra(Constant.IntentKey.POST_ID, dataObject.getPost_id());
+            intent.putExtra(Constant.IntentKey.POST_ID, dataObjectProductDetails.getPost_id());
             setResult(RESULT_OK, intent);
             finish();
 
@@ -392,7 +353,7 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
                         } else if (((Attribute) objectArrayList.get(i)).getIdentificationNo() ==
                                 attribute.getIdentificationNo()) {
 
-                            if (dataObject.getProductAttribute().get(attributeConfigDetail).getAttributeNature()
+                            if (dataObjectProductDetails.getProductAttribute().get(attributeConfigDetail).getAttributeNature()
                                     .equalsIgnoreCase("0")) {
 
                                 ((Attribute) objectArrayList.get(i)).setSelected(false);
@@ -431,7 +392,7 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
             }
 
 
-            if (dataObject.getProductAttribute().get(attributeConfigDetail).getAttributeNature()
+            if (dataObjectProductDetails.getProductAttribute().get(attributeConfigDetail).getAttributeNature()
                     .equalsIgnoreCase("0")) {
 
                 ((DataObject) objectArrayList.get(0)).setPost_price(attribute.getPrice());
@@ -450,7 +411,7 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
                     }
                 }
 
-            } else if (dataObject.getProductAttribute().get(attributeConfigDetail).getAttributeNature()
+            } else if (dataObjectProductDetails.getProductAttribute().get(attributeConfigDetail).getAttributeNature()
                     .equalsIgnoreCase("1")) {
 
                 basePrice = Integer.parseInt(Utility.extractNumericDataFromString(((DataObject) objectArrayList.get(0)).getPost_price()));
@@ -485,9 +446,6 @@ public class ProductDetail extends AppCompatActivity implements View.OnClickList
 
     }
 
-    /**
-     * <p>Used to show bottom sheet dialog for Cart Alert</p>
-     */
     private void showAlertSheet(final Context context) {
 
         View view = getLayoutInflater().inflate(R.layout.cart_alert_sheet_layout, null);

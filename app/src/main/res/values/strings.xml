@@ -5,14 +5,14 @@
 
     <!--String for Error Messages-->
 
-    <string name="app_name">Meal4u</string>
+    <string name="app_name">RCH Etawah</string>
     <string name="internet_not_available">Internet not available</string>
 
     <!--String for General Messages-->
 
     <string name="download_error">Error while downloading</string>
     <string name="downloading">Downloading</string>
-    <string name="forgot">We just need your registered Email id to sent you \n password reset instructions</string>
+    <string name="forgot">We just need your registered Phone Number to sent OTP \n password reset instructions</string>
 
     <!--String for Toast Messages-->
 
@@ -80,7 +80,7 @@
     <string name="read_phone_state_permission">It need network state permission for app to work</string>
     <string name="email_address">Email Address</string>
     <string name="password">Password</string>
-    <string name="first_name">First Name</string>
+    <string name="first_name">Name</string>
     <string name="last_name">Last Name</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="profile">Profile</string>

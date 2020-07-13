@@ -113,6 +113,7 @@ dependencies {
     implementation "com.daimajia.swipelayout:library:1.2.0@aar"
     implementation 'net.alexandroid.utils:exoplayerhelper:2.18'
     implementation 'com.github.igalata:Bubble-Picker:v0.2.4'
+    implementation 'com.ss.bannerslider:bannerslider:2.0.0'
     implementation "com.github.StephenVinouze:MaterialNumberPicker:1.1.0"
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
     implementation 'org.apache.commons:commons-collections4:4.1'

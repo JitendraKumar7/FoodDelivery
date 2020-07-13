@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.haris.meal4u.AdapterUtil.CartAdapter;
 import com.haris.meal4u.ConstantUtil.Constant;
-import com.haris.meal4u.DatabaseUtil.DatabaseObject;
 import com.haris.meal4u.InterfaceUtil.CartCallback;
 import com.haris.meal4u.InterfaceUtil.ConnectionCallback;
 import com.haris.meal4u.ManagementUtil.Management;
@@ -23,6 +22,7 @@ import com.haris.meal4u.ObjectUtil.DataObject;
 import com.haris.meal4u.ObjectUtil.PrefObject;
 import com.haris.meal4u.ObjectUtil.RequestObject;
 import com.haris.meal4u.R;
+import com.haris.meal4u.Utility.CartObjectModal;
 import com.haris.meal4u.Utility.Utility;
 
 import net.bohush.geometricprogressview.GeometricProgressView;
@@ -31,16 +31,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductCart extends AppCompatActivity implements View.OnClickListener, CartCallback, ConnectionCallback {
-    private String TAG = ProductCart.class.getName();
     private ImageView imageBack;
     private TextView txtMenu;
     private Management management;
     private RecyclerView recyclerViewCart;
     private GridLayoutManager gridLayoutManager;
     private CartAdapter cartAdapter;
-    private ArrayList<Object> objectArrayList = new ArrayList<>();
+    private List<CartObjectModal> objectArrayList = new ArrayList<>();
     private DataObject dataObject;
     private LinearLayout layoutCoupon;
     private TextView txtAddToCart;
@@ -67,49 +67,15 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_cart);
 
-        initUI(); //Initialize UI
-
-
-    }
-
-
-    /**
-     * <p>It is used to initialize UI</p>
-     */
-    private void initUI() {
+        dataObject = getIntent().getParcelableExtra(Constant.IntentKey.RESTAURANT_DETAIL);
 
         management = new Management(this);
-        objectArrayList.addAll(management.getDataFromDatabase(new DatabaseObject()
-                .setTypeOperation(Constant.TYPE.CART)
-                .setDbOperation(Constant.DB.RETRIEVE)
-                .setDataObject(new DataObject())));
+
+        objectArrayList = CartObjectModal.getList();
 
         prefObject = management.getPreferences(new PrefObject()
                 .setRetrieveUserCredential(true)
                 .setRetrieveLogin(true));
-
-        if (dataObject == null)
-            dataObject = new DataObject();
-
-        if (objectArrayList.size() > 0) {
-
-            dataObject.setObject_delivery_charges(((DataObject) objectArrayList.get(0)).getObject_delivery_charges());
-            dataObject.setObject_min_order_price(((DataObject) objectArrayList.get(0)).getObject_min_order_price());
-            dataObject.setObject_min_delivery_time(((DataObject) objectArrayList.get(0)).getObject_min_delivery_time());
-            dataObject.setObject_currency_symbol(((DataObject) objectArrayList.get(0)).getObject_currency_symbol());
-            dataObject.setObject_id(((DataObject) objectArrayList.get(0)).getObject_id());
-            dataObject.setObject_latitude(((DataObject) objectArrayList.get(0)).getObject_latitude());
-            dataObject.setObject_longitude(((DataObject) objectArrayList.get(0)).getObject_longitude());
-
-            String[] paymentType = ((DataObject) objectArrayList.get(0)).getPaymentType().split(",");
-            ArrayList<String> paymentList = new ArrayList<>();
-            for (int i = 0; i < paymentType.length; i++) {
-                paymentList.add(paymentType[i]);
-            }
-
-            dataObject.setPaymentTypeList(paymentList);
-
-        }
 
         imageBack = findViewById(R.id.image_back);
         imageBack.setVisibility(View.VISIBLE);
@@ -122,10 +88,10 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
         txtMenu.setText(Utility.getStringFromRes(this, R.string.cart));
 
         layoutCoupon = findViewById(R.id.layout_coupon);
-        txtGrandTotal = (TextView) findViewById(R.id.txt_grand_total);
-        txtDeliveryCharge = (TextView) findViewById(R.id.txt_delivery_charge);
-        txtTotal = (TextView) findViewById(R.id.txt_total);
-        txtAddToCart = (TextView) findViewById(R.id.txt_add_to_cart);
+        txtGrandTotal = findViewById(R.id.txt_grand_total);
+        txtDeliveryCharge = findViewById(R.id.txt_delivery_charge);
+        txtTotal = findViewById(R.id.txt_total);
+        txtAddToCart = findViewById(R.id.txt_add_to_cart);
 
         txtApplyCoupon = findViewById(R.id.txt_apply_coupon);
         txtCouponTagline = findViewById(R.id.txt_coupon_tagline);
@@ -179,30 +145,25 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
         totalCharges = 0;
 
         for (int i = 0; i < objectArrayList.size(); i++) {
-            DataObject cartObject = (DataObject) objectArrayList.get(i);
-            totalCharges += Integer.parseInt(cartObject.getPost_price());
+            CartObjectModal cartObject = objectArrayList.get(i);
+            totalCharges += Integer.parseInt(cartObject.getPostQtyPrice());
         }
 
-        txtGrandTotal.setText(dataObject.getObject_currency_symbol() + " " + totalCharges);
-        txtTotal.setText(dataObject.getObject_currency_symbol() + " " + (totalCharges + deliveryCharges));
+        txtGrandTotal.setText(String.format("%s %s", dataObject.getObject_currency_symbol(), totalCharges));
+        txtTotal.setText(String.format("%s %s", dataObject.getObject_currency_symbol(), totalCharges + deliveryCharges));
 
         if (isCouponRedeem) {
 
             totalBill = Integer.parseInt(Utility.extractNumericDataFromString(txtTotal.getText().toString()));
             discount = Double.parseDouble(discountOffer) / 100.0;
             discountBill = (int) (totalBill * discount);
-            txtTotal.setText(dataObject.getObject_currency_symbol() + " " + (totalBill - discountBill));
+            txtTotal.setText(String.format("%s %s", dataObject.getObject_currency_symbol(), totalBill - discountBill));
 
         }
 
     }
 
 
-    /**
-     * <p>It is used to convert data into json format for POST type Request</p>
-     *
-     * @return
-     */
     public String getJson() {
         String json = "";
 
@@ -249,7 +210,7 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
             if (Integer.parseInt(dataObject.getObject_min_order_price()) >
                     Integer.parseInt(Utility.extractNumericDataFromString(txtTotal.getText().toString()))) {
 
-                Utility.Toaster(this,Utility.getStringFromRes(this,R.string.order_value_low), Toast.LENGTH_SHORT);
+                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.order_value_low), Toast.LENGTH_SHORT);
                 return;
             }
 
@@ -273,16 +234,10 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onItemDeleteListener(int position) {
-        String cartID = ((DataObject) objectArrayList.get(position)).getCart_id();
-        management.getDataFromDatabase(new DatabaseObject()
-                .setTypeOperation(Constant.TYPE.CART)
-                .setDbOperation(Constant.DB.DELETE)
-                .setDataObject(new DataObject()
-                        .setCart_id(cartID)
-                ));
+
         objectArrayList.remove(position);
         cartAdapter.notifyDataSetChanged();
-
+        CartObjectModal.setList(objectArrayList);
         updatePrice();
 
     }
@@ -291,7 +246,7 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
     public void onItemQuantityListener(int position, boolean isIncrease) {
         int updatedPrice;
         int oldPrice;
-        int quantity = Integer.parseInt(((DataObject) objectArrayList.get(position)).getPost_quantity());
+        int quantity = Integer.parseInt(objectArrayList.get(position).getPostQuantity());
 
         if (isIncrease) {
             quantity++;
@@ -300,21 +255,13 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
                 quantity--;
             }
         }
-        oldPrice = Integer.parseInt(((DataObject) objectArrayList.get(position)).getBasePrice());
+        oldPrice = Integer.parseInt(objectArrayList.get(position).getPostPrice());
         updatedPrice = oldPrice * quantity;
-        ((DataObject) objectArrayList.get(position)).setPost_price(String.valueOf(updatedPrice));
-        ((DataObject) objectArrayList.get(position)).setPost_quantity(String.valueOf(quantity));
+        objectArrayList.get(position).setPostQtyPrice(String.valueOf(updatedPrice));
+        objectArrayList.get(position).setPostQuantity(String.valueOf(quantity));
         cartAdapter.notifyItemChanged(position);
 
-        management.getDataFromDatabase(new DatabaseObject()
-                .setTypeOperation(Constant.TYPE.CART)
-                .setDbOperation(Constant.DB.UPDATE)
-                .setDataObject(new DataObject()
-                        .setPost_quantity(String.valueOf(quantity))
-                        .setPost_price(String.valueOf(updatedPrice))
-                        .setCart_id(((DataObject) objectArrayList.get(position)).getCart_id())
-                ));
-
+        CartObjectModal.setList(objectArrayList);
         updatePrice();
 
 
@@ -383,7 +330,7 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
                 txtDeliveryCharge.setText(this.dataObject.getObject_currency_symbol() + " " + dataObject.getDelivery_charges());
                 txtDeliveryCharge.setVisibility(View.VISIBLE);
 
-            }else {
+            } else {
                 txtDeliveryCharge.setVisibility(View.VISIBLE);
             }
 

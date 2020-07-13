@@ -10,15 +10,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.haris.meal4u.ConstantUtil.Constant;
-import com.haris.meal4u.CustomUtil.GlideApp;
 import com.haris.meal4u.InterfaceUtil.ProductCallback;
 import com.haris.meal4u.ObjectUtil.DataObject;
 import com.haris.meal4u.ObjectUtil.EmptyObject;
 import com.haris.meal4u.ObjectUtil.ProgressObject;
 import com.haris.meal4u.R;
-import com.haris.meal4u.TextviewUtil.NormalTextview;
-import com.haris.meal4u.TextviewUtil.TaglineTextview;
 import com.haris.meal4u.Utility.Utility;
 import com.makeramen.roundedimageview.RoundedImageView;
 
@@ -41,27 +39,12 @@ public abstract class RestaurantMenuAdapter extends RecyclerView.Adapter {
     private ArrayList<Object> dataArray = new ArrayList<>();
     private String TAG = RestaurantMenuAdapter.class.getName();
     private ProductCallback productCallback;
-    private boolean isMapView = false;
-
-    public RestaurantMenuAdapter(Context context, ArrayList<Object> dataArray) {
-        this.context = context;
-        this.dataArray = dataArray;
-
-    }
 
 
     public RestaurantMenuAdapter(Context context, ArrayList<Object> dataArray, ProductCallback productCallback) {
         this.context = context;
         this.dataArray = dataArray;
         this.productCallback = productCallback;
-
-    }
-
-    public RestaurantMenuAdapter(Context context, ArrayList<Object> dataArray, ProductCallback productCallback, boolean isMapView) {
-        this.context = context;
-        this.dataArray = dataArray;
-        this.productCallback = productCallback;
-        this.isMapView = isMapView;
 
     }
 
@@ -157,21 +140,15 @@ public abstract class RestaurantMenuAdapter extends RecyclerView.Adapter {
             menuProductHolder.txtDescription.setText(dataObject.getPost_description());
             menuProductHolder.txtPrice.setText(dataObject.getObject_currency_symbol() + " " + dataObject.getPost_price());
 
-            if (!Utility.isEmptyString( dataObject.getPost_image())) {
-                GlideApp.with(context).load(Constant.ServerInformation.PICTURE_URL + dataObject.getPost_image())
-                        .centerInside().into(menuProductHolder.imageProduct);
+            if (!Utility.isEmptyString(dataObject.getPost_image())) {
+                Glide.with(context).load(Constant.ServerInformation.PICTURE_URL + dataObject.getPost_image())
+                        .into(menuProductHolder.imageProduct);
                 menuProductHolder.layoutImage.setVisibility(View.VISIBLE);
-            }else {
+            } else {
                 menuProductHolder.layoutImage.setVisibility(View.GONE);
             }
 
-            if (dataObject.isAlreadyAddedIntoCart()){
-                menuProductHolder.layoutTag.setVisibility(View.VISIBLE);
-                menuProductHolder.txtCount.setText(dataObject.getNoOfItemInCart());
-            }else {
-                menuProductHolder.layoutTag.setVisibility(View.GONE);
-            }
-
+            menuProductHolder.txtCount.setText(dataObject.getNoOfItemInCart());
 
         }
 
@@ -185,6 +162,8 @@ public abstract class RestaurantMenuAdapter extends RecyclerView.Adapter {
     }
 
     public abstract void selectProduct(int position);
+
+    public abstract void addToCartProduct(View v, DataObject dataObject);
 
     protected class EmptyHolder extends RecyclerView.ViewHolder {
         private ImageView imageIcon;
@@ -213,8 +192,9 @@ public abstract class RestaurantMenuAdapter extends RecyclerView.Adapter {
     protected class MenuProductHolder extends RecyclerView.ViewHolder {
         private LinearLayout layoutProduct;
         private LinearLayout layoutImage;
-        private LinearLayout layoutTag;
         private RoundedImageView imageProduct;
+        private ImageView btn_decrease;
+        private ImageView btn_increase;
         private TextView txtProduct;
         private TextView txtDescription;
         private TextView txtPrice;
@@ -223,14 +203,32 @@ public abstract class RestaurantMenuAdapter extends RecyclerView.Adapter {
         public MenuProductHolder(View view) {
             super(view);
 
-            layoutProduct = (LinearLayout) view.findViewById(R.id.layout_product);
-            layoutImage = (LinearLayout) view.findViewById(R.id.layout_image);
-            layoutTag = view.findViewById(R.id.layout_tag);
-            imageProduct = (RoundedImageView) view.findViewById(R.id.image_product);
-            txtProduct = (TextView) view.findViewById(R.id.txt_product);
-            txtDescription = (TextView) view.findViewById(R.id.txt_description);
-            txtPrice = (TextView) view.findViewById(R.id.txt_price);
+            layoutProduct = view.findViewById(R.id.layout_product);
+            layoutImage = view.findViewById(R.id.layout_image);
+            imageProduct = view.findViewById(R.id.image_product);
+            txtProduct = view.findViewById(R.id.txt_product);
+            txtDescription = view.findViewById(R.id.txt_description);
+            txtPrice = view.findViewById(R.id.txt_price);
             txtCount = view.findViewById(R.id.txt_count);
+            btn_decrease = view.findViewById(R.id.btn_decrease);
+            btn_increase = view.findViewById(R.id.btn_increase);
+
+            btn_decrease.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final DataObject dataObject = (DataObject) dataArray.get(getAdapterPosition());
+                    addToCartProduct(v, dataObject);
+                }
+            });
+
+            btn_increase.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final DataObject dataObject = (DataObject) dataArray.get(getAdapterPosition());
+                    addToCartProduct(v, dataObject);
+
+                }
+            });
         }
     }
 

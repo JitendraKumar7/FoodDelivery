@@ -39,6 +39,7 @@ import com.haris.meal4u.ObjectUtil.TypingObject;
 import com.haris.meal4u.ObjectUtil.UserChattingObject;
 import com.haris.meal4u.ObjectUtil.UserObject;
 import com.haris.meal4u.R;
+import com.haris.meal4u.Utility.CartObjectModal;
 import com.haris.meal4u.Utility.Utility;
 import com.shuhart.stepview.StepView;
 
@@ -47,6 +48,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Checkout extends AppCompatActivity implements View.OnClickListener, StepView.OnStepClickListener, ConnectionCallback, CheckoutCallback {
     private String TAG = Checkout.class.getName();
@@ -57,7 +59,7 @@ public class Checkout extends AppCompatActivity implements View.OnClickListener,
     public DataObject restaurantDetail;
     private StepView stepView;
     private ArrayList<String> stepList = new ArrayList<>();
-    private ArrayList<Object> objectArrayList = new ArrayList<>();
+    private List<CartObjectModal> objectArrayList = new ArrayList<>();
     private AddressObject addressObject;
     private BillingObject billingObject;
     private ScheduleObject scheduleObject;
@@ -93,10 +95,7 @@ public class Checkout extends AppCompatActivity implements View.OnClickListener,
                 .setRetrieveUserCredential(true)
                 .setRetrieveLogin(true));
 
-        objectArrayList.addAll(management.getDataFromDatabase(new DatabaseObject()
-                .setTypeOperation(Constant.TYPE.CART)
-                .setDbOperation(Constant.DB.RETRIEVE)
-                .setDataObject(new DataObject())));
+        objectArrayList = CartObjectModal.getList();
 
         txtMenu = findViewById(R.id.txt_menu);
         txtMenu.setText(Utility.getStringFromRes(this, R.string.checkout));
@@ -128,7 +127,6 @@ public class Checkout extends AppCompatActivity implements View.OnClickListener,
             finish();
 
         }
-
 
     }
 
@@ -189,15 +187,15 @@ public class Checkout extends AppCompatActivity implements View.OnClickListener,
 
         for (int i = 0; i < objectArrayList.size(); i++) {
 
-            DataObject dataObject = (DataObject) objectArrayList.get(i);
+            CartObjectModal dataObject = objectArrayList.get(i);
             JSONObject jsonObject = new JSONObject();
             try {
 
-                jsonObject.accumulate("product_id", dataObject.getPost_id());
-                jsonObject.accumulate("quantity", dataObject.getPost_quantity());
-                jsonObject.accumulate("price", dataObject.getPost_price());
-                jsonObject.accumulate("attribute_id", dataObject.getPost_attribute_id());
-                jsonObject.accumulate("special_instruction", dataObject.getSpecial_instructions());
+                jsonObject.accumulate("product_id", dataObject.getPostId());
+                jsonObject.accumulate("quantity", dataObject.getPostQuantity());
+                jsonObject.accumulate("price", dataObject.getPostQtyPrice());
+                jsonObject.accumulate("attribute_id", "");
+                jsonObject.accumulate("special_instruction", "No Instruction");
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -357,6 +355,7 @@ public class Checkout extends AppCompatActivity implements View.OnClickListener,
                                 .setDbOperation(Constant.DB.DELETE_SPECIFIC_TYPE)
                                 .setDataObject(new DataObject().setUser_id("0")));
 
+                        CartObjectModal.setList(new ArrayList<CartObjectModal>());
                         startActivity(new Intent(getApplicationContext(), Base.class));
                         finish();
                     }
@@ -370,6 +369,5 @@ public class Checkout extends AppCompatActivity implements View.OnClickListener,
 
 
     }
-
 
 }

@@ -1,20 +1,16 @@
 package com.haris.meal4u.Utility;
 
-import android.app.Activity;
 import android.app.ActivityManager;
-import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
-import android.content.pm.ConfigurationInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.LocationManager;
@@ -22,8 +18,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.ColorInt;
 import android.support.v7.app.AppCompatDelegate;
 import android.text.SpannableString;
@@ -32,26 +26,18 @@ import android.text.style.ForegroundColorSpan;
 import android.util.Base64;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.ads.mediation.admob.AdMobAdapter;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 import com.haris.meal4u.ConstantUtil.Constant;
-import com.haris.meal4u.FontUtil.Font;
 import com.haris.meal4u.ManagementUtil.Management;
-import com.haris.meal4u.MyApplication;
+import com.haris.meal4u.AppController;
 import com.haris.meal4u.ObjectUtil.Base64Object;
-import com.haris.meal4u.ObjectUtil.ColorObject;
 import com.haris.meal4u.ObjectUtil.DateTimeObject;
 import com.haris.meal4u.ObjectUtil.GeocodeObject;
 import com.haris.meal4u.ObjectUtil.PrefObject;
 import com.haris.meal4u.R;
-import com.ixidev.gdpr.GDPRChecker;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -69,12 +55,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import cc.cloudist.acplibrary.ACProgressConstant;
-import cc.cloudist.acplibrary.ACProgressFlower;
 
 public class Utility {
 
@@ -662,7 +644,7 @@ public class Utility {
      * @return
      */
     public static boolean isServiceRunning(String serviceClassName) {
-        final ActivityManager activityManager = (ActivityManager) MyApplication.getInstance().getSystemService(Context.ACTIVITY_SERVICE);
+        final ActivityManager activityManager = (ActivityManager) AppController.getInstance().getSystemService(Context.ACTIVITY_SERVICE);
         final List<ActivityManager.RunningServiceInfo> services = activityManager.getRunningServices(Integer.MAX_VALUE);
 
         for (ActivityManager.RunningServiceInfo runningServiceInfo : services) {

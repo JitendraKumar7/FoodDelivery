@@ -108,10 +108,6 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
 
         getIntentData(); //Retrieve Intent Data
         initUI(); //Initialize UI
-
-
-
-
     }
 
 
@@ -179,16 +175,14 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
                 if (result.equalsIgnoreCase(DateConstraint.DateTimeResult.MATCH)) {
                     Utility.Logger(TAG, "Open");
                     txtStatus.setText(Utility.getStringFromRes(this, R.string.open));
-                }
-                else {
+                } else {
                     Utility.Logger(TAG, "Closed");
                     txtStatus.setText(Utility.getStringFromRes(this, R.string.closed));
                 }
 
                 break;
 
-            }
-            else{
+            } else {
                 txtStatus.setText(Utility.getStringFromRes(this, R.string.closed));
             }
 
@@ -459,8 +453,8 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
 
         if (v == imageDetail) {
 
-            Intent intent = new Intent(this,RestaurantInformation.class);
-            intent.putExtra(Constant.IntentKey.RESTAURANT_DETAIL,dataObject);
+            Intent intent = new Intent(this, RestaurantInformation.class);
+            intent.putExtra(Constant.IntentKey.RESTAURANT_DETAIL, dataObject);
             startActivity(intent);
 
         }

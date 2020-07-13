@@ -77,7 +77,7 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
     private int RESTAURANTS_VIEW = 8;
     private int HEADING_VIEW = 9;
     private int DETAIL_RESTAURANT_VIEW = 10;
-    private int SPACE_VIEW=11;
+    private int SPACE_VIEW = 11;
     private Context context;
     private HomeCallback homeCallback;
     private ArrayList<Object> dataArray = new ArrayList<>();
@@ -119,8 +119,7 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
 
         if (dataArray.get(position) instanceof EmptyObject) {
             return NO_DATA_VIEW;
-        }
-        else if (dataArray.get(position) instanceof HomeObject) {
+        } else if (dataArray.get(position) instanceof HomeObject) {
 
             HomeObject homeObject = (HomeObject) dataArray.get(position);
 
@@ -131,8 +130,7 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
             else if (homeObject.getData_type() == Constant.DATA_TYPE.HEADING_BAR)
                 return HEADING_VIEW;
 
-        }
-        else if (dataArray.get(position) instanceof DataObject) {
+        } else if (dataArray.get(position) instanceof DataObject) {
 
             DataObject dataObject = (DataObject) dataArray.get(position);
 
@@ -146,17 +144,13 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
                 }
             }
 
-        }
-        else if (dataArray.get(position) instanceof ProgressObject) {
+        } else if (dataArray.get(position) instanceof ProgressObject) {
             return PROGRESS_VIEW;
-        }
-        else if (dataArray.get(position) instanceof NativeAdObject) {
+        } else if (dataArray.get(position) instanceof NativeAdObject) {
             return NATIVE_VIEW;
-        }
-        else if (dataArray.get(position) instanceof AdObject) {
+        } else if (dataArray.get(position) instanceof AdObject) {
             return ADMOB_VIEW;
-        }
-        else if (dataArray.get(position) instanceof SpaceObject) {
+        } else if (dataArray.get(position) instanceof SpaceObject) {
             return SPACE_VIEW;
         }
 
@@ -173,50 +167,42 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.empty_item_layout, parent, false);
             viewHolder = new EmptyHolder(view);
 
-        }
-        else if (viewType == HOME_VIEW) {
+        } else if (viewType == HOME_VIEW) {
 
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.music_item_layout, parent, false);
             viewHolder = new HomeHolder(view);
 
-        }
-        else if (viewType == POPULAR_VIEW) {
+        } else if (viewType == POPULAR_VIEW) {
 
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.popular_item_layout, parent, false);
             viewHolder = new PopularHolder(view);
 
-        }
-        else if (viewType == FEATURED_VIEW) {
+        } else if (viewType == FEATURED_VIEW) {
 
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.featured_item_layout, parent, false);
             viewHolder = new FeaturedHolder(view);
 
-        }
-        else if (viewType == RESTAURANTS_VIEW) {
+        } else if (viewType == RESTAURANTS_VIEW) {
 
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.restaurant_item_layout, parent, false);
             viewHolder = new NearbyHolder(view, false);
 
-        }
-        else if (viewType == DETAIL_RESTAURANT_VIEW) {
+        } else if (viewType == DETAIL_RESTAURANT_VIEW) {
 
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.restaurant_02_item_layout, parent, false);
             viewHolder = new NearbyHolder(view, true);
 
-        }
-        else if (viewType == HEADING_VIEW) {
+        } else if (viewType == HEADING_VIEW) {
 
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.for_you_item_layout, parent, false);
             viewHolder = new HeaderHolder(view);
 
-        }
-        else if (viewType == PROGRESS_VIEW) {
+        } else if (viewType == PROGRESS_VIEW) {
 
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.progress_item_layout, parent, false);
             viewHolder = new ProgressHolder(view);
 
-        }
-        else if (viewType == SPACE_VIEW) {
+        } else if (viewType == SPACE_VIEW) {
 
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.space_view_item_layout, parent, false);
             viewHolder = new SpaceHolder(view);
@@ -234,8 +220,7 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
             ProgressHolder lookUpHolder = (ProgressHolder) holder;
 
 
-        }
-        else if (holder instanceof EmptyHolder) {
+        } else if (holder instanceof EmptyHolder) {
 
             EmptyHolder emptyHolder = (EmptyHolder) holder;
             EmptyObject emptyObject = (EmptyObject) dataArray.get(position);
@@ -245,8 +230,7 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
             emptyHolder.txtDescription.setText(emptyObject.getDescription());
 
 
-        }
-        else if (holder instanceof HomeHolder) {
+        } else if (holder instanceof HomeHolder) {
 
             HomeObject dataObject = (HomeObject) dataArray.get(position);
             final HomeHolder homeHolder = (HomeHolder) holder;
@@ -290,10 +274,7 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
             homeHolder.homeAdapter.notifyDataSetChanged();
 
 
-
-
-        }
-        else if (holder instanceof PopularHolder) {
+        } else if (holder instanceof PopularHolder) {
 
             DataObject dataObject = (DataObject) dataArray.get(position);
             final PopularHolder popularHolder = (PopularHolder) holder;
@@ -315,8 +296,7 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
             GlideApp.with(context).load(Constant.ServerInformation.PICTURE_URL + dataObject.getObject_logo()).into(popularHolder.imageLogo);
 
 
-        }
-        else if (holder instanceof FeaturedHolder) {
+        } else if (holder instanceof FeaturedHolder) {
 
             HomeObject dataObject = (HomeObject) dataArray.get(position);
             final FeaturedHolder featuredHolder = (FeaturedHolder) holder;
@@ -334,8 +314,7 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
             //</editor-fold>
 
 
-        }
-        else if (holder instanceof NearbyHolder) {
+        } else if (holder instanceof NearbyHolder) {
 
             final DataObject dataObject = (DataObject) dataArray.get(position);
             final NearbyHolder nearbyHolder = (NearbyHolder) holder;
@@ -347,8 +326,8 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
                 public void onClick(View v) {
 
                     int pos = (int) nearbyHolder.layoutRestaurant.getTag();
-                    if (homeCallback!=null)
-                        homeCallback.onSelect(-1,pos);
+                    if (homeCallback != null)
+                        homeCallback.onSelect(-1, pos);
 
 
                 }
@@ -360,23 +339,22 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
             if (dataObject.isIs_layout_01()) {
                 tags = dataObject.getObject_tags();
                 nearbyHolder.txtRating.setText(dataObject.getObject_rating());
-            }
-            else {
+            } else {
 
                 tags = dataObject.getObject_category_name();
-                nearbyHolder.txtDistance.setText(dataObject.getObject_distance() + " "+
-                        Utility.getStringFromRes(context,R.string.km));
+                nearbyHolder.txtDistance.setText(dataObject.getObject_distance() + " " +
+                        Utility.getStringFromRes(context, R.string.km));
 
                 nearbyHolder.ratingBar.setRating(Float.parseFloat(dataObject.getObject_rating()));
-                nearbyHolder.txtRating.setText("("+dataObject.getReviewerList().size()+")");
+                nearbyHolder.txtRating.setText("(" + dataObject.getReviewerList().size() + ")");
 
                 GlideApp.with(context).load(Constant.ServerInformation.PICTURE_URL + dataObject.getObject_picture())
                         .into(nearbyHolder.imageCover);
             }
 
-            if (dataObject.isFavourite()){
+            if (dataObject.isFavourite()) {
                 nearbyHolder.imageFavourite.setColorFilter(Utility.getAttrColor(context, R.attr.colorSelectedFavouriteIcon));
-            }else {
+            } else {
                 nearbyHolder.imageFavourite.setColorFilter(Utility.getAttrColor(context, R.attr.colorDefaultFavouriteIcon));
             }
 
@@ -389,16 +367,15 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     int pos = (int) nearbyHolder.layoutRestaurant.getTag();
-                    if (dataObject.isFavourite()){
+                    if (dataObject.isFavourite()) {
 
-                        if (homeCallback!=null)
-                            homeCallback.onFavourite(pos,false);
+                        if (homeCallback != null)
+                            homeCallback.onFavourite(pos, false);
 
-                    }
-                    else {
+                    } else {
 
-                        if (homeCallback!=null)
-                            homeCallback.onFavourite(pos,true);
+                        if (homeCallback != null)
+                            homeCallback.onFavourite(pos, true);
 
                     }
 
@@ -409,8 +386,7 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
                     .into(nearbyHolder.imageLogo);
 
 
-        }
-        else if (holder instanceof HeaderHolder) {
+        } else if (holder instanceof HeaderHolder) {
 
             HomeObject dataObject = (HomeObject) dataArray.get(position);
             final HeaderHolder homeHolder = (HeaderHolder) holder;
@@ -423,8 +399,7 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
                 homeHolder.txtLabel.setText(dataObject.getLabel());
                 homeHolder.txtTitle.setText(dataObject.getTitle());
 
-            }
-            else {
+            } else {
                 homeHolder.layoutLabel.setVisibility(View.GONE);
             }
 
@@ -436,8 +411,7 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
 
             if (dataObject.isLayout01()) {
                 homeHolder.imageLayout.setImageResource(R.drawable.ic_layout_01);
-            }
-            else {
+            } else {
                 homeHolder.imageLayout.setImageResource(R.drawable.ic_layout_02);
             }
 
@@ -452,8 +426,7 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
                     if (homeObject.isLayout01()) {
                         homeObject.setLayout01(false);
                         isSwitchLayout[0] = false;
-                    }
-                    else {
+                    } else {
                         homeObject.setLayout01(true);
                         isSwitchLayout[0] = true;
                     }
@@ -529,8 +502,8 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
                 @Override
                 public void select(boolean isLocked, int position) {
                     int pos = (int) txtLabel.getTag();
-                    if (homeCallback!=null)
-                    homeCallback.onSelect(pos, position);
+                    if (homeCallback != null)
+                        homeCallback.onSelect(pos, position);
                 }
             };
             recyclerViewRadio.setAdapter(homeAdapter);
@@ -643,7 +616,6 @@ public abstract class HomeAdapter extends RecyclerView.Adapter {
 
         public SpaceHolder(View view) {
             super(view);
-
 
 
         }

@@ -15,9 +15,7 @@ import android.widget.LinearLayout;
 import com.haris.meal4u.ConstantUtil.Constant;
 import com.haris.meal4u.CustomUtil.CurvedBottomNavigationView;
 import com.haris.meal4u.FragmentUtil.DashboardFragment;
-import com.haris.meal4u.FragmentUtil.DiscoverFragment;
 import com.haris.meal4u.FragmentUtil.Favourites;
-import com.haris.meal4u.FragmentUtil.HomeFragment;
 import com.haris.meal4u.FragmentUtil.Setting;
 import com.haris.meal4u.InterfaceUtil.ConnectionCallback;
 import com.haris.meal4u.ManagementUtil.Management;
@@ -162,7 +160,7 @@ public class Base extends AppCompatActivity implements View.OnClickListener, Con
         }
         //
         else if (menuItem.getItemId() == R.id.action_nearby) {
-            openFragment(new DiscoverFragment());
+            openFragment(new Fragment());
             return true;
         }
         //

@@ -1,90 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".FragmentUtil.HomeFragment">
-
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
+        android:layout_height="60dp"
+        android:background="?attr/colorBottomNavigation">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="?attr/colorBottomNavigation">
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_user_location"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="7dp"
+            android:paddingEnd="7dp">
 
-            <LinearLayout
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_search"
+                android:tint="?attr/colorBottomNavigation" />
+
+
+            <com.haris.meal4u.TextviewUtil.NormalTextview
+                android:id="@+id/edit_search"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:background="?attr/colorCard"
+                android:focusableInTouchMode="true"
                 android:gravity="center_vertical"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal"
-                android:background="@drawable/bg_user_location"
-                android:paddingEnd="7dp"
-                android:paddingStart="7dp">
-
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:padding="5dp"
-                    android:src="@drawable/ic_location_search"
-                    android:tint="?attr/colorBottomNavigation"></ImageView>
-
-
-                <com.haris.meal4u.TextviewUtil.NormalTextview
-                    android:id="@+id/edit_search"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textSize="@dimen/normal_text_size"
-                    android:maxLines="1"
-                    android:text="Sheikhpura road , Faisalabad"
-                    android:focusableInTouchMode="true"
-                    android:layout_marginStart="15dp"
-                    android:textColor="?attr/colorHeading"
-                    android:textColorHint="?attr/colorHeading"
-                    android:background="?attr/colorCard"
-                    android:gravity="center_vertical"></com.haris.meal4u.TextviewUtil.NormalTextview>
-
-
-                <ImageView
-                    android:id="@+id/image_mid"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:padding="5dp"
-                    android:visibility="gone"
-                    android:src="@drawable/ic_mic"
-                    android:tint="?attr/colorHeading"></ImageView>
-
-            </LinearLayout>
+                android:maxLines="1"
+                android:text="Search"
+                android:textColor="?attr/colorHeading"
+                android:textColorHint="?attr/colorHeading"
+                android:textSize="@dimen/normal_text_size" />
 
 
         </LinearLayout>
 
-       <!-- <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            ></TextView>-->
-
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view_home"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
-
 
     </LinearLayout>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-</RelativeLayout>
+</LinearLayout>

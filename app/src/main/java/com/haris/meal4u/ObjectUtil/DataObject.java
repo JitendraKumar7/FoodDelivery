@@ -200,7 +200,7 @@ public class DataObject implements Parcelable {
     private boolean isFirstItem;
     private boolean isAlreadyAddedIntoCart;
     private boolean isPaymentCardSelected;
-    private String noOfItemInCart;
+    private String noOfItemInCart = "0";
     private String basePrice;
 
     private String delivery_charges;
@@ -1308,7 +1308,7 @@ public class DataObject implements Parcelable {
                         .setObject_no_of_rating(featured.getNo_of_ratings())
                         .setObject_currency(featured.getCurrency())
                         .setObject_currency_symbol(featured.getCurrency_symbol())
-                         .setSchedule(new ArrayList<DataObject>(scheduleList))
+                        .setSchedule(new ArrayList<DataObject>(scheduleList))
                         .setObject_distance(featured.getDistance())
                         .setObject_tags(featured.getTags())
                         .setObject_date_created(featured.getDate())
@@ -1365,7 +1365,7 @@ public class DataObject implements Parcelable {
                         .setObject_no_of_rating(featured.getNo_of_ratings())
                         .setObject_currency(featured.getCurrency())
                         .setObject_currency_symbol(featured.getCurrency_symbol())
-                         .setSchedule(new ArrayList<DataObject>(scheduleList))
+                        .setSchedule(new ArrayList<DataObject>(scheduleList))
                         .setObject_distance(featured.getDistance())
                         .setObject_tags(featured.getTags())
                         .setObject_date_created(featured.getDate())
@@ -1405,7 +1405,7 @@ public class DataObject implements Parcelable {
                 }
 
                 Utility.Logger(TAG, "Day = " + featured.getRestaurant_status().getDay().size());
-                Utility.Logger(TAG,"Schedule List = "+scheduleList.size());
+                Utility.Logger(TAG, "Schedule List = " + scheduleList.size());
 
                 restaurantList.add(new DataObject()
                         .setObject_id(featured.getId())
@@ -1425,7 +1425,7 @@ public class DataObject implements Parcelable {
                         .setObject_no_of_rating(featured.getNo_of_ratings())
                         .setObject_currency(featured.getCurrency())
                         .setObject_currency_symbol(featured.getCurrency_symbol())
-                         .setSchedule(new ArrayList<DataObject>(scheduleList))
+                        .setSchedule(new ArrayList<DataObject>(scheduleList))
                         .setObject_distance(featured.getDistance())
                         .setObject_tags(featured.getTags())
                         .setObject_date_created(featured.getDate())
@@ -1451,8 +1451,7 @@ public class DataObject implements Parcelable {
                     .setObjectArrayList(restaurantList)
                     .setHomeList(homeList);
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.CONFIGURATION) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.CONFIGURATION) {
 
             //region App Configuration
 
@@ -1489,8 +1488,7 @@ public class DataObject implements Parcelable {
                     .setObjectArrayList(offerList)
                     .setHomeList(categoryList);
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.NEAREST) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.NEAREST) {
 
             //region Nearby Restaurants
 
@@ -1539,7 +1537,7 @@ public class DataObject implements Parcelable {
                         .setObject_no_of_rating(featured.getNo_of_ratings())
                         .setObject_currency(featured.getCurrency())
                         .setObject_currency_symbol(featured.getCurrency_symbol())
-                         .setSchedule(new ArrayList<DataObject>(scheduleList))
+                        .setSchedule(new ArrayList<DataObject>(scheduleList))
                         .setObject_distance(featured.getDistance())
                         .setObject_tags(featured.getTags())
                         .setObject_date_created(featured.getDate())
@@ -1557,8 +1555,7 @@ public class DataObject implements Parcelable {
                     .setMessage(homeJson.getMessage())
                     .setObjectArrayList(restaurantList);
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.ALL_CATEGORIES) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.ALL_CATEGORIES) {
 
             //region All Cuisines
 
@@ -1587,8 +1584,7 @@ public class DataObject implements Parcelable {
                     .setMessage(appOfferJson.getMessage())
                     .setObjectArrayList(restaurantList);
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.SEARCH) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.SEARCH) {
 
             //region Nearby Restaurants
 
@@ -1637,7 +1633,7 @@ public class DataObject implements Parcelable {
                         .setObject_no_of_rating(featured.getNo_of_ratings())
                         .setObject_currency(featured.getCurrency())
                         .setObject_currency_symbol(featured.getCurrency_symbol())
-                         .setSchedule(new ArrayList<DataObject>(scheduleList))
+                        .setSchedule(new ArrayList<DataObject>(scheduleList))
                         .setObject_distance(featured.getDistance())
                         .setObject_tags(featured.getTags())
                         .setObject_date_created(featured.getDate())
@@ -1655,8 +1651,7 @@ public class DataObject implements Parcelable {
                     .setMessage(homeJson.getMessage())
                     .setObjectArrayList(restaurantList);
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.RESTAURANT_DETAIL) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.RESTAURANT_DETAIL) {
 
             //region Menu Categories
 
@@ -1686,8 +1681,7 @@ public class DataObject implements Parcelable {
                     .setMessage(categoryJson.getMessage())
                     .setObjectArrayList(restaurantList);
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.PRODUCT_MENU) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.PRODUCT_MENU) {
 
             //region Menu Products
 
@@ -1719,8 +1713,7 @@ public class DataObject implements Parcelable {
                     .setMessage(productJson.getMessage())
                     .setObjectArrayList(restaurantList);
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.REDEEM_COUPON) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.REDEEM_COUPON) {
 
             ArrayList<DataObject> restaurantList = new ArrayList<>();
             CouponJson couponJson = (CouponJson) data;
@@ -1733,8 +1726,7 @@ public class DataObject implements Parcelable {
                     .setCoupon_id(couponJson.getCouponId())
                     .setObjectArrayList(restaurantList);
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.PAYMENT_CARDS
+        } else if (requestObject.getConnection() == Constant.CONNECTION.PAYMENT_CARDS
                 || requestObject.getConnection() == Constant.CONNECTION.ADD_CARD) {
 
             ArrayList<DataObject> cardList = new ArrayList<>();
@@ -1754,8 +1746,7 @@ public class DataObject implements Parcelable {
                     .setMessage(cardJson.getMessage())
                     .setObjectArrayList(cardList);
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.CHECK_OUT) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.CHECK_OUT) {
 
             //region Check out
 
@@ -1765,8 +1756,7 @@ public class DataObject implements Parcelable {
                     .setMessage(orderJson.getMessage())
                     .setOrder_id(orderJson.getOrder_id());
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.ALL_FAVOURITES) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.ALL_FAVOURITES) {
 
             //region Retrieve All Favourites
 
@@ -1815,7 +1805,7 @@ public class DataObject implements Parcelable {
                         .setObject_no_of_rating(featured.getNo_of_ratings())
                         .setObject_currency(featured.getCurrency())
                         .setObject_currency_symbol(featured.getCurrency_symbol())
-                         .setSchedule(new ArrayList<DataObject>(scheduleList))
+                        .setSchedule(new ArrayList<DataObject>(scheduleList))
                         .setObject_distance(featured.getDistance())
                         .setObject_tags(featured.getTags())
                         .setObject_date_created(featured.getDate())
@@ -1832,8 +1822,7 @@ public class DataObject implements Parcelable {
                     .setMessage(homeJson.getMessage())
                     .setObjectArrayList(restaurantList);
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.ALL_COMMENT) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.ALL_COMMENT) {
 
             //region Retrieve All Reviews
 
@@ -1870,8 +1859,7 @@ public class DataObject implements Parcelable {
                     .setMessage(reviewJson.getMessage())
                     .setObjectArrayList(reviewList);
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.SIGN_UP) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.SIGN_UP) {
 
             UserJson userJson = (UserJson) data;
             dataObject = new DataObject()
@@ -1886,8 +1874,7 @@ public class DataObject implements Parcelable {
                     .setLogin_type(userJson.getUserType())
                     .setUser_picture(userJson.getAvatar());
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.LOGIN) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.LOGIN) {
 
             UserJson userJson = (UserJson) data;
             dataObject = new DataObject()
@@ -1903,24 +1890,21 @@ public class DataObject implements Parcelable {
                     .setUser_picture(userJson.getAvatar())
                     .setUserFavourite(new ArrayList<FavouriteList>(userJson.getFavouriteList()));
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.FORGOT) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.FORGOT) {
 
             UserJson userJson = (UserJson) data;
             dataObject = new DataObject()
                     .setCode(userJson.getCode())
                     .setMessage(userJson.getMessage());
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.UPDATE) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.UPDATE) {
 
             UserJson userJson = (UserJson) data;
             dataObject = new DataObject()
                     .setCode(userJson.getCode())
                     .setMessage(userJson.getMessage());
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.SOCIAL_LOGIN) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.SOCIAL_LOGIN) {
 
             UserJson userJson = (UserJson) data;
             dataObject = new DataObject()
@@ -1936,8 +1920,7 @@ public class DataObject implements Parcelable {
                     .setUser_picture(userJson.getAvatar())
                     .setUserFavourite(new ArrayList<FavouriteList>(userJson.getFavouriteList()));
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.ORDER_HISTORY) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.ORDER_HISTORY) {
 
             //region Retrieve Order
 
@@ -1994,8 +1977,7 @@ public class DataObject implements Parcelable {
                     .setMessage(orderHistoryJson.getMessage())
                     .setObjectArrayList(orderList);
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.SPECIFIC_RESTAURANT) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.SPECIFIC_RESTAURANT) {
 
             //region Specific Restaurant
 
@@ -2044,7 +2026,7 @@ public class DataObject implements Parcelable {
                         .setObject_no_of_rating(featured.getNo_of_ratings())
                         .setObject_currency(featured.getCurrency())
                         .setObject_currency_symbol(featured.getCurrency_symbol())
-                         .setSchedule(new ArrayList<DataObject>(scheduleList))
+                        .setSchedule(new ArrayList<DataObject>(scheduleList))
                         .setObject_distance(featured.getDistance())
                         .setObject_tags(featured.getTags())
                         .setObject_date_created(featured.getDate())
@@ -2062,8 +2044,7 @@ public class DataObject implements Parcelable {
                     .setMessage(homeJson.getMessage())
                     .setObjectArrayList(restaurantList);
 
-        }
-        else if (requestObject.getConnection() == Constant.CONNECTION.DELIVERY_CHARGES) {
+        } else if (requestObject.getConnection() == Constant.CONNECTION.DELIVERY_CHARGES) {
 
             DeliveryDetailJson deliveryDetailJson = (DeliveryDetailJson) data;
             dataObject = new DataObject()

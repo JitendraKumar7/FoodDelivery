@@ -4,7 +4,7 @@
     package="com.haris.meal4u">
 
     <application
-        android:name=".MyApplication"
+        android:name=".AppController"
         android:allowBackup="true"
         android:appComponentFactory="whateverString"
         android:icon="@drawable/app_icon"
@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".ActivityUtil.RestaurantInformation"></activity>
+        <activity android:name=".ActivityUtil.RestaurantInformation"/>
         <activity android:name=".ActivityUtil.PlaceSelectionPluginActivity" />
         <activity android:name=".ActivityUtil.TrackOrder" />
         <activity android:name=".ActivityUtil.ProductDetail" />

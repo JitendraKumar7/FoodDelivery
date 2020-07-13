@@ -126,8 +126,17 @@ public class Splash extends AppCompatActivity implements ConnectionCallback, Int
 
 
         if (Utility.isLocationProviderAvailable(getApplicationContext(), true)) {
-            startActivity(new Intent(getApplicationContext(), Base.class));
-            finish();
+            prefObject = management.getPreferences(new PrefObject()
+                    .setRetrieveLogin(true)
+                    .setRetrieveUserCredential(true));
+
+            if (prefObject.isLogin()) {
+                startActivity(new Intent(getApplicationContext(), Base.class));
+                finish();
+            } else {
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                finish();
+            }
         } else
             triggerLocationSettingAlert();
 
@@ -306,8 +315,8 @@ public class Splash extends AppCompatActivity implements ConnectionCallback, Int
                             .setConnectionCallback(Splash.this));*/
 
                     ///if (Utility.isLocationProviderAvailable(getApplicationContext(), true)) {
-                        startActivity(new Intent(getApplicationContext(), Base.class));
-                        finish();
+                    startActivity(new Intent(getApplicationContext(), Base.class));
+                    finish();
 
 
                 }

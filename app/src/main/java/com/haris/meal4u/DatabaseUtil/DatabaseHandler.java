@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.haris.meal4u.ConstantUtil.Constant;
-import com.haris.meal4u.MyApplication;
+import com.haris.meal4u.AppController;
 import com.haris.meal4u.R;
 import com.haris.meal4u.Utility.Utility;
 
@@ -19,7 +19,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // All Static variables
     // Database Version
     private static final int DATABASE_VERSION = 1;
-    public static String DATABASE_NAME = Utility.getStringFromRes(MyApplication.getInstance(), R.string.app_name);
+    public static String DATABASE_NAME = Utility.getStringFromRes(AppController.getInstance(), R.string.app_name);
 
     String CREATE_FAVOURITE_TABLE = "CREATE TABLE " + Constant.DatabaseColumn.FAVOURITES_TABLE_NAME + "(" +
             Constant.DatabaseColumn.FAVOURITES_COLUMN_ID + " INTEGER PRIMARY KEY," +

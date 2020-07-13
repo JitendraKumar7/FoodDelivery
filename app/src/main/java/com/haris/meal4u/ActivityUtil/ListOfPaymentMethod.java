@@ -17,15 +17,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.ads.mediation.admob.AdMobAdapter;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
 import com.haris.meal4u.AdapterUtil.CardAdapter;
 import com.haris.meal4u.ConstantUtil.Constant;
 import com.haris.meal4u.InterfaceUtil.ConnectionCallback;
 import com.haris.meal4u.ManagementUtil.Management;
-import com.haris.meal4u.MyApplication;
+import com.haris.meal4u.AppController;
 import com.haris.meal4u.ObjectUtil.DataObject;
 import com.haris.meal4u.ObjectUtil.EmptyObject;
 import com.haris.meal4u.ObjectUtil.PrefObject;
@@ -33,7 +29,6 @@ import com.haris.meal4u.ObjectUtil.ProgressObject;
 import com.haris.meal4u.ObjectUtil.RequestObject;
 import com.haris.meal4u.R;
 import com.haris.meal4u.Utility.Utility;
-import com.ixidev.gdpr.GDPRChecker;
 import com.stripe.android.Stripe;
 import com.stripe.android.TokenCallback;
 import com.stripe.android.model.Card;
@@ -307,7 +302,7 @@ public class ListOfPaymentMethod extends AppCompatActivity implements View.OnCli
                     return;
                 }
 
-                Stripe stripe = MyApplication.getStripe();
+                Stripe stripe = AppController.getStripe();
                 Card.Builder builder = new Card.Builder(editCardNumber.getText().toString().trim()
                         , Integer.parseInt(editExpiryMonth.getText().toString())
                         , Integer.parseInt(editExpiryYear.getText().toString())

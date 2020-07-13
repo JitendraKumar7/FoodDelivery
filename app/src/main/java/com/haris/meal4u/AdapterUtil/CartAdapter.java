@@ -13,10 +13,12 @@ import com.haris.meal4u.InterfaceUtil.CartCallback;
 import com.haris.meal4u.ObjectUtil.DataObject;
 import com.haris.meal4u.ObjectUtil.EmptyObject;
 import com.haris.meal4u.R;
+import com.haris.meal4u.Utility.CartObjectModal;
 
 import net.bohush.geometricprogressview.GeometricProgressView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -30,10 +32,10 @@ public abstract class CartAdapter extends RecyclerView.Adapter {
     private int FIRST_PRODUCT_VIEW = 3;
     private int OTHER_PRODUCT_VIEW = 4;
     private Context context;
-    private ArrayList<Object> dataArray = new ArrayList<>();
+    private List<CartObjectModal> dataArray;
     private CartCallback cartCallback;
 
-    public CartAdapter(Context context, ArrayList<Object> dataArray, CartCallback cartCallback) {
+    public CartAdapter(Context context, List<CartObjectModal> dataArray, CartCallback cartCallback) {
         this.context = context;
         this.dataArray = dataArray;
         this.cartCallback = cartCallback;
@@ -43,20 +45,7 @@ public abstract class CartAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemViewType(int position) {
 
-        if (dataArray.get(position) instanceof EmptyObject) {
-            return NO_DATA_VIEW;
-        } else if (dataArray.get(position) instanceof DataObject) {
-
-            DataObject dataObject = (DataObject) dataArray.get(position);
-
-            //if (dataObject.isFirstItem())
-                return FIRST_PRODUCT_VIEW;
-            /*else
-                return OTHER_PRODUCT_VIEW;*/
-        }
-
-
-        return NO_DATA_VIEW;
+        return FIRST_PRODUCT_VIEW;
     }
 
     @Override
@@ -86,31 +75,14 @@ public abstract class CartAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
-        if (holder instanceof ProgressHolder) {
-
-            ProgressHolder lookUpHolder = (ProgressHolder) holder;
-
-
-        }
-        else if (holder instanceof EmptyHolder) {
-
-            EmptyHolder emptyHolder = (EmptyHolder) holder;
-            EmptyObject emptyObject = (EmptyObject) dataArray.get(position);
-
-            emptyHolder.imageIcon.setImageResource(emptyObject.getPlaceHolderIcon());
-            emptyHolder.txtTitle.setText(emptyObject.getTitle());
-            emptyHolder.txtDescription.setText(emptyObject.getDescription());
-
-
-        }
-        else if (holder instanceof ProductDetailHolder) {
+        if (holder instanceof ProductDetailHolder) {
 
             final ProductDetailHolder productDetailHolder = (ProductDetailHolder) holder;
-            final DataObject dataObject = (DataObject) dataArray.get(position);
+            final CartObjectModal dataObject = dataArray.get(position);
 
-            productDetailHolder.txtPostTitle.setText(dataObject.getPost_name());
-            productDetailHolder.txtPrice.setText(dataObject.getObject_currency_symbol() + " " + dataObject.getPost_price());
-            productDetailHolder.txtCount.setText(dataObject.getPost_quantity());
+            productDetailHolder.txtPostTitle.setText(dataObject.getPostName());
+            productDetailHolder.txtPrice.setText(String.format("%s %s", dataObject.getCurrencySymbol(), dataObject.getPostQtyPrice()));
+            productDetailHolder.txtCount.setText(dataObject.getPostQuantity());
             productDetailHolder.txtPostTitle.setTag(position);
 
 
@@ -118,8 +90,8 @@ public abstract class CartAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     int pos = (int) productDetailHolder.txtPostTitle.getTag();
-                    if (cartCallback!=null){
-                        cartCallback.onItemQuantityListener(pos,false);
+                    if (cartCallback != null) {
+                        cartCallback.onItemQuantityListener(pos, false);
                     }
                 }
             });
@@ -128,8 +100,8 @@ public abstract class CartAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     int pos = (int) productDetailHolder.txtPostTitle.getTag();
-                    if (cartCallback!=null){
-                        cartCallback.onItemQuantityListener(pos,true);
+                    if (cartCallback != null) {
+                        cartCallback.onItemQuantityListener(pos, true);
                     }
 
                 }
@@ -139,7 +111,7 @@ public abstract class CartAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     int pos = (int) productDetailHolder.txtPostTitle.getTag();
-                    if (cartCallback!=null){
+                    if (cartCallback != null) {
                         cartCallback.onItemDeleteListener(pos);
                     }
                 }

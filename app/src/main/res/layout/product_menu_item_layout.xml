@@ -28,9 +28,10 @@
                 android:id="@+id/image_product"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:padding="6dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/app_icon"
-                app:riv_corner_radius="5dp"></com.makeramen.roundedimageview.RoundedImageView>
+                app:riv_corner_radius="5dp" />
 
 
         </LinearLayout>
@@ -38,56 +39,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="vertical"
-            android:paddingTop="10dp"
             android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:layout_weight="1">
+            android:paddingTop="10dp"
+            android:paddingEnd="12dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <com.haris.meal4u.TextviewUtil.NormalTextview
+                android:id="@+id/txt_product"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <com.haris.meal4u.TextviewUtil.NormalTextview
-                    android:id="@+id/txt_product"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Behari Kabab Pizza"
-                    android:textColor="?attr/colorNormal"
-                    android:textSize="@dimen/normal_text_size"></com.haris.meal4u.TextviewUtil.NormalTextview>
-
-
-                <LinearLayout
-                    android:id="@+id/layout_tag"
-                    android:layout_width="20dp"
-                    android:orientation="horizontal"
-                    android:minWidth="15dp"
-                    android:layout_height="20dp"
-                    android:gravity="center"
-                    android:layout_marginStart="15dp"
-                    android:visibility="gone"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/bg_total_count">
-
-
-                    <com.haris.meal4u.TextviewUtil.NormalTextview
-                        android:id="@+id/txt_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/tagline_text_size"
-                        android:textColor="@color/white"
-                        android:gravity="center"
-                        android:padding="3dp"
-                        android:text="2"></com.haris.meal4u.TextviewUtil.NormalTextview>
-
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
+                android:text="Behari Kabab Pizza"
+                android:textColor="?attr/colorNormal"
+                android:textSize="@dimen/normal_text_size" />
 
 
             <com.haris.meal4u.TextviewUtil.TaglineTextview
@@ -98,21 +62,51 @@
                 android:maxLines="3"
                 android:text="Grilled Chicken along with bar bq sauce and grilled kabab in crust"
                 android:textColor="?attr/colorTagline"
-                android:textSize="@dimen/tagline_text_size"></com.haris.meal4u.TextviewUtil.TaglineTextview>
+                android:textSize="@dimen/tagline_text_size"
+                android:visibility="gone" />
+
+            <com.haris.meal4u.TextviewUtil.NormalTextview
+                android:id="@+id/txt_price"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="$ 256"
+                android:textColor="?attr/colorNormal"
+                android:textSize="@dimen/normal_text_size" />
 
 
         </LinearLayout>
 
 
+        <ImageView
+            android:id="@+id/btn_decrease"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="14dp"
+            android:src="@drawable/ic_minus"
+            android:tint="?attr/colorTagline" />
+
         <com.haris.meal4u.TextviewUtil.NormalTextview
-            android:id="@+id/txt_price"
-            android:layout_width="wrap_content"
+            android:id="@+id/txt_count"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
+            android:layout_margin="7dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:gravity="center"
-            android:text="$ 256"
-            android:layout_marginEnd="10dp"
+            android:maxLines="1"
+            android:text="0"
             android:textColor="?attr/colorNormal"
-            android:textSize="@dimen/normal_text_size"></com.haris.meal4u.TextviewUtil.NormalTextview>
+            android:textSize="@dimen/normal_text_size" />
+
+        <ImageView
+            android:id="@+id/btn_increase"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="14dp"
+            android:src="@drawable/ic_add"
+            android:tint="?attr/colorNormal" />
 
 
     </LinearLayout>
@@ -120,11 +114,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:layout_marginTop="5dp"
         android:layout_below="@+id/layout_product"
-        android:background="?attr/colorDefaultFavouriteIcon"></TextView>
-
-
+        android:layout_marginTop="5dp"
+        android:background="?attr/colorDefaultFavouriteIcon" />
 
 
 </RelativeLayout>

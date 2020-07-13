@@ -10,6 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.haris.meal4u.ActivityUtil.ProductDetail;
 import com.haris.meal4u.AdapterUtil.RestaurantMenuAdapter;
 import com.haris.meal4u.ConstantUtil.Constant;
@@ -21,19 +26,22 @@ import com.haris.meal4u.ObjectUtil.DataObject;
 import com.haris.meal4u.ObjectUtil.ProgressObject;
 import com.haris.meal4u.ObjectUtil.RequestObject;
 import com.haris.meal4u.R;
+import com.haris.meal4u.Utility.CartObjectModal;
 import com.haris.meal4u.Utility.Utility;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import static com.haris.meal4u.ConstantUtil.Constant.ServerInformation.REST_API_URL;
 
 
 public class MenuFragment extends Fragment implements ProductCallback, ConnectionCallback {
     private String TAG = MenuFragment.class.getSimpleName();
-    private GridLayoutManager gridLayoutManager;
-    private RecyclerView recyclerViewMenu;
     private RestaurantMenuAdapter restaurantMenuAdapter;
     private ArrayList<Object> objectArrayList = new ArrayList<>();
     private ArrayList<Object> dataCloneList = new ArrayList<>();
@@ -41,16 +49,9 @@ public class MenuFragment extends Fragment implements ProductCallback, Connectio
     private Management management;
     private String currencySymbol;
     private HashMap<String, String> isProductExist = new HashMap<>();
-    private ArrayList<Object> cartList = new ArrayList<>();
+    private List<CartObjectModal> cartList = new ArrayList<>();
     private HashMap<String, String> productTrackerHash = new HashMap<>();
-    private String postID;
 
-    /**
-     * <p>It is used to get Fragment Instance for using in Pager</p>
-     *
-     * @param dataObject
-     * @return
-     */
     public static Fragment getFragmentInstance(DataObject dataObject) {
         Bundle args = new Bundle();
         args.putParcelable(Constant.IntentKey.RESTAURANT_DETAIL, dataObject);
@@ -66,37 +67,24 @@ public class MenuFragment extends Fragment implements ProductCallback, Connectio
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NotNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getIntentData(); //Receive Intent Data
-        initUI(view); //Initialize UI
-    }
-
-    /**
-     * <p>It is used to receive Intent data</p>
-     */
-    private void getIntentData() {
 
         dataObject = getArguments().getParcelable(Constant.IntentKey.RESTAURANT_DETAIL);
 
-    }
-
-    /**
-     * <p>It initialize the UI</p>
-     */
-    private void initUI(View view) {
 
         objectArrayList.clear();
         if (dataCloneList.size() <= 0)
             objectArrayList.add(new ProgressObject().setScrollLoading(true));
+
         management = new Management(getActivity());
         currencySymbol = dataObject.getObject_currency_symbol();
 
         Utility.Logger(TAG, "Data = " + dataObject.toString());
 
-        gridLayoutManager = new GridLayoutManager(getActivity(), 1, LinearLayoutManager.VERTICAL, false);
-        recyclerViewMenu = view.findViewById(R.id.recycler_view_menu);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1, LinearLayoutManager.VERTICAL, false);
+        RecyclerView recyclerViewMenu = view.findViewById(R.id.recycler_view_menu);
         recyclerViewMenu.setLayoutManager(gridLayoutManager);
 
         restaurantMenuAdapter = new RestaurantMenuAdapter(getActivity(), objectArrayList, this) {
@@ -104,46 +92,56 @@ public class MenuFragment extends Fragment implements ProductCallback, Connectio
             public void selectProduct(int position) {
 
             }
+
+            @Override
+            public void addToCartProduct(View v, DataObject selectedDataObject) {
+                int quantity = Integer.parseInt(selectedDataObject.getNoOfItemInCart());
+                if (v.getId() == R.id.btn_decrease) {
+
+                    if (quantity > 0) {
+                        quantity -= 1;
+                    } else {
+                        return;
+                    }
+
+                }
+                if (v.getId() == R.id.btn_increase) {
+
+                    quantity += 1;
+
+                }
+
+                CartObjectModal.setList(new CartObjectModal(
+                        selectedDataObject.getPost_id(),
+                        selectedDataObject.getPost_name(),
+                        selectedDataObject.getPost_price(), String.valueOf(quantity)));
+
+                selectedDataObject.setNoOfItemInCart(String.valueOf(quantity));
+                dataObject.setNoOfItemInCart(String.valueOf(quantity));
+                notifyDataSetChanged();
+
+            }
         };
+
+
         recyclerViewMenu.setAdapter(restaurantMenuAdapter);
 
-
-        management.sendRequestToServer(new RequestObject()
-                .setJson(getJson(dataObject.getCategory_id()))
-                .setConnectionType(Constant.CONNECTION_TYPE.UI)
-                .setConnection(Constant.CONNECTION.PRODUCT_MENU)
-                .setConnectionCallback(MenuFragment.this));
-
-
-    }
-
-
-    /**
-     * <p>It is used to convert Object into Json</p>
-     *
-     * @param
-     * @return
-     */
-
-    private String getJson(String restaurant_category_id) {
-        String json = null;
-
-        // 1. build jsonObject
-        JSONObject jsonObject = new JSONObject();
         try {
-
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.accumulate("category_id", dataObject.getCategory_id());
             jsonObject.accumulate("functionality", "specific_restaurant_menu_items");
-            jsonObject.accumulate("category_id", restaurant_category_id);
+
+
+            management.sendRequestToServer(new RequestObject()
+                    .setJson(jsonObject.toString())
+                    .setConnectionType(Constant.CONNECTION_TYPE.UI)
+                    .setConnection(Constant.CONNECTION.PRODUCT_MENU)
+                    .setConnectionCallback(MenuFragment.this));
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        // 2. convert JSONObject to JSON to String
-        json = jsonObject.toString();
-        Utility.Logger("JSON", json);
-
-        return json;
     }
 
 
@@ -163,7 +161,7 @@ public class MenuFragment extends Fragment implements ProductCallback, Connectio
 
         Intent intent = new Intent(getActivity(), ProductDetail.class);
         intent.putExtra(Constant.IntentKey.POST_DETAIL, dtObject);
-        startActivityForResult(intent, Constant.RequestCode.PRODUCT_DETAIL_CODE);
+        //startActivityForResult(intent, Constant.RequestCode.PRODUCT_DETAIL_CODE);
 
     }
 
@@ -192,6 +190,8 @@ public class MenuFragment extends Fragment implements ProductCallback, Connectio
                 restaurantMenuAdapter.notifyDataSetChanged();
             }
         }
+
+
     }
 
     @Override
@@ -207,32 +207,15 @@ public class MenuFragment extends Fragment implements ProductCallback, Connectio
         super.onResume();
 
         cartList.clear();
-        cartList.addAll(management.getDataFromDatabase(new DatabaseObject()
-                .setTypeOperation(Constant.TYPE.CART)
-                .setDbOperation(Constant.DB.SPECIFIC_TYPE)
-                .setDataObject(new DataObject()
-                        .setUser_id("0"))));
+        cartList = CartObjectModal.getList();
 
         //if (cartList.size() <= 0)
-            isProductExist.clear();
+        isProductExist.clear();
 
         for (int i = 0; i < cartList.size(); i++) {
-            DataObject dataObject = (DataObject) cartList.get(i);
-
-            if (isProductExist.containsKey(dataObject.getPost_id())) {
-
-                int postQuantity = Integer.parseInt(isProductExist.get(dataObject.getPost_id())) +
-                        Integer.parseInt(dataObject.getPost_quantity());
-
-                isProductExist.put(dataObject.getPost_id(), String.valueOf(postQuantity));
-
-            } else
-                isProductExist.put(dataObject.getPost_id(), dataObject.getPost_quantity());
-
+            CartObjectModal dataObject = cartList.get(i);
+            isProductExist.put(dataObject.getPostId(), dataObject.getPostQuantity());
         }
-
-        Utility.Logger(TAG, "Size of Cart List = " + cartList.size()
-                + " Product Exist Hash = " + isProductExist.size());
 
         if (objectArrayList.size() > 0) {
             for (int i = 0; i < dataCloneList.size(); i++) {
@@ -247,29 +230,11 @@ public class MenuFragment extends Fragment implements ProductCallback, Connectio
                     Utility.Logger(TAG, "Not Contain Key");
                 }
 
-
             }
-
 
             restaurantMenuAdapter.notifyDataSetChanged();
         }
 
-
-        Utility.Logger(TAG, "OnResume Working " + objectArrayList.size() + " Post Id = " + postID);
-
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == Constant.RequestCode.PRODUCT_DETAIL_CODE
-                && resultCode == getActivity().RESULT_OK) {
-
-            postID = data.getStringExtra(Constant.IntentKey.POST_ID);
-            Utility.Logger(TAG, "Post Id = " + postID);
-
-        }
-
-    }
 }

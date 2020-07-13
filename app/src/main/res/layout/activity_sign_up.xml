@@ -40,7 +40,7 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="170dp"
+                        android:layout_width="300dp"
                         android:layout_height="45dp"
                         android:background="@drawable/bg_edit_text_login"
                         android:gravity="center_vertical"
@@ -59,10 +59,10 @@
                             android:id="@+id/edit_firstName"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginBottom="5dp"
                             android:layout_marginStart="13dp"
-                            android:layout_marginEnd="5dp"
                             android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="5dp"
                             android:layout_weight="1"
                             android:background="@color/transparent"
                             android:hint="@string/first_name"
@@ -77,8 +77,9 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="170dp"
+                        android:layout_width="300dp"
                         android:layout_height="45dp"
+                        android:visibility="gone"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/bg_edit_text_login"
                         android:gravity="center_vertical"
@@ -98,16 +99,16 @@
                             android:id="@+id/edit_lastName"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginBottom="5dp"
                             android:layout_marginStart="13dp"
-                            android:layout_marginEnd="5dp"
                             android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="5dp"
                             android:layout_weight="1"
                             android:background="@color/transparent"
                             android:hint="@string/last_name"
                             android:maxLines="1"
-                            android:textColorHint="?attr/colorButton"
                             android:textColor="?attr/colorButton"
+                            android:textColorHint="?attr/colorButton"
                             android:textSize="14sp"
 
                             />
@@ -122,7 +123,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <com.makeramen.roundedimageview.RoundedImageView
                         android:id="@+id/image_profile"
@@ -164,17 +166,17 @@
                     android:id="@+id/edit_phone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginStart="13dp"
-                    android:layout_marginEnd="5dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:background="@color/transparent"
                     android:hint="@string/phone_number"
                     android:inputType="textPhonetic"
-                    android:textColorHint="?attr/colorButton"
                     android:maxLines="1"
                     android:textColor="?attr/colorButton"
+                    android:textColorHint="?attr/colorButton"
                     android:textSize="14sp"
 
                     />
@@ -203,24 +205,23 @@
                     android:id="@+id/edit_email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginStart="13dp"
-                    android:layout_marginEnd="5dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:background="@color/transparent"
                     android:hint="@string/email_address"
                     android:inputType="textEmailAddress"
-                    android:textColorHint="?attr/colorButton"
                     android:maxLines="1"
                     android:textColor="?attr/colorButton"
+                    android:textColorHint="?attr/colorButton"
                     android:textSize="14sp"
 
                     />
 
 
             </LinearLayout>
-
 
 
             <LinearLayout
@@ -245,17 +246,17 @@
                     android:id="@+id/edit_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginStart="13dp"
-                    android:layout_marginEnd="5dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:background="@color/transparent"
                     android:hint="@string/password"
                     android:inputType="textPassword"
-                    android:textColorHint="?attr/colorButton"
                     android:maxLines="1"
                     android:textColor="?attr/colorButton"
+                    android:textColorHint="?attr/colorButton"
                     android:textSize="14sp"
 
                     />
@@ -285,10 +286,10 @@
                     android:id="@+id/edit_confirm_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginStart="13dp"
-                    android:layout_marginEnd="5dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:background="@color/transparent"
                     android:hint="@string/confirm_password"

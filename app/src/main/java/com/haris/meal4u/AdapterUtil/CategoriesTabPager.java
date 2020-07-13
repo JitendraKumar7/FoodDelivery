@@ -11,26 +11,28 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 
 public class CategoriesTabPager extends FragmentStatePagerAdapter {
-    private ArrayList<PagerTabObject> fragmentArrayList = new ArrayList<>();
+    private ArrayList<PagerTabObject> fragmentArrayList;
 
     public CategoriesTabPager(FragmentManager fm, ArrayList<PagerTabObject> fragmentArrayList) {
         super(fm);
         this.fragmentArrayList = fragmentArrayList;
     }
 
-
     @Override
     public int getItemPosition(Object object) {
+
         return super.getItemPosition(object);
     }
 
     @Override
     public Fragment getItem(int position) {
+
         return fragmentArrayList.get(position).getFragment();
     }
 
     @Override
     public int getCount() {
+
         return fragmentArrayList.size();
     }
 

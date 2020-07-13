@@ -61,10 +61,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Co
 
     }
 
-
-    /**
-     * <p>It initialize the UI</p>
-     */
     private void initUI() {
 
         txtMenu = (TextView) findViewById(R.id.txt_menu);
@@ -109,13 +105,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Co
 
     }
 
-
-
-    /**
-     * <p>It is used to convert data into json format for POST type Request</p>
-     *
-     * @return
-     */
     public String getJson() {
         String json = "";
 
@@ -138,7 +127,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Co
         return json;
 
     }
-
 
     @Override
     public void onClick(View v) {
@@ -176,13 +164,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Co
         }
     }
 
-
-
-    /**
-     * <p>It is used to show Language Selector</p>
-     *
-     * @param context
-     */
     private void showLoginBottomSheet(final Context context) {
         final View view = getLayoutInflater().inflate(R.layout.process_order_sheet_layout, null);
 
@@ -241,9 +222,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Co
 
                             }
 
+                            startActivity(new Intent(getApplicationContext(), Base.class));
                             finish();
-
-
                         }
 
                     }
@@ -256,7 +236,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Co
 
                     }
                 }));
-
 
 
     }
