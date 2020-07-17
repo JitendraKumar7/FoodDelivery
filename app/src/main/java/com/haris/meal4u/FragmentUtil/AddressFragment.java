@@ -16,24 +16,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.ads.mediation.admob.AdMobAdapter;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
-import com.haris.meal4u.ActivityUtil.Checkout;
+import com.haris.meal4u.ActivityUtil.CheckoutActivity;
 import com.haris.meal4u.ConstantUtil.Constant;
 import com.haris.meal4u.ObjectUtil.AddressObject;
 import com.haris.meal4u.ObjectUtil.GeocodeObject;
-import com.haris.meal4u.ObjectUtil.ProgressObject;
-import com.haris.meal4u.ObjectUtil.RequestObject;
 import com.haris.meal4u.R;
 import com.haris.meal4u.Utility.Utility;
-import com.ixidev.gdpr.GDPRChecker;
 import com.mapbox.api.geocoding.v5.models.CarmenFeature;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
@@ -124,8 +117,8 @@ public class AddressFragment extends Fragment implements View.OnClickListener {
                 return;
             }
 
-            ((Checkout) getActivity()).onStepClick(1);
-            ((Checkout) getActivity()).onAddressChangeListener(new AddressObject()
+            ((CheckoutActivity) getActivity()).onStepClick(1);
+            ((CheckoutActivity) getActivity()).onAddressChangeListener(new AddressObject()
                     .setBuildingName(editBuilding.getText().toString())
                     .setStreetName(editStreetAddress.getText().toString())
                     .setAreaName(editArea.getText().toString())

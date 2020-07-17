@@ -60,16 +60,6 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-
-        initUI(); //Initialize UI
-
-    }
-
-    /**
-     * <p>It initialize the UI</p>
-     */
-    private void initUI() {
-
         txtMenu = (TextView) findViewById(R.id.txt_menu);
         txtMenu.setText(Utility.getStringFromRes(this, R.string.profile));
 
@@ -79,14 +69,14 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
 
         management = new Management(this);
 
-        imageProfile = (RoundedImageView) findViewById(R.id.image_profile);
-        editFName = (EditText) findViewById(R.id.edit_fName);
-        editLName = (EditText) findViewById(R.id.edit_lName);
-        editEmail = (EditText) findViewById(R.id.edit_email);
-        editPhone = (EditText) findViewById(R.id.edit_phone);
+        imageProfile =  findViewById(R.id.image_profile);
+        editFName =  findViewById(R.id.edit_fName);
+        editLName =  findViewById(R.id.edit_lName);
+        editEmail =  findViewById(R.id.edit_email);
+        editPhone =  findViewById(R.id.edit_phone);
         ///editBio = findViewById(R.id.edit_bio);
-        editPassword = (EditText) findViewById(R.id.edit_password);
-        txtUpdate = (TextView) findViewById(R.id.txt_update);
+        editPassword =  findViewById(R.id.edit_password);
+        txtUpdate =  findViewById(R.id.txt_update);
 
         userData = management.getPreferences(new PrefObject()
                 .setRetrieveUserCredential(true));
@@ -103,20 +93,7 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
             pictureUrl = Constant.ServerInformation.PICTURE_URL + userData.getPictureUrl();
 
         }
-        else if (userData.getPictureUrl().contains("facebook")){
 
-            pictureUrl = userData.getPictureUrl() + Constant.ServerInformation.FACEBOOK_HIGH_PIXEL_URL;
-            editPassword.setVisibility(View.GONE);
-            imageProfile.setEnabled(false);
-
-        }
-        else {
-
-            pictureUrl = userData.getPictureUrl();
-            editPassword.setVisibility(View.GONE);
-            imageProfile.setEnabled(false);
-
-        }
 
         GlideApp.with(this).load(pictureUrl)
                 .apply(new RequestOptions()
@@ -166,7 +143,7 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
             jsonObject.accumulate("functionality", "update_profile");
             jsonObject.accumulate("user_id", userData.getUserId());
             jsonObject.accumulate("first_name", editFName.getText().toString());
-            jsonObject.accumulate("last_name", editLName.getText().toString());
+            jsonObject.accumulate("last_name", "");
             jsonObject.accumulate("email", editEmail.getText().toString());
             jsonObject.accumulate("password", editPassword.getText().toString());
             jsonObject.accumulate("picture", userPicture);
@@ -210,7 +187,7 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
         dialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
         dialog.setContentView(R.layout.custom_dialog_layout);
 
-        LinearLayout layout_camera = (LinearLayout) dialog.findViewById(R.id.layout_camera);
+        LinearLayout layout_camera =  dialog.findViewById(R.id.layout_camera);
         layout_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -219,7 +196,7 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
             }
         });
 
-        LinearLayout layout_gallery = (LinearLayout) dialog.findViewById(R.id.layout_gallery);
+        LinearLayout layout_gallery =  dialog.findViewById(R.id.layout_gallery);
         layout_gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

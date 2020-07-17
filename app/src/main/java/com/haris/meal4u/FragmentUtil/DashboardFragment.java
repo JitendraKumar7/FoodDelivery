@@ -201,7 +201,6 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
         if (v == btnShoppingCart) {
             if (CartObjectModal.getList().size() > 0) {
                 Intent intent = new Intent(getActivity(), ProductCart.class);
-                intent.putExtra(Constant.IntentKey.RESTAURANT_DETAIL, dataObject);
                 startActivity(intent);
             } else {
                 Utility.Toaster(getActivity(), "Cart is empty", Toast.LENGTH_LONG);
@@ -267,15 +266,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_dashboard, null);
 
-        HomeJson object = new Gson().fromJson("{\"code\":\"202\",\"message\":\"Data Retrieve Successfully\",\"featured\":[],\"trending\":[],\"nearest\":[{\"id\":\"1\",\"category\":\"Tea\",\"name\":\"RCH - Ratlam Cafe House\",\"description\":null,\"location\":\"867-C, Harsha Nagar, Chaugurji, Etawah, Uttar Pradesh, 206001.\",\"latitude\":\"26.780448\",\"longitude\":\"79.017214\",\"logo\":\"rch-header.png\",\"cover_url\":\"rch-header.png\",\"delivery_time\":\"45\",\"delivery_charges\":\"50\",\"min_order\":\"100\",\"expense\":\"1\",\"rating\":\"0\",\"no_of_ratings\":\"0\",\"currency\":\"INR\",\"currency_symbol\":\"INR\",\"restaurant_status\":{\"day\":[\"Sunday\"],\"fromTime\":[\"10:00\"],\"toTime\":[\"23:59\"]},\"distance\":null,\"tags\":\"Fast Food\",\"reviewers\":[],\"payment_method\":[\"Credit \\/ Debit Cards\",\"Cash On Delivery (COD)\"]}]}", HomeJson.class);
-
-        RequestObject requestObject = new RequestObject();
-        requestObject.setConnection(Constant.CONNECTION.HOME);
-        requestObject.setContext(getContext());
-
-        DataObject object1 = DataObject.getDataObject(requestObject, object);
-
-        dataObject = object1.getObjectArrayList().get(0);
+        dataObject = CartObjectModal.getSingleRestaurant(getActivity());
         initUI(view); //Initialize UI
         return view;
     }

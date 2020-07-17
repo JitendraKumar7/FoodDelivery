@@ -1,25 +1,24 @@
 package com.haris.meal4u.ActivityUtil;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.haris.meal4u.ConstantUtil.Constant;
 import com.haris.meal4u.InterfaceUtil.ConnectionCallback;
 import com.haris.meal4u.ManagementUtil.Management;
@@ -38,7 +37,9 @@ import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.concurrent.TimeUnit;
 
-public class SignUp extends AppCompatActivity implements View.OnClickListener, ConnectionCallback {
+import static android.widget.Toast.LENGTH_SHORT;
+
+public class SignUp extends AppCompatActivity implements View.OnClickListener {
     private TextView txtMenu;
     private ImageView imageBack;
     private EditText editFirstName;
@@ -51,30 +52,59 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, C
     private TextView txtLogin;
     private EditText editConfirmPassword;
     private Management management;
-    private boolean isLoginRequired;
+
+    int otp = 0;
+    String phoneNo;
+
+    @Override
+    public void onClick(View v) {
+        if (v == txtSignUp) {
+
+            if (Utility.isEmptyString(editFirstName.getText().toString())) {
+                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.empty_first_name), LENGTH_SHORT);
+                return;
+            }
+            if (Utility.isEmptyString(editPhone.getText().toString())) {
+                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.email_phone), LENGTH_SHORT);
+                return;
+            }
+            if (Utility.isEmptyString(editEmail.getText().toString())) {
+                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.email_empty), LENGTH_SHORT);
+                return;
+            }
+            if (Utility.isEmptyString(editPassword.getText().toString())) {
+                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.password_empty), LENGTH_SHORT);
+                return;
+            }
+            if (Utility.isEmptyString(editConfirmPassword.getText().toString())) {
+                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.password_empty), LENGTH_SHORT);
+                return;
+            }
+
+            if (!(editPassword.getText().toString().equals(editConfirmPassword.getText().toString()))) {
+                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.password_mis_match), LENGTH_SHORT);
+                return;
+            }
+
+            showPhoneAuthenticationSheet(this, editPhone.getText().toString());
+
+        }
+        if (v == txtLogin) {
+            startActivity(new Intent(this, Login.class));
+            finish();
+        }
+        if (v == imageBack) {
+            startActivity(new Intent(this, Login.class));
+            finish();
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Utility.changeAppTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
-        getIntentData();  //Retrieve Intent Data
-        initUI(); //Initialize UI
-
-    }
-
-    /**
-     * <p>It is used to get Intent Data</p>
-     */
-    private void getIntentData() {
-        isLoginRequired = getIntent().getBooleanExtra(Constant.IntentKey.LOGIN_REQUIRED, false);
-    }
-
-    /**
-     * <p>It initialize the UI</p>
-     */
-    private void initUI() {
 
 
         txtMenu = (TextView) findViewById(R.id.txt_menu);
@@ -86,15 +116,15 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, C
 
         management = new Management(this);
 
-        editFirstName = (EditText) findViewById(R.id.edit_firstName);
-        editLastName = (EditText) findViewById(R.id.edit_lastName);
-        imageProfile = (ImageView) findViewById(R.id.image_profile);
-        editEmail = (EditText) findViewById(R.id.edit_email);
+        editFirstName = findViewById(R.id.edit_firstName);
+        editLastName = findViewById(R.id.edit_lastName);
+        imageProfile = findViewById(R.id.image_profile);
+        editEmail = findViewById(R.id.edit_email);
         editPhone = findViewById(R.id.edit_phone);
-        editPassword = (EditText) findViewById(R.id.edit_password);
-        editConfirmPassword = (EditText) findViewById(R.id.edit_confirm_password);
-        txtSignUp = (TextView) findViewById(R.id.txt_sign_up);
-        txtLogin = (TextView) findViewById(R.id.txt_login);
+        editPassword = findViewById(R.id.edit_password);
+        editConfirmPassword = findViewById(R.id.edit_confirm_password);
+        txtSignUp = findViewById(R.id.txt_sign_up);
+        txtLogin = findViewById(R.id.txt_login);
 
         txtSignUp.setOnClickListener(this);
         txtLogin.setOnClickListener(this);
@@ -103,148 +133,11 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, C
 
     }
 
-
-    /**
-     * <p>It is used to send request to server for userObject registration</p>
-     */
-    private void sendServerRequest() {
-
-        management.sendRequestToServer(new RequestObject()
-                .setJson(getJson())
-                .setConnectionType(Constant.CONNECTION_TYPE.UI)
-                .setConnection(Constant.CONNECTION.SIGN_UP)
-                .setConnectionCallback(this));
-
-    }
-
-    public String getJson() {
-        String json = "";
-
-        // 1. build jsonObject
-        JSONObject jsonObject = new JSONObject();
-        try {
-
-            jsonObject.accumulate("functionality", "register");
-            jsonObject.accumulate("userType", Constant.LoginType.NATIVE_LOGIN);
-            jsonObject.accumulate("first_name", editFirstName.getText().toString());
-            jsonObject.accumulate("last_name", editLastName.getText().toString());
-            jsonObject.accumulate("phone", editPhone.getText().toString());
-            jsonObject.accumulate("email", editEmail.getText().toString());
-            jsonObject.accumulate("password", editPassword.getText().toString());
-            jsonObject.accumulate("device_id", Constant.Credentials.DEVICE_TOKEN);
-            jsonObject.accumulate("picture", "user.jpg");
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        // 2. convert JSONObject to JSON to String
-        json = jsonObject.toString();
-        Utility.extraData("JSON", json);
-        return json;
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (v == txtSignUp) {
-
-            if (Utility.isEmptyString(editFirstName.getText().toString())) {
-                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.empty_first_name), Toast.LENGTH_SHORT);
-                return;
-            }
-            if (Utility.isEmptyString(editPhone.getText().toString())) {
-                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.email_phone), Toast.LENGTH_SHORT);
-                return;
-            }
-            if (Utility.isEmptyString(editEmail.getText().toString())) {
-                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.email_empty), Toast.LENGTH_SHORT);
-                return;
-            }
-            if (Utility.isEmptyString(editPassword.getText().toString())) {
-                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.password_empty), Toast.LENGTH_SHORT);
-                return;
-            }
-            if (Utility.isEmptyString(editConfirmPassword.getText().toString())) {
-                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.password_empty), Toast.LENGTH_SHORT);
-                return;
-            }
-
-            if (!(editPassword.getText().toString().equals(editConfirmPassword.getText().toString()))) {
-                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.password_mis_match), Toast.LENGTH_SHORT);
-                return;
-            }
-
-            showPhoneAuthenticationSheet(this, editPhone.getText().toString());
-
-        }
-        if (v == txtLogin) {
-
-            if (isLoginRequired)
-                startActivity(new Intent(this, Login.class));
-
-            finish();
-        }
-        if (v == imageBack) {
-            startActivity(new Intent(this, Login.class));
-            finish();
-        }
-
-    }
-
-
-    @Override
-    public void onSuccess(Object data, RequestObject requestObject) {
-
-        if (data != null && requestObject != null) {
-
-            DataObject dataObject = (DataObject) data;
-
-            management.savePreferences(new PrefObject()
-                    .setSaveLogin(true)
-                    .setLogin(true));
-
-            management.savePreferences(new PrefObject()
-                    .setSaveUserCredential(true)
-                    .setLoginType(dataObject.getLogin_type())
-                    .setUserId(dataObject.getUser_id())
-                    .setFirstName(dataObject.getUser_fName())
-                    .setLastName(dataObject.getUser_lName())
-                    .setUserPhone(dataObject.getPhone())
-                    .setUserPassword(dataObject.getUser_password())
-                    .setUserEmail(dataObject.getUser_email())
-                    .setPictureUrl(dataObject.getUser_picture()));
-
-
-           /*
-
-            management.getDataFromDatabase(new DatabaseObject()
-                    .setDbOperation(Constant.DB.INSERT)
-                    .setTypeOperation(Constant.TYPE.REWARD)
-                    .setDataObject(new DataObject()
-                            .setCoin(dataObject.getCoin())
-                            .setUserId(dataObject.getUserId())));*/
-
-
-            finish();
-
-        }
-
-    }
-
-    @Override
-    public void onError(String data, RequestObject requestObject) {
-        Utility.Toaster(this, data, Toast.LENGTH_SHORT);
-    }
-
-    int otp = 0;
-
     public String generateRandomNumber(String phoneNumber) {
         int range = 9;  // to generate a single number with this range, by default its 0..9
         int length = 4; // by default length is 4
 
-        if (otp == 0) {
+        if (otp == 0 || !phoneNo.equalsIgnoreCase(phoneNumber)) {
             SecureRandom secureRandom = new SecureRandom();
             String s = "";
             for (int i = 0; i < length; i++) {
@@ -257,7 +150,9 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, C
             }
 
             otp = Integer.parseInt(s);
+            phoneNo = phoneNumber;
         }
+
         return String.format("http://2factor.in/API/V1/f58a6770-ad34-11ea-9fa5-0200cd936042/SMS/%s/%s/RCHJKS", phoneNumber, otp);
     }
 
@@ -267,27 +162,106 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, C
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
         bottomSheetDialog.setContentView(view);
         bottomSheetDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        bottomSheetDialog.setCanceledOnTouchOutside(false);
         bottomSheetDialog.setCancelable(true);
         bottomSheetDialog.show();
 
+        final GeometricProgressView progress_bar = view.findViewById(R.id.progress_bar);
         final EditText editPhoneNo = view.findViewById(R.id.edit_phone_no);
         LinearLayout layoutDone = view.findViewById(R.id.layout_done);
-        final TextView txtDone = view.findViewById(R.id.txt_done);
-        final GeometricProgressView progressBar = view.findViewById(R.id.progress_bar);
+        ImageView btnClose = view.findViewById(R.id.btnClose);
 
-        editPhoneNo.setText(phoneNo);
+        final String url = generateRandomNumber(phoneNo);
+        Volley.newRequestQueue(this).add(new StringRequest(
+                url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("2factor", url);
+                        Utility.Toaster(SignUp.this, "OTP Sent Successfully", LENGTH_SHORT);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
 
-        String url = generateRandomNumber(phoneNo);
+                    }
+                })
+        );
 
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                bottomSheetDialog.dismiss();
+            }
+        });
         layoutDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (editPhoneNo.getText().toString().equals(otp)) {
-                    sendServerRequest();
-                }
+                final String verify = editPhoneNo.getText().toString();
+                if (verify.equalsIgnoreCase(String.valueOf(otp))) {
+                    progress_bar.setVisibility(View.VISIBLE);
+                    try {
 
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.accumulate("functionality", "register");
+                        jsonObject.accumulate("userType", Constant.LoginType.NATIVE_LOGIN);
+                        jsonObject.accumulate("first_name", editFirstName.getText().toString());
+                        jsonObject.accumulate("last_name", "");
+                        jsonObject.accumulate("phone", editPhone.getText().toString());
+                        jsonObject.accumulate("email", editEmail.getText().toString());
+                        jsonObject.accumulate("password", editPassword.getText().toString());
+                        jsonObject.accumulate("device_id", Constant.Credentials.DEVICE_TOKEN);
+                        jsonObject.accumulate("picture", "user.jpg");
+
+                        management.sendRequestToServer(new RequestObject()
+                                .setJson(jsonObject.toString())
+                                .setConnectionType(Constant.CONNECTION_TYPE.UI)
+                                .setConnection(Constant.CONNECTION.SIGN_UP)
+                                .setConnectionCallback(new ConnectionCallback() {
+                                    @Override
+                                    public void onSuccess(Object data, RequestObject requestObject) {
+                                        if (data != null && requestObject != null) {
+
+                                            DataObject dataObject = (DataObject) data;
+
+                                            management.savePreferences(new PrefObject()
+                                                    .setSaveLogin(true)
+                                                    .setLogin(true));
+
+                                            management.savePreferences(new PrefObject()
+                                                    .setSaveUserCredential(true)
+                                                    .setLoginType(dataObject.getLogin_type())
+                                                    .setUserId(dataObject.getUser_id())
+                                                    .setFirstName(dataObject.getUser_fName())
+                                                    .setLastName(dataObject.getUser_lName())
+                                                    .setUserPhone(dataObject.getPhone())
+                                                    .setUserPassword(dataObject.getUser_password())
+                                                    .setUserEmail(dataObject.getUser_email())
+                                                    .setPictureUrl(dataObject.getUser_picture()));
+
+
+                                            startActivity(new Intent(getApplicationContext(), Base.class));
+                                            bottomSheetDialog.dismiss();
+                                            finish();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onError(String data, RequestObject requestObject) {
+                                        Utility.Toaster(SignUp.this, data, LENGTH_SHORT);
+                                        progress_bar.setVisibility(View.GONE);
+                                        bottomSheetDialog.dismiss();
+                                    }
+                                }));
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
                 //
                 else {
                     editPhoneNo.setError("Error");

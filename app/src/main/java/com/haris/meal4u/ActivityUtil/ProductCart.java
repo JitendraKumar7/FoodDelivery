@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.haris.meal4u.AdapterUtil.CartAdapter;
 import com.haris.meal4u.ConstantUtil.Constant;
 import com.haris.meal4u.InterfaceUtil.CartCallback;
@@ -35,10 +36,6 @@ import java.util.List;
 
 public class ProductCart extends AppCompatActivity implements View.OnClickListener, CartCallback, ConnectionCallback {
     private ImageView imageBack;
-    private TextView txtMenu;
-    private Management management;
-    private RecyclerView recyclerViewCart;
-    private GridLayoutManager gridLayoutManager;
     private CartAdapter cartAdapter;
     private List<CartObjectModal> objectArrayList = new ArrayList<>();
     private DataObject dataObject;
@@ -50,7 +47,6 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
     private ImageView imageDone;
     private ImageView imageMore;
     private int deliveryCharges;
-    private int totalCharges = 0;
     private TextView txtApplyCoupon;
     private TextView txtCouponTagline;
     private boolean isCouponRedeem = false;
@@ -67,9 +63,11 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_cart);
 
-        dataObject = getIntent().getParcelableExtra(Constant.IntentKey.RESTAURANT_DETAIL);
 
-        management = new Management(this);
+        dataObject = CartObjectModal.getSingleRestaurant(this);
+
+
+        Management management = new Management(this);
 
         objectArrayList = CartObjectModal.getList();
 
@@ -84,7 +82,7 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
         imageDone = findViewById(R.id.image_done);
         imageMore = findViewById(R.id.image_more);
 
-        txtMenu = findViewById(R.id.txt_menu);
+        TextView txtMenu = findViewById(R.id.txt_menu);
         txtMenu.setText(Utility.getStringFromRes(this, R.string.cart));
 
         layoutCoupon = findViewById(R.id.layout_coupon);
@@ -98,14 +96,14 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
         progressBar = findViewById(R.id.progress_bar);
 
         if (objectArrayList.size() > 0) {
-            txtDeliveryCharge.setText(dataObject.getObject_currency_symbol() + " " + dataObject.getObject_delivery_charges());
+            txtDeliveryCharge.setText(String.format("%s %s", dataObject.getObject_currency_symbol(), dataObject.getObject_delivery_charges()));
             deliveryCharges = Integer.parseInt(dataObject.getObject_delivery_charges());
         } else {
             txtDeliveryCharge.setText("0");
         }
 
-        gridLayoutManager = new GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false);
-        recyclerViewCart = findViewById(R.id.recycler_view_cart);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false);
+        RecyclerView recyclerViewCart = findViewById(R.id.recycler_view_cart);
         recyclerViewCart.setLayoutManager(gridLayoutManager);
 
         cartAdapter = new CartAdapter(this, objectArrayList, this) {
@@ -142,7 +140,7 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
      */
     private void updatePrice() {
 
-        totalCharges = 0;
+        int totalCharges = 0;
 
         for (int i = 0; i < objectArrayList.size(); i++) {
             CartObjectModal cartObject = objectArrayList.get(i);
@@ -220,7 +218,7 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
             }
 
 
-            Intent intent = new Intent(this, Checkout.class);
+            Intent intent = new Intent(this, CheckoutActivity.class);
             intent.putExtra(Constant.IntentKey.RESTAURANT_DETAIL, dataObject
                     .setPost_price(
                             Utility.extractNumericDataFromString(txtTotal.getText().toString())
@@ -306,14 +304,18 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
             DataObject couponDetail = data.getParcelableExtra(Constant.IntentKey.COUPON_DETAIL);
             couponId = couponDetail.getCoupon_id();
             discountOffer = couponDetail.getCoupon_reward();
+
             totalBill = Integer.parseInt(Utility.extractNumericDataFromString(txtTotal.getText().toString()));
             discount = Double.parseDouble(couponDetail.getCoupon_reward()) / 100.0;
             discountBill = (int) (totalBill * discount);
-            txtTotal.setText(dataObject.getObject_currency_symbol() + " " + (totalBill - discountBill));
+            txtTotal.setText(String.format("%s %s", dataObject.getObject_currency_symbol(), totalBill - discountBill));
 
             txtApplyCoupon.setText(Utility.getStringFromRes(this, R.string.redeem_success));
             txtCouponTagline.setText(String.format(Utility.getStringFromRes(this, R.string.success_coupon_tagline), couponDetail.getCoupon_reward() + "%"));
             isCouponRedeem = true;
+
+
+            Utility.Logger("TAG", "COUPON DETAIL " + new Gson().toJson(couponDetail));
 
         }
 

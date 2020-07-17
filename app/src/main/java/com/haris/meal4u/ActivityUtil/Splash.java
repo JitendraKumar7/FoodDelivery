@@ -8,7 +8,6 @@ import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -39,17 +38,12 @@ import com.haris.meal4u.ObjectUtil.RequestObject;
 import com.haris.meal4u.R;
 import com.haris.meal4u.Utility.Utility;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import static io.nlopez.smartlocation.location.providers.LocationGooglePlayServicesProvider.REQUEST_CHECK_SETTINGS;
 
 public class Splash extends AppCompatActivity implements ConnectionCallback, InternetCallback {
     private Management management;
     private PrefObject prefObject;
-    private Handler handler;
-    private Runnable runnable;
-    private static final long SPLASH_DISPLAY_LENGTH = 1500;
     private LinearLayout layoutConfigure;
     private String TAG = Splash.class.getName();
 
@@ -63,23 +57,23 @@ public class Splash extends AppCompatActivity implements ConnectionCallback, Int
         setContentView(R.layout.activity_splash);
 
 
-        initUI(); //Initialize UI
-
-    }
-
-
-    /**
-     * <p>It is used to initialize the UI</p>
-     */
-    private void initUI() {
-
-        Utility.Logger(TAG, "Working");
         layoutConfigure = findViewById(R.id.layout_configure);
+        Utility.Logger(TAG, "Working");
         management = new Management(this);
         prefObject = management.getPreferences(new PrefObject()
                 .setRetrieveFirstLaunch(true)
                 .setRetrieveLogin(true)
                 .setRetrieveUserCredential(true));
+
+        prefObject = management.getPreferences(new PrefObject()
+                .setRetrieveLogin(true)
+                .setRetrieveUserCredential(true));
+
+        if (!prefObject.isLogin()) {
+            startActivity(new Intent(getApplicationContext(), OnBoarding.class));
+            finish();
+            return;
+        }
 
         //Check Permission for Marshmallow version
 
@@ -103,16 +97,11 @@ public class Splash extends AppCompatActivity implements ConnectionCallback, Int
                 }, Constant.RequestCode.PERMISSION_REQUEST_CODE);
 
             } else {
-
                 checkPreference();
-
             }
 
         } else {
-
-
             checkPreference();
-
         }
 
 
@@ -134,15 +123,11 @@ public class Splash extends AppCompatActivity implements ConnectionCallback, Int
                 startActivity(new Intent(getApplicationContext(), Base.class));
                 finish();
             } else {
-                startActivity(new Intent(getApplicationContext(), Login.class));
+                startActivity(new Intent(getApplicationContext(), OnBoarding.class));
                 finish();
             }
         } else
             triggerLocationSettingAlert();
-
-        //Retrieve Shared Preference regarding First Launch
-
-        String userId = prefObject.isLogin() ? prefObject.getUserId() : "null";
 
 
     }
@@ -193,36 +178,6 @@ public class Splash extends AppCompatActivity implements ConnectionCallback, Int
 
 
     }
-
-    /**
-     * <p>It is used to convert Object into Json</p>
-     *
-     * @param
-     * @return
-     */
-    private String getJson(String latitude, String longitude) {
-        String json = null;
-
-        // 1. build jsonObject
-        JSONObject jsonObject = new JSONObject();
-        try {
-
-            jsonObject.accumulate("functionality", "app_offers");
-            jsonObject.accumulate("latitude", latitude);
-            jsonObject.accumulate("longitude", longitude);
-            jsonObject.accumulate("radius", Constant.AppConfiguration.DEFAULT_RADIUS);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        // 2. convert JSONObject to JSON to String
-        json = jsonObject.toString();
-        Utility.Logger("JSON", json);
-
-        return json;
-    }
-
 
     @Override
     public void onSuccess(Object data, RequestObject requestObject) {

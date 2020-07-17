@@ -49,7 +49,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Co
     private TextView txtSignUp;
     private Management management;
     private PrefObject userData;
-    private String TAG = Login.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

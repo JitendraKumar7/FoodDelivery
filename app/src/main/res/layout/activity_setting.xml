@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentUtil.Setting">
+    tools:context=".FragmentUtil.SettingFragment">
 
 
     <LinearLayout
@@ -37,7 +37,7 @@
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="10dp"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:cardBackgroundColor="?attr/colorCard"
                     app:cardCornerRadius="4dp"
                     app:cardElevation="4dp"
@@ -190,102 +190,7 @@
 
                         </RelativeLayout>
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="1px"
-                            android:background="?attr/colorHeading" />
 
-                        <RelativeLayout
-                            android:id="@+id/layout_fvt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:minHeight="50dp"
-                            android:clickable="true"
-                            android:paddingEnd="15dp"
-                            android:paddingStart="15dp">
-
-                            <ImageView
-                                android:id="@+id/image_fvt"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                android:padding="2dp"
-                                android:src="@drawable/ic_shopping_cart_outline"
-                                android:tint="?attr/colorHeading" />
-
-                            <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="18dp"
-                                android:layout_toEndOf="@+id/image_fvt"
-                                android:text="@string/my_cart"
-                                android:textColor="?attr/colorHeading"
-                                android:textSize="14sp" />
-
-
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:padding="3dp"
-                                android:rotation="0"
-                                android:rotationY="@integer/locale_mirror_flip"
-                                android:src="@drawable/ic_next"
-                                android:tint="?attr/colorHeading" />
-
-                        </RelativeLayout>
-
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="1px"
-                            android:background="?attr/colorHeading" />
-
-                        <RelativeLayout
-                            android:id="@+id/layout_payment"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:minHeight="50dp"
-                            android:clickable="true"
-                            android:paddingEnd="15dp"
-                            android:paddingStart="15dp">
-
-                            <ImageView
-                                android:id="@+id/image_payment"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                android:padding="2dp"
-                                android:src="@drawable/ic_credit_card_outline"
-                                android:tint="?attr/colorHeading" />
-
-                            <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="18dp"
-                                android:layout_toEndOf="@+id/image_payment"
-                                android:text="@string/my_payment_cards"
-                                android:textColor="?attr/colorHeading"
-                                android:textSize="14sp" />
-
-
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:padding="3dp"
-                                android:rotation="0"
-                                android:rotationY="@integer/locale_mirror_flip"
-                                android:src="@drawable/ic_next"
-                                android:tint="?attr/colorHeading" />
-
-                        </RelativeLayout>
 
                         <TextView
                             android:layout_width="match_parent"

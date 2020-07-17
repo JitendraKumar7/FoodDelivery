@@ -20,29 +20,29 @@
 
 
         <LinearLayout
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
 
-          <!--
+            <!--
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/gradient_bottom"></LinearLayout>
--->
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:background="@drawable/gradient_bottom"></LinearLayout>
+  -->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center_vertical|end"
                 android:orientation="vertical"
-                android:paddingEnd="20dp"
-                android:paddingTop="0dp">
+                android:paddingTop="0dp"
+                android:paddingEnd="20dp">
 
 
                 <ImageView
@@ -50,8 +50,8 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:padding="4dp"
-                    android:tint="@color/colorPrimaryDark"
-                    android:src="@drawable/ic_close" />
+                    android:src="@drawable/ic_close"
+                    android:tint="@color/colorPrimaryDark" />
 
 
             </LinearLayout>
@@ -62,11 +62,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
+                android:layout_weight="1"
                 android:clipToPadding="false"
                 android:minHeight="250dp"
-                android:layout_weight="1"
-                android:paddingEnd="8dp"
-                android:paddingStart="8dp"></android.support.v4.view.ViewPager>
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp" />
 
             <com.haris.meal4u.CustomUtil.ExtensiblePageIndicator
                 android:id="@+id/flexibleIndicator"
@@ -74,8 +74,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/view_pager_boarding"
                 android:layout_gravity="bottom"
-                android:layout_marginBottom="20dp"
                 android:layout_marginTop="0dp"
+                android:layout_marginBottom="20dp"
                 android:visibility="visible"
                 app:indicatorActiveColor="@color/colorPrimaryDark"
                 app:indicatorInactiveColor="@color/pager_unselected"
@@ -96,8 +96,8 @@
                 android:id="@+id/txt_login"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginEnd="45dp"
                 android:layout_marginStart="45dp"
+                android:layout_marginEnd="45dp"
                 android:background="@drawable/bg_login"
                 android:gravity="center"
                 android:text="@string/login"
@@ -106,38 +106,13 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingEnd="45dp"
-                android:paddingStart="45dp"
-                android:visibility="gone">
-
-
-                <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
-                    android:id="@+id/txt_sign_up"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_register"
-                    android:gravity="center"
-                    android:minHeight="40dp"
-                    android:text="@string/sign_up"
-                    android:textColor="?attr/colorButton"
-                    android:textSize="14sp" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="15dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingEnd="40dp"
-                android:paddingStart="40dp">
+                android:paddingStart="40dp"
+                android:paddingEnd="40dp">
 
 
                 <TextView
@@ -148,8 +123,8 @@
                 <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:text="@string/or"
                     android:textColor="?attr/colorHeading"
                     android:textSize="12sp" />
@@ -161,13 +136,29 @@
 
             </LinearLayout>
 
+
+            <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+                android:id="@+id/txt_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="45dp"
+                android:layout_marginEnd="45dp"
+                android:background="@drawable/bg_login"
+                android:gravity="center"
+                android:minHeight="40dp"
+                android:text="@string/sign_up"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
+                android:paddingStart="45dp"
                 android:paddingEnd="45dp"
-                android:paddingStart="45dp">
+                android:visibility="invisible">
 
 
                 <LinearLayout
@@ -239,8 +230,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
-        android:visibility="gone"
-        />
+        android:visibility="gone" />
 
 
 </RelativeLayout>

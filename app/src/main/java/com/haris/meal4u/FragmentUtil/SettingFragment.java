@@ -22,22 +22,19 @@ import com.haris.meal4u.ActivityUtil.ListOfOrder;
 import com.haris.meal4u.ActivityUtil.ListOfPaymentMethod;
 import com.haris.meal4u.ActivityUtil.OnBoarding;
 import com.haris.meal4u.ActivityUtil.ProductCart;
-import com.haris.meal4u.ActivityUtil.RedeemCoupon;
 import com.haris.meal4u.ActivityUtil.UserProfile;
 import com.haris.meal4u.ConstantUtil.Constant;
 import com.haris.meal4u.DatabaseUtil.DatabaseObject;
 
 import com.haris.meal4u.ManagementUtil.Management;
-import com.haris.meal4u.ObjectUtil.ArtistHeaderObject;
 import com.haris.meal4u.ObjectUtil.DataObject;
 import com.haris.meal4u.ObjectUtil.PrefObject;
 import com.haris.meal4u.R;
 import com.haris.meal4u.Utility.Utility;
 
-public class Setting extends Fragment implements View.OnClickListener {
-    private String TAG = Setting.class.getName();
+public class SettingFragment extends Fragment implements View.OnClickListener {
+    private String TAG = SettingFragment.class.getName();
     private TextView txtMenu;
-    private RelativeLayout layoutFvt;
     private RelativeLayout layoutDownload;
     private RelativeLayout layoutRate;
     private RelativeLayout layoutShare;
@@ -46,7 +43,6 @@ public class Setting extends Fragment implements View.OnClickListener {
     private RelativeLayout layoutProfile;
     private RelativeLayout layoutLogout;
     private RelativeLayout layoutFeed;
-    private RelativeLayout layoutPayment;
     private CardView cardProfile;
     private Management management;
     private PrefObject prefObject;
@@ -84,8 +80,6 @@ public class Setting extends Fragment implements View.OnClickListener {
 
         layoutProfile = view.findViewById(R.id.layout_profile);
         layoutLogout = view.findViewById(R.id.layout_logout);
-        layoutFvt = view.findViewById(R.id.layout_fvt);
-        layoutPayment = view.findViewById(R.id.layout_payment);
         layoutDownload = view.findViewById(R.id.layout_download);
         layoutPlaylist = view.findViewById(R.id.layout_playlist);
         layoutRate = view.findViewById(R.id.layout_rate);
@@ -114,8 +108,6 @@ public class Setting extends Fragment implements View.OnClickListener {
 
         layoutLogout.setOnClickListener(this);
         layoutProfile.setOnClickListener(this);
-        layoutFvt.setOnClickListener(this);
-        layoutPayment.setOnClickListener(this);
         layoutDownload.setOnClickListener(this);
         layoutPlaylist.setOnClickListener(this);
         layoutRate.setOnClickListener(this);
@@ -130,7 +122,7 @@ public class Setting extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (v==layoutProfile){
+        if (v == layoutProfile) {
 
             if (prefObject == null)
                 return;
@@ -147,23 +139,6 @@ public class Setting extends Fragment implements View.OnClickListener {
             }
 
         }
-        if (v == layoutFvt) {
-
-            if (prefObject == null)
-                return;
-
-            if (prefObject.isLogin()) {
-
-                startActivity(new Intent(getActivity(), ProductCart.class));
-
-            } else {
-
-                startActivity(new Intent(getActivity(), OnBoarding.class));
-
-            }
-
-
-        }
         if (v == layoutShare) {
             Utility.shareApp(getActivity());
         }
@@ -172,20 +147,6 @@ public class Setting extends Fragment implements View.OnClickListener {
         }
         if (v == layoutPrivacy) {
             startActivity(new Intent(getActivity(), AboutUs.class));
-        }
-        if (v == layoutPayment) {
-
-            if (prefObject.isLogin()) {
-
-                startActivity(new Intent(getActivity(), ListOfPaymentMethod.class));
-
-            } else {
-
-                startActivity(new Intent(getActivity(), OnBoarding.class));
-
-            }
-
-
         }
         if (v == layoutPlaylist) {
 
@@ -262,22 +223,15 @@ public class Setting extends Fragment implements View.OnClickListener {
 
         if (prefObject.isLogin()) {
 
-            layoutLogout.setVisibility(View.VISIBLE);
+            layoutLogout.setVisibility(View.GONE);
             cardProfile.setVisibility(View.VISIBLE);
             txtDividerLogout.setVisibility(View.VISIBLE);
 
-            txtName.setText(prefObject.getFirstName() + " " + prefObject.getLastName());
+            txtName.setText(prefObject.getFirstName());
             txtEmail.setText(prefObject.getUserEmail());
 
             if (prefObject.getLoginType().equals(Constant.LoginType.NATIVE_LOGIN)) {
                 pictureUrl = Constant.ServerInformation.PICTURE_URL + prefObject.getPictureUrl();
-
-            } else if (prefObject.getLoginType().equals(Constant.LoginType.GOOGLE_LOGIN)) {
-                pictureUrl = prefObject.getPictureUrl();
-
-            } else {
-                pictureUrl = prefObject.getPictureUrl() + Constant.ServerInformation.FACEBOOK_HIGH_PIXEL_URL;
-
             }
 
             Utility.Logger(TAG, "Picture = " + pictureUrl);

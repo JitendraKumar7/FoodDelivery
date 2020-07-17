@@ -8,6 +8,7 @@ import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatRatingBar;
 import android.support.v7.widget.CardView;
+import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.haris.meal4u.AdapterUtil.MainStepperAdapter;
 import com.haris.meal4u.AdapterUtil.OrderDetailAdapter;
 import com.haris.meal4u.ConstantUtil.Constant;
@@ -69,24 +71,9 @@ public class TrackOrder extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track_order);
 
-        getIntentData(); // Retrieve Intent Data
-        initUI();  // Initialize UI
 
-    }
-
-
-    /**
-     * <p>It is used to retrieve Intent Data</p>
-     */
-    private void getIntentData() {
         dataObject = getIntent().getParcelableExtra(Constant.IntentKey.ORDER_DETAIL);
-    }
 
-
-    /**
-     * <p>It is used to init UI</p>
-     */
-    private void initUI() {
 
         txtMenu = findViewById(R.id.txt_menu);
         txtMenu.setText(Utility.getStringFromRes(this, R.string.order_status));
@@ -247,14 +234,13 @@ public class TrackOrder extends AppCompatActivity implements View.OnClickListene
     }
 
 
-
     /**
      * <p>It is used to convert Object into Json</p>
      *
      * @param
      * @return
      */
-    private String getRiderRatingJson(String order_id,String rating) {
+    private String getRiderRatingJson(String order_id, String rating) {
         String json = null;
 
         // 1. build jsonObject
@@ -396,7 +382,7 @@ public class TrackOrder extends AppCompatActivity implements View.OnClickListene
 
 
                 management.sendRequestToServer(new RequestObject()
-                        .setJson(getRiderRatingJson(dataObject.getOrder_id(),String.valueOf(smileRating.getRating())))
+                        .setJson(getRiderRatingJson(dataObject.getOrder_id(), String.valueOf(smileRating.getRating())))
                         .setConnectionType(Constant.CONNECTION_TYPE.BACKGROUND)
                         .setConnection(Constant.CONNECTION.ADD_RIDER_RATING)
                         .setConnectionCallback(null));
@@ -429,12 +415,12 @@ public class TrackOrder extends AppCompatActivity implements View.OnClickListene
         if (v == cardRiderRating) {
 
             if (!(dataObject.getOrder_status()
-                    .equalsIgnoreCase(Utility.getStringFromRes(getApplicationContext(), R.string.project_status_completed)))){
+                    .equalsIgnoreCase(Utility.getStringFromRes(getApplicationContext(), R.string.project_status_completed)))) {
                 Utility.Toaster(this, Utility.getStringFromRes(this, R.string.currently_in_preparationg), Toast.LENGTH_SHORT);
                 return;
             }
 
-            if (dataObject.getRider_review_status().equalsIgnoreCase("0") ) {
+            if (dataObject.getRider_review_status().equalsIgnoreCase("0")) {
                 Utility.Toaster(this, Utility.getStringFromRes(this, R.string.you_already_rate_order), Toast.LENGTH_SHORT);
                 return;
             }
@@ -460,47 +446,23 @@ public class TrackOrder extends AppCompatActivity implements View.OnClickListene
     }
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == Constant.RequestCode.REQUEST_CODE_PICTURE
-                && resultCode == RESULT_OK) {
-
-            GlobalDataObject globalDataObject = Constant.globalDataObject;
-          /*  if (globalDataObject == null) {
-
-                imageProfile.setImageResource(R.drawable.property_picture);
-                return;
-            }
-
-            if (globalDataObject.getObjectArrayList().size() > 0) {
-                Glide.with(this)
-                        .load(Base64.decode(((PictureObject) globalDataObject.getObjectArrayList().get(0)).getPicture()
-                                , Base64.DEFAULT))
-                        .into(imageProfile);
-            }*/
-
-        }
-    }
-
 
     private JSONArray convertPicturesIntoJsonArray() {
 
         JSONArray jsonArray = new JSONArray();
+        GlobalDataObject globalDataObject = Constant.globalDataObject;
 
-        for (int i = 0; i < Constant.globalDataObject.getObjectArrayList().size(); i++) {
+        if (globalDataObject != null) {
+            for (Object pictures : globalDataObject.getObjectArrayList()) {
 
-            PictureObject pictures = (PictureObject) Constant.globalDataObject.getObjectArrayList().get(i);
-            JSONObject jsonObject = new JSONObject();
-            try {
-                jsonObject.put("picture", pictures.getPicture());
-            } catch (JSONException e) {
-                e.printStackTrace();
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("picture", ((PictureObject) pictures).getPicture());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                jsonArray.put(jsonObject);
             }
-
-            jsonArray.put(jsonObject);
-
         }
 
         return jsonArray;

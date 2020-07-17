@@ -16,7 +16,7 @@ import com.haris.meal4u.ConstantUtil.Constant;
 import com.haris.meal4u.CustomUtil.CurvedBottomNavigationView;
 import com.haris.meal4u.FragmentUtil.DashboardFragment;
 import com.haris.meal4u.FragmentUtil.Favourites;
-import com.haris.meal4u.FragmentUtil.Setting;
+import com.haris.meal4u.FragmentUtil.SettingFragment;
 import com.haris.meal4u.InterfaceUtil.ConnectionCallback;
 import com.haris.meal4u.ManagementUtil.Management;
 import com.haris.meal4u.ObjectUtil.DataObject;
@@ -24,7 +24,6 @@ import com.haris.meal4u.ObjectUtil.PrefObject;
 import com.haris.meal4u.ObjectUtil.RequestObject;
 import com.haris.meal4u.R;
 import com.haris.meal4u.Utility.Utility;
-import com.ixidev.gdpr.GDPRChecker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -180,7 +179,7 @@ public class Base extends AppCompatActivity implements View.OnClickListener, Con
         }
         //
         else if (menuItem.getItemId() == R.id.action_setting) {
-            openFragment(new Setting());
+            openFragment(new SettingFragment());
             return true;
         }
 

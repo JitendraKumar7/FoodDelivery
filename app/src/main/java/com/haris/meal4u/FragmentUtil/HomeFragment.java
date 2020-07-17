@@ -155,7 +155,7 @@ public class HomeFragment extends Fragment implements ConnectionCallback, HomeCa
                             DashboardFragment fragment = new DashboardFragment();
                             fragment.setArguments(bundle);
 
-                            ((Base) getActivity()).openFragment(fragment);
+                            //((Base) getActivity()).openFragment(fragment);
 
                             //onSelect(-1, 0);
                         }

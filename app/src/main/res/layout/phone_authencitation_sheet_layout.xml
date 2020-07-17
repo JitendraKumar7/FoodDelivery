@@ -16,8 +16,8 @@
         <com.haris.meal4u.TextviewUtil.LabelTextview
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
             android:layout_marginBottom="30dp"
             android:text="@string/phone_authentication"
             android:textColor="?attr/colorLabel"
@@ -28,9 +28,12 @@
             android:id="@+id/edit_phone_no"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/bg_edit_text"
             android:gravity="center_vertical"
             android:hint="OTP"
+            android:imeOptions="actionDone"
             android:inputType="textPhonetic"
             android:paddingStart="10dp"
             android:textColor="?attr/colorTagline"
@@ -44,7 +47,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="40dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="60dp"
             android:background="@drawable/bg_call_to_action"
             android:gravity="center"
             android:orientation="horizontal">
@@ -74,5 +77,14 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/btnClose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:padding="12dp"
+        android:src="@drawable/ic_close"
+        android:tint="@color/colorPrimary" />
 
 </RelativeLayout>

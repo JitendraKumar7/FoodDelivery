@@ -104,6 +104,7 @@
                     android:paddingEnd="5dp"
                     android:textColor="?attr/colorButton"
                     android:textSize="14sp"
+                    android:visibility="gone"
                     android:textColorHint="?attr/colorButton"
 
                     />
