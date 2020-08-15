@@ -176,9 +176,6 @@ public class Utility {
     }
 
 
-
-
-
     /**
      * <p>It is used to open playstore app link for rating</p>
      *
@@ -504,13 +501,13 @@ public class Utility {
                 e.printStackTrace();
             }
 
-        }else if (dateTimeObject.getDatetimeType() == Constant.DATETIME.DATE_DD_MM_YYYY_hh_mm_ss) {
+        } else if (dateTimeObject.getDatetimeType() == Constant.DATETIME.DATE_DD_MM_YYYY_hh_mm_ss) {
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constant.TimeDateFormat.timeDateFormat12);
 
             if (dateTimeObject.isCurrentDate()) {
-               dateObject = new Date();
-           }else if (dateTimeObject.isCustomDateObject()){
+                dateObject = new Date();
+            } else if (dateTimeObject.isCustomDateObject()) {
                 dateObject = dateTimeObject.getDateObject();
             }
 
@@ -772,8 +769,6 @@ public class Utility {
     }
 
 
-
-
     /**
      * <p>It is used to change app theme </p>
      *
@@ -886,7 +881,6 @@ public class Utility {
         }
         return splited;
     }
-
 
 
     public static String getColourForBackground(Context context) {
@@ -1015,7 +1009,7 @@ public class Utility {
             e.printStackTrace();
         }
 
-        Logger("GeoCodeObject",addresses.toString());
+        Logger("GeoCodeObject", addresses.toString());
 
         geocodeObject = new GeocodeObject()
                 .setAddress(addresses.get(0).getAddressLine(0))  // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
@@ -1028,8 +1022,6 @@ public class Utility {
         return geocodeObject;
 
     }
-
-
 
 
     /**
@@ -1059,6 +1051,14 @@ public class Utility {
         return false;
     }
 
+    public static boolean emailValid(String email) {
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
 
 
 }

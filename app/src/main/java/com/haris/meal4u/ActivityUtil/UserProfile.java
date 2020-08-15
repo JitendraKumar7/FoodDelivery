@@ -228,7 +228,6 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
     private void onSelectGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
         startActivityForResult(intent, Constant.RequestCode.REQUEST_CODE_GALLERY);//one can be replaced with any action code
     }
 

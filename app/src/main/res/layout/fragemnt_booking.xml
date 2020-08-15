@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorBackgroundLight"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/menu_layout"
+        android:layout_width="match_parent"
+        android:layout_height="51dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="For any party / event booking, please call on this number :"
+            android:textColor="?attr/colorHeading"
+            android:textSize="18sp"
+            android:visibility="visible" />
+
+        <com.haris.meal4u.TextviewUtil.UbuntuBoldTextview
+            android:id="@+id/mobile_no_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/image_profile"
+            android:gravity="center"
+            android:text="@string/mobile_number"
+            android:textColor="@color/colorLinkNight"
+            android:textSize="20sp"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

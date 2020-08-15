@@ -5,46 +5,57 @@
     android:orientation="vertical"
     android:padding="3dp">
 
-    <LinearLayout
-        android:id="@+id/layout_product"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingStart="20dp"
-        android:paddingEnd="35dp">
-
-        <com.haris.meal4u.TextviewUtil.TaglineTextview
-            android:id="@+id/txt_product"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_weight="1"
-            android:text="@string/app_name"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
-            android:textSize="15dp" />
-
-        <com.haris.meal4u.TextviewUtil.TaglineTextview
-            android:id="@+id/txt_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginStart="8dp"
-            android:text="@string/app_name"
-            android:textColor="@color/colorPrimary"
-            android:textSize="15dp" />
-
-    </LinearLayout>
-
-    <com.haris.meal4u.TextviewUtil.TaglineTextview
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:gravity="center"
-        android:text="Active Cash Back (Apply Now)"
-        android:textColor="@color/colorRequiredDay"
-        android:textSize="15dp" />
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/layout_product"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="35dp">
+
+            <com.haris.meal4u.TextviewUtil.TaglineTextview
+                android:id="@+id/txt_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/app_name"
+                android:padding="3dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15dp" />
+
+            <com.haris.meal4u.TextviewUtil.TaglineTextview
+                android:id="@+id/txt_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:padding="3dp"
+                android:text="@string/app_name"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <com.haris.meal4u.TextviewUtil.TaglineTextview
+            android:id="@+id/apply_now_tv"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_call_to_action"
+            android:text="Apply Now"
+            android:textColor="@color/white"
+            android:textSize="10dp" />
+
+    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"

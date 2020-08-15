@@ -42,16 +42,18 @@ public class ListOfOrderFragment extends Fragment implements ConnectionCallback,
 
     @Override
     public void onSuccess(Object data, RequestObject requestObject) {
-        if (requestObject.getConnection() == Constant.CONNECTION.ORDER_HISTORY) {
+        if (getActivity() != null && isAdded()) {
+            if (requestObject.getConnection() == Constant.CONNECTION.ORDER_HISTORY) {
 
-            objectArrayList.clear();
-            DataObject dataObject = (DataObject) data;
+                objectArrayList.clear();
+                DataObject dataObject = (DataObject) data;
 
-            for (int i = 0; i < dataObject.getObjectArrayList().size(); i++) {
-                objectArrayList.add(dataObject.getObjectArrayList().get(i));
+                for (int i = 0; i < dataObject.getObjectArrayList().size(); i++) {
+                    objectArrayList.add(dataObject.getObjectArrayList().get(i));
+                }
+
+                orderAdapter.notifyDataSetChanged();
             }
-
-            orderAdapter.notifyDataSetChanged();
         }
     }
 

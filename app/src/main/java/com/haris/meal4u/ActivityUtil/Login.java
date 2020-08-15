@@ -1,5 +1,6 @@
 package com.haris.meal4u.ActivityUtil;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,6 +10,10 @@ import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,6 +38,7 @@ import com.haris.meal4u.ObjectUtil.TypingObject;
 import com.haris.meal4u.ObjectUtil.UserChattingObject;
 import com.haris.meal4u.ObjectUtil.UserObject;
 import com.haris.meal4u.R;
+import com.haris.meal4u.TextviewUtil.UbuntuMediumTextview;
 import com.haris.meal4u.Utility.Utility;
 
 import org.json.JSONException;
@@ -130,14 +136,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Co
     @Override
     public void onClick(View v) {
         if (v == txtLogin) {
-
-            if (Utility.isEmptyString(editEmail.getText().toString())) {
-                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.email_empty), Toast.LENGTH_LONG);
+            if (Utility.isEmptyString(editEmail.getText().toString()) || editEmail.getText().toString().length() != 10) {
+                showError("Please enter your valid Mobile Number", editEmail);
+//                Utility.Toaster(this, "Please enter your valid Mobile Number", Toast.LENGTH_LONG);
                 return;
             }
-
             if (Utility.isEmptyString(editPassword.getText().toString())) {
-                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.password_empty), Toast.LENGTH_LONG);
+                showError("Please enter your password", editPassword);
+//                Utility.Toaster(this, "Please enter your password", Toast.LENGTH_LONG);
                 return;
             }
 
@@ -153,6 +159,34 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Co
         }
         if (v == imageBack) {
             finish();
+        }
+    }
+
+    private void showError(String error_st, final EditText editText) {
+        final Dialog error_dialog = new Dialog(this);
+        error_dialog.setCanceledOnTouchOutside(false);
+        error_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        error_dialog.setContentView(R.layout.error_dialog);
+        int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
+        int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.90);
+        error_dialog.getWindow().setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
+        error_dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        UbuntuMediumTextview error_text = error_dialog.findViewById(R.id.error_text);
+        UbuntuMediumTextview ok_btn = error_dialog.findViewById(R.id.ok_btn);
+        error_text.setText(error_st);
+        error_dialog.show();
+        ok_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                error_dialog.dismiss();
+                Login.this.requestFocus(editText);
+            }
+        });
+    }
+
+    private void requestFocus(View view) {
+        if (view.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
     }
 

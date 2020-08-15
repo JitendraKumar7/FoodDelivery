@@ -1,5 +1,6 @@
 package com.haris.meal4u.ActivityUtil;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,6 +10,10 @@ import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -26,6 +31,7 @@ import com.haris.meal4u.ObjectUtil.DataObject;
 import com.haris.meal4u.ObjectUtil.PrefObject;
 import com.haris.meal4u.ObjectUtil.RequestObject;
 import com.haris.meal4u.R;
+import com.haris.meal4u.TextviewUtil.UbuntuMediumTextview;
 import com.haris.meal4u.Utility.Utility;
 
 import net.bohush.geometricprogressview.GeometricProgressView;
@@ -59,30 +65,34 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v == txtSignUp) {
-
             if (Utility.isEmptyString(editFirstName.getText().toString())) {
-                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.empty_first_name), LENGTH_SHORT);
+                showError("Please enter First Name", editFirstName);
+//                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.empty_first_name), LENGTH_SHORT);
                 return;
             }
-            if (Utility.isEmptyString(editPhone.getText().toString())) {
-                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.email_phone), LENGTH_SHORT);
+            if (Utility.isEmptyString(editPhone.getText().toString()) || editPhone.getText().toString().length() != 10) {
+                showError("Please enter your valid Mobile Number", editPhone);
+//                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.email_phone), LENGTH_SHORT);
                 return;
             }
-            if (Utility.isEmptyString(editEmail.getText().toString())) {
-                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.email_empty), LENGTH_SHORT);
+            if (Utility.isEmptyString(editEmail.getText().toString()) || Utility.emailValid(editEmail.getText().toString())) {
+                showError("Please enter your valid Email Id", editEmail);
+//                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.email_empty), LENGTH_SHORT);
                 return;
             }
             if (Utility.isEmptyString(editPassword.getText().toString())) {
-                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.password_empty), LENGTH_SHORT);
+                showError("Please enter Password", editPassword);
+//                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.password_empty), LENGTH_SHORT);
                 return;
             }
             if (Utility.isEmptyString(editConfirmPassword.getText().toString())) {
-                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.password_empty), LENGTH_SHORT);
+                showError("Please enter Confirm Password", editConfirmPassword);
+//                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.password_empty), LENGTH_SHORT);
                 return;
             }
-
             if (!(editPassword.getText().toString().equals(editConfirmPassword.getText().toString()))) {
-                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.password_mis_match), LENGTH_SHORT);
+                showError("Password and Confirm Password must be same", editConfirmPassword);
+//                Utility.Toaster(this, Utility.getStringFromRes(this, R.string.password_mis_match), LENGTH_SHORT);
                 return;
             }
 
@@ -98,6 +108,34 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             finish();
         }
 
+    }
+
+    private void showError(String error_st, final EditText editText) {
+        final Dialog error_dialog = new Dialog(this);
+        error_dialog.setCanceledOnTouchOutside(false);
+        error_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        error_dialog.setContentView(R.layout.error_dialog);
+        int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
+        int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.90);
+        error_dialog.getWindow().setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
+        error_dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        UbuntuMediumTextview error_text = error_dialog.findViewById(R.id.error_text);
+        UbuntuMediumTextview ok_btn = error_dialog.findViewById(R.id.ok_btn);
+        error_text.setText(error_st);
+        error_dialog.show();
+        ok_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                error_dialog.dismiss();
+                requestFocus(editText);
+            }
+        });
+    }
+
+    private void requestFocus(View view) {
+        if (view.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
     }
 
     @Override

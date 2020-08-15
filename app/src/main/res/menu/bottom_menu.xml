@@ -17,16 +17,17 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/action_wallet"
         android:enabled="true"
-        android:title="Dashboard"
+        android:title="Wallet"
+        android:icon="@drawable/ic_close"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_favourite"
+        android:id="@+id/action_booking"
         android:enabled="true"
         android:icon="@drawable/ic_shopping_cart_outline"
-        android:title="Cart"
-        android:visible="false"
+        android:title="Booking"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_setting"

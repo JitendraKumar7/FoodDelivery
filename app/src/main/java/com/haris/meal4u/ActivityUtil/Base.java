@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.haris.meal4u.CustomUtil.CurvedBottomNavigationView;
+import com.haris.meal4u.FragmentUtil.BookingFragment;
 import com.haris.meal4u.FragmentUtil.DashboardFragment;
 import com.haris.meal4u.FragmentUtil.ListOfOrderFragment;
 import com.haris.meal4u.FragmentUtil.SettingFragment;
@@ -82,7 +83,12 @@ public class Base extends AppCompatActivity implements View.OnClickListener, Bot
             return true;
         }
         //
-        else if (menuItem.getItemId() == R.id.action_favourite) {
+        else if (menuItem.getItemId() == R.id.action_booking) {
+            openFragment(new BookingFragment());
+            //openFragment(new ProductCartFragment());
+            return true;
+        }
+        else if (menuItem.getItemId() == R.id.action_wallet) {
             openFragment(new Fragment());
             //openFragment(new ProductCartFragment());
             return true;

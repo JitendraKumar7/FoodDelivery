@@ -169,7 +169,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
                             listener.get(i).onTextChanged(i, s);
                         }
                     }
-                }, 900);
+                }, 400);
             }
 
             private Timer timer = new Timer();
@@ -277,67 +277,66 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
 
     @Override
     public void onSuccess(final Object data, RequestObject requestObject) {
+        if (getActivity() != null && isAdded()) {
+            try {
+                if (data != null && requestObject != null) {
+                    DataObject dataObject = (DataObject) data;
+                    if (requestObject.getConnection() == Constant.CONNECTION.RESTAURANT_DETAIL) {
 
-        if (data != null && requestObject != null) {
-            DataObject dataObject = (DataObject) data;
-
-            if (requestObject.getConnection() == Constant.CONNECTION.RESTAURANT_DETAIL) {
-
-                mDataObject.clear();
-                for (int i = 0; i < dataObject.getObjectArrayList().size(); i++) {
-                    DataObject dtObject = dataObject.getObjectArrayList().get(i);
-                    mDataObject.add(dtObject.setObject_currency_symbol(this.dataObject.getObject_currency_symbol())
-                            .setObject_delivery_charges(this.dataObject.getObject_delivery_charges())
-                            .setObject_min_delivery_time(this.dataObject.getObject_min_delivery_time())
-                            .setObject_min_order_price(this.dataObject.getObject_min_order_price())
-                            .setObject_id(this.dataObject.getObject_id())
-                            .setObject_latitude(this.dataObject.getObject_latitude())
-                            .setObject_longitude(this.dataObject.getObject_longitude())
-                            .setPaymentTypeList(this.dataObject.getPaymentTypeList())
-                            .setObject_status("Open"));
-
-                }
-                String json = new Gson().toJson(mDataObject, listType);
-                SharedPreference.putString("get_product_special_category", json);
-
-                if (category == null) {
-                    //
-                    setFragmentArrayList();
-                }
-
-            }
-
-
-        }
-
-        try {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.accumulate("functionality", "get_product_special_cover");
-
-
-            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, REST_API_URL, jsonObject,
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            //["ring-12.jpg","ring-11.jpg"]
-
-                            SharedPreference.putString("get_product_special_cover", response.toString());
-                            if (cover == null) setSlider(response);
+                        mDataObject.clear();
+                        for (int i = 0; i < dataObject.getObjectArrayList().size(); i++) {
+                            DataObject dtObject = dataObject.getObjectArrayList().get(i);
+                            mDataObject.add(dtObject.setObject_currency_symbol(this.dataObject.getObject_currency_symbol())
+                                    .setObject_delivery_charges(this.dataObject.getObject_delivery_charges())
+                                    .setObject_min_delivery_time(this.dataObject.getObject_min_delivery_time())
+                                    .setObject_min_order_price(this.dataObject.getObject_min_order_price())
+                                    .setObject_id(this.dataObject.getObject_id())
+                                    .setObject_latitude(this.dataObject.getObject_latitude())
+                                    .setObject_longitude(this.dataObject.getObject_longitude())
+                                    .setPaymentTypeList(this.dataObject.getPaymentTypeList())
+                                    .setObject_status("Open"));
 
                         }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    error.printStackTrace();
+                        String json = new Gson().toJson(mDataObject, listType);
+                        SharedPreference.putString("get_product_special_category", json);
+
+                        if (category == null) {
+                            //
+                            setFragmentArrayList();
+                        }
+
+                    }
+
+
                 }
-            });
 
-            Volley.newRequestQueue(getActivity()).add(jsonRequest);
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.accumulate("functionality", "get_product_special_cover");
 
-        } catch (JSONException e) {
-            e.printStackTrace();
+
+                JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, REST_API_URL, jsonObject,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                //["ring-12.jpg","ring-11.jpg"]
+
+                                SharedPreference.putString("get_product_special_cover", response.toString());
+                                if (cover == null) setSlider(response);
+
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                });
+
+                Volley.newRequestQueue(getActivity()).add(jsonRequest);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
-
     }
 
     private void setSlider(JSONObject response) {

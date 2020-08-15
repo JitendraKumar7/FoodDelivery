@@ -33,6 +33,7 @@ import com.haris.meal4u.ObjectUtil.PrefObject;
 import com.haris.meal4u.ObjectUtil.RequestObject;
 import com.haris.meal4u.R;
 import com.haris.meal4u.TextviewUtil.NormalTextview;
+import com.haris.meal4u.TextviewUtil.TaglineTextview;
 import com.haris.meal4u.Utility.Utility;
 
 import org.json.JSONArray;
@@ -138,11 +139,12 @@ public class RedeemCoupon extends AppCompatActivity implements View.OnClickListe
                                     final LinearLayout layoutProduct = view.findViewById(R.id.layout_product);
                                     final TextView txtProduct = view.findViewById(R.id.txt_product);
                                     final TextView txtPrice = view.findViewById(R.id.txt_price);
+                                    final TaglineTextview apply_now_tv = view.findViewById(R.id.apply_now_tv);
 
                                     txtProduct.setText(object.getString("coupon_code"));
                                     txtPrice.setText(String.format("%s%% off", object.getString("coupon_reward")));
 
-                                    layoutProduct.setOnClickListener(new View.OnClickListener() {
+                                    apply_now_tv.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                           /*  management.sendRequestToServer(new RequestObject()

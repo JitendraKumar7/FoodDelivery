@@ -36,7 +36,7 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
     private TextView txtDeliveryCharge;
     private TextView txtGrandTotal;
     private TextView txtTotal;
-    private ImageView imageDone;
+    private ImageView imageDone, remove_coupon_iv;
     private ImageView imageMore;
     private TextView txtApplyCoupon;
     private TextView txtCouponTagline;
@@ -124,6 +124,14 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
 
             startActivity(intent);
         }
+        if (v == remove_coupon_iv) {
+            layoutCoupon.setEnabled(true);
+            imageMore.setVisibility(View.VISIBLE);
+            imageDone.setVisibility(View.GONE);
+            remove_coupon_iv.setVisibility(View.GONE);
+            txtApplyCoupon.setText("Apply Coupon");
+            txtCouponTagline.setText("Redeem &amp; Earn Discounts");
+        }
     }
 
     @Override
@@ -166,6 +174,7 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
         imageBack.setImageResource(R.drawable.ic_back);
 
         imageDone = findViewById(R.id.image_done);
+        remove_coupon_iv = findViewById(R.id.remove_coupon_iv);
         imageMore = findViewById(R.id.image_more);
 
         TextView txtMenu = findViewById(R.id.txt_menu);
@@ -208,6 +217,7 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
 
         imageBack.setOnClickListener(this);
         layoutCoupon.setOnClickListener(this);
+        remove_coupon_iv.setOnClickListener(this);
         txtAddToCart.setOnClickListener(this);
 
     }
@@ -246,6 +256,7 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
 
             imageMore.setVisibility(View.GONE);
             imageDone.setVisibility(View.VISIBLE);
+            remove_coupon_iv.setVisibility(View.VISIBLE);
             layoutCoupon.setEnabled(false);
 
             DataObject couponDetail = data.getParcelableExtra(Constant.IntentKey.COUPON_DETAIL);

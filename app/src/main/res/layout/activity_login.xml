@@ -92,6 +92,7 @@
                     android:layout_weight="1"
                     android:background="@color/transparent"
                     android:hint="@string/password"
+                    android:singleLine="true"
                     android:inputType="textPassword"
                     android:textColor="?attr/colorButton"
                     android:textColorHint="?attr/colorButton"

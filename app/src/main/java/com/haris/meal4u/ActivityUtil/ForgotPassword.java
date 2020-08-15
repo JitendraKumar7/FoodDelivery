@@ -1,8 +1,12 @@
 package com.haris.meal4u.ActivityUtil;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,6 +22,7 @@ import com.haris.meal4u.InterfaceUtil.ConnectionCallback;
 import com.haris.meal4u.ManagementUtil.Management;
 import com.haris.meal4u.ObjectUtil.RequestObject;
 import com.haris.meal4u.R;
+import com.haris.meal4u.TextviewUtil.UbuntuMediumTextview;
 import com.haris.meal4u.Utility.Utility;
 
 import org.json.JSONException;
@@ -46,12 +51,14 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
 
             String phone = editEmail.getText().toString().trim();
             if (Utility.isEmptyString(phone)) {
-                Utility.Toaster(this, "Phone is empty", Toast.LENGTH_LONG);
+                showError("Please enter your Mobile Number", editEmail);
+//                Utility.Toaster(this, "Phone is empty", Toast.LENGTH_LONG);
                 return;
             }
 
             if (phone.length() != 10) {
-                Utility.Toaster(this, "Phone not valid", Toast.LENGTH_LONG);
+                showError("Please enter your valid Mobile Number", editEmail);
+//                Utility.Toaster(this, "Phone not valid", Toast.LENGTH_LONG);
                 return;
             }
 
@@ -65,6 +72,9 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                             public void onResponse(String response) {
                                 Timber.tag("2factor").e(url);
                                 Utility.Toaster(ForgotPassword.this, "OTP Sent Successfully", LENGTH_SHORT);
+                                layoutPassword.setVisibility(View.VISIBLE);
+                                layoutOtp.setVisibility(View.VISIBLE);
+                                txtForgot.setText("Change");
                             }
                         },
                         new Response.ErrorListener() {
@@ -74,9 +84,6 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                             }
                         })
                 );
-                layoutPassword.setVisibility(View.VISIBLE);
-                layoutOtp.setVisibility(View.VISIBLE);
-                txtForgot.setText("Change");
             }
 
             //
@@ -183,6 +190,34 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onError(String data, RequestObject requestObject) {
         Utility.Toaster(this, data, Toast.LENGTH_SHORT);
+    }
+
+    private void showError(String error_st, final EditText editText) {
+        final Dialog error_dialog = new Dialog(this);
+        error_dialog.setCanceledOnTouchOutside(false);
+        error_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        error_dialog.setContentView(R.layout.error_dialog);
+        int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
+        int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.90);
+        error_dialog.getWindow().setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
+        error_dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        UbuntuMediumTextview error_text = error_dialog.findViewById(R.id.error_text);
+        UbuntuMediumTextview ok_btn = error_dialog.findViewById(R.id.ok_btn);
+        error_text.setText(error_st);
+        error_dialog.show();
+        ok_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                error_dialog.dismiss();
+                requestFocus(editText);
+            }
+        });
+    }
+
+    private void requestFocus(View view) {
+        if (view.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
     }
 
 }

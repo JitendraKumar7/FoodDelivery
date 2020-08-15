@@ -61,51 +61,52 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        try {
+            management = new Management(getActivity());
 
-        management = new Management(getActivity());
+            txtMenu = view.findViewById(R.id.txt_menu);
+            txtMenu.setText(Utility.getStringFromRes(getActivity(), R.string.setting));
 
-        txtMenu = view.findViewById(R.id.txt_menu);
-        txtMenu.setText(Utility.getStringFromRes(getActivity(), R.string.setting));
+            layoutProfile = view.findViewById(R.id.layout_profile);
+            layoutLogout = view.findViewById(R.id.layout_logout);
+            layoutDownload = view.findViewById(R.id.layout_download);
+            layoutPlaylist = view.findViewById(R.id.layout_playlist);
+            layoutRate = view.findViewById(R.id.layout_rate);
+            layoutFeed = view.findViewById(R.id.layout_feed);
+            layoutShare = view.findViewById(R.id.layout_share);
+            layoutPrivacy = view.findViewById(R.id.layout_privacy);
+            layoutEdit = view.findViewById(R.id.layout_edit);
+            cardProfile = view.findViewById(R.id.card_profile);
 
-        layoutProfile = view.findViewById(R.id.layout_profile);
-        layoutLogout = view.findViewById(R.id.layout_logout);
-        layoutDownload = view.findViewById(R.id.layout_download);
-        layoutPlaylist = view.findViewById(R.id.layout_playlist);
-        layoutRate = view.findViewById(R.id.layout_rate);
-        layoutFeed = view.findViewById(R.id.layout_feed);
-        layoutShare = view.findViewById(R.id.layout_share);
-        layoutPrivacy = view.findViewById(R.id.layout_privacy);
-        layoutEdit = view.findViewById(R.id.layout_edit);
-        cardProfile = view.findViewById(R.id.card_profile);
-
-        imageUser = view.findViewById(R.id.image_user);
-        txtName = view.findViewById(R.id.txt_name);
-        txtEmail = view.findViewById(R.id.txt_email);
-        txtDividerLogout = view.findViewById(R.id.txt_divider_logout);
-
-
-        prefObject = management.getPreferences(new PrefObject()
-                .setRetrieveNightMode(true)
-                .setRetrieveParallaxMode(true)
-                .setRetrievePowerSavingMode(true)
-                .setRetrieveScrollingMode(true)
-                .setRetrieveRetrieveMotion(true)
-                .setRetrieveDelay(true)
-                .setRetrievePush(true)
-                .setRetrieveUserCredential(true));
+            imageUser = view.findViewById(R.id.image_user);
+            txtName = view.findViewById(R.id.txt_name);
+            txtEmail = view.findViewById(R.id.txt_email);
+            txtDividerLogout = view.findViewById(R.id.txt_divider_logout);
 
 
-        layoutLogout.setOnClickListener(this);
-        layoutProfile.setOnClickListener(this);
-        layoutDownload.setOnClickListener(this);
-        layoutPlaylist.setOnClickListener(this);
-        layoutRate.setOnClickListener(this);
-        layoutShare.setOnClickListener(this);
-        layoutPrivacy.setOnClickListener(this);
-        layoutFeed.setOnClickListener(this);
-        layoutEdit.setOnClickListener(this);
+            prefObject = management.getPreferences(new PrefObject()
+                    .setRetrieveNightMode(true)
+                    .setRetrieveParallaxMode(true)
+                    .setRetrievePowerSavingMode(true)
+                    .setRetrieveScrollingMode(true)
+                    .setRetrieveRetrieveMotion(true)
+                    .setRetrieveDelay(true)
+                    .setRetrievePush(true)
+                    .setRetrieveUserCredential(true));
 
 
+            layoutLogout.setOnClickListener(this);
+            layoutProfile.setOnClickListener(this);
+            layoutDownload.setOnClickListener(this);
+            layoutPlaylist.setOnClickListener(this);
+            layoutRate.setOnClickListener(this);
+            layoutShare.setOnClickListener(this);
+            layoutPrivacy.setOnClickListener(this);
+            layoutFeed.setOnClickListener(this);
+            layoutEdit.setOnClickListener(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
