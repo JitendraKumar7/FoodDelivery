@@ -118,7 +118,7 @@ public class OrderAdapter extends RecyclerView.Adapter {
             orderHolder.txtName.setText(dataObject.getOrder_restaurant_name());
             orderHolder.txtDate.setText(dataObject.getOrder_delivery_date());
             orderHolder.txtTime.setText(dataObject.getOrder_delivery_time());
-            orderHolder.txtCharges.setText(dataObject.getOrder_price());
+            orderHolder.txtCharges.setText(dataObject.getOrder_price().replace("INR", "₹"));
             orderHolder.txtDeliveryTime.setText(dataObject.getDelivery_time());
             orderHolder.txtStatus.setText(StringUtils.capitalize(dataObject.getOrder_status()));
 
@@ -130,8 +130,8 @@ public class OrderAdapter extends RecyclerView.Adapter {
                 orderHolder.txtStatus.setTextColor(Utility.getColourFromRes(context, R.color.colorPrimaryDark));
             } else if (dataObject.getOrder_status().equalsIgnoreCase(Utility.getStringFromRes(context, R.string.project_status_completed))) {
                 orderHolder.txtStatus.setTextColor(Utility.getColourFromRes(context, R.color.order_on_the_way));
-                orderHolder.txtStatus.setText(Utility.getStringFromRes(context,R.string.on_the_way));
-            }else if (dataObject.getOrder_status().equalsIgnoreCase(Utility.getStringFromRes(context, R.string.project_status_delivered))) {
+                orderHolder.txtStatus.setText(Utility.getStringFromRes(context, R.string.on_the_way));
+            } else if (dataObject.getOrder_status().equalsIgnoreCase(Utility.getStringFromRes(context, R.string.project_status_delivered))) {
                 orderHolder.txtStatus.setTextColor(Utility.getColourFromRes(context, R.color.order_delivered));
             }
 
@@ -147,8 +147,8 @@ public class OrderAdapter extends RecyclerView.Adapter {
             });
 
 
-            GlideApp.with(context).load(Constant.ServerInformation.PICTURE_URL + dataObject.getObject_logo())
-                    .into(orderHolder.imageLogo);
+            /*GlideApp.with(context).load(Constant.ServerInformation.PICTURE_URL + dataObject.getObject_logo())
+                    .into(orderHolder.imageLogo);*/
 
 
         }

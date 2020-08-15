@@ -6,32 +6,34 @@
         android:enabled="true"
         android:icon="@drawable/ic_menu_home"
         android:title="Home"
-        app:showAsAction="ifRoom"/>
+        android:visible="false"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_nearby"
         android:enabled="true"
-        android:icon="@drawable/ic_menu_discover"
+        android:icon="@drawable/ic_clock"
         android:title="Nearby"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 
     <item
         android:enabled="true"
-        android:title="Search"
-        app:showAsAction="ifRoom"/>
+        android:title="Dashboard"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_favourite"
         android:enabled="true"
-        android:icon="@drawable/ic_menu_favourite"
-        android:title="Favourite"
-        app:showAsAction="ifRoom"/>
+        android:icon="@drawable/ic_shopping_cart_outline"
+        android:title="Cart"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_setting"
         android:enabled="true"
         android:icon="@drawable/ic_menu_setting"
         android:title="Setting"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 
 
 </menu>

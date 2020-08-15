@@ -19,9 +19,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.haris.meal4u.ActivityUtil.AboutUs;
 import com.haris.meal4u.ActivityUtil.ListOfOrder;
-import com.haris.meal4u.ActivityUtil.ListOfPaymentMethod;
 import com.haris.meal4u.ActivityUtil.OnBoarding;
-import com.haris.meal4u.ActivityUtil.ProductCart;
 import com.haris.meal4u.ActivityUtil.UserProfile;
 import com.haris.meal4u.ConstantUtil.Constant;
 import com.haris.meal4u.DatabaseUtil.DatabaseObject;
@@ -63,15 +61,6 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        initUI(view); //Initialize UI
-
-    }
-
-    /**
-     * <p>It initialize the UI</p>
-     */
-    private void initUI(View view) {
 
         management = new Management(getActivity());
 
@@ -231,7 +220,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
             txtEmail.setText(prefObject.getUserEmail());
 
             if (prefObject.getLoginType().equals(Constant.LoginType.NATIVE_LOGIN)) {
-                pictureUrl = Constant.ServerInformation.PICTURE_URL + prefObject.getPictureUrl();
+                pictureUrl = Constant.ServerInformation.PROFILE_URL + prefObject.getPictureUrl();
             }
 
             Utility.Logger(TAG, "Picture = " + pictureUrl);

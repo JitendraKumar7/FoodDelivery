@@ -485,7 +485,7 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
                                             .setObject_latitude(this.dataObject.getObject_latitude())
                                             .setObject_longitude(this.dataObject.getObject_longitude())
                                             .setPaymentTypeList(this.dataObject.getPaymentTypeList())
-                                            .setObject_status(txtStatus.getText().toString()))));
+                                            .setObject_status(txtStatus.getText().toString()), i)));
                 }
 
                 categoriesPager.notifyDataSetChanged();
@@ -500,7 +500,6 @@ public class RestaurantDetail extends AppCompatActivity implements View.OnClickL
                 }
 
             }
-
 
         }
 

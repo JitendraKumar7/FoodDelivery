@@ -152,8 +152,8 @@ public class HomeFragment extends Fragment implements ConnectionCallback, HomeCa
                             DataObject dataObject = (DataObject) objectArrayList.get(0);
                             bundle.putParcelable(Constant.IntentKey.RESTAURANT_DETAIL, dataObject);
 
-                            DashboardFragment fragment = new DashboardFragment();
-                            fragment.setArguments(bundle);
+                            //DashboardFragment fragment = new DashboardFragment();
+                            //fragment.setArguments(bundle);
 
                             //((Base) getActivity()).openFragment(fragment);
 

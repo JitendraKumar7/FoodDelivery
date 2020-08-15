@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="60dp"
+        android:orientation="horizontal">
+
+        <com.haris.meal4u.TextviewUtil.NormalTextview
+            android:id="@+id/txt_post_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Item"
+            android:textColor="?attr/colorNormal"
+            android:textSize="@dimen/tagline_text_size" />
+
+        <com.haris.meal4u.TextviewUtil.NormalTextview
+            android:id="@+id/txt_count"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="Qty"
+            android:textColor="?attr/colorNormal"
+            android:textSize="@dimen/tagline_text_size" />
+
+        <com.haris.meal4u.TextviewUtil.NormalTextview
+            android:id="@+id/txt_price"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Amt."
+            android:textColor="?attr/colorNormal"
+            android:textSize="@dimen/tagline_text_size" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorPrimary" />
+
+</LinearLayout>

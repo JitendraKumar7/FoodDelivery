@@ -6,7 +6,7 @@ public interface CartCallback {
 
     void onItemQuantityListener(int position , boolean isIncrease);
 
-    void onContactInformationChangeListener();
+  /*  void onContactInformationChangeListener();
 
     void onDeliveryDetailChangeListener();
 
@@ -15,6 +15,6 @@ public interface CartCallback {
     void onPaymentMethodChangeListener();
 
     void onPlaceOrderListener();
-
+*/
 
 }

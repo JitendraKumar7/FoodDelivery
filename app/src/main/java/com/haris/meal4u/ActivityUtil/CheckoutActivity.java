@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -51,16 +50,9 @@ import org.json.JSONObject;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
-
-import ss.com.bannerslider.Slider;
-import ss.com.bannerslider.event.OnSlideClickListener;
-
-import static com.haris.meal4u.ConstantUtil.Constant.ServerInformation.REST_API_URL;
 
 public class CheckoutActivity extends AppCompatActivity implements View.OnClickListener,
         StepView.OnStepClickListener, CheckoutCallback, PaymentResultListener {
@@ -183,6 +175,17 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
     private ScheduleObject scheduleObject;
 
     @Override
+    public void onBackPressed() {
+        CartObjectModal.setList(new ArrayList<CartObjectModal>());
+        Intent intent = new Intent(this, Base.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         Utility.changeAppTheme(this);
         super.onCreate(savedInstanceState);
@@ -230,7 +233,6 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         }
 
     }
-
 
     private JSONArray convertProductIntoArray() {
 
@@ -287,10 +289,6 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
 
             openFragment(new BillingFragment());
 
-        } else if (step == 2) {
-            stepView.go(2, true);
-            stepView.done(true);
-            openFragment(new ScheduleFragment());
         } else {
 
             if (restaurantDetail.getPost_price() != null) {
@@ -300,7 +298,7 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
                 String easy = RandomString.digits + "ACEFGHJKLMNPQRUVWXYabcdefhijkprstuvwx";
                 RandomString tickets = new RandomString(23, new SecureRandom(), easy);
 
-                startPayment(tickets.nextString(), String.valueOf(amount));
+                startPayment(tickets.nextString(), String.valueOf(amount * 100));
 
 
             }
@@ -337,7 +335,6 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-
     private void showCheckoutBottomSheet(final Context context) {
         final View view = getLayoutInflater().inflate(R.layout.process_order_sheet_layout, null);
 
@@ -370,6 +367,14 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
             jsonObject.accumulate("order_type", scheduleObject.isNow() ? "received" : "schedule");
             jsonObject.accumulate("no_of_product", convertProductIntoArray());
 
+            final Bundle bundle = new Bundle();
+            bundle.putString("user_name", prefObject.getFirstName());
+            bundle.putString("user_phone", prefObject.getUserPhone());
+            bundle.putString("order_price", restaurantDetail.getPost_price());
+            bundle.putString("payment_type", billingObject.getPaymentMethod());
+            bundle.putString("billing_address", addressObject.getBuildingName() + " " + addressObject.getFloorName() + " " + addressObject.getStreetName() + " " + addressObject.getAreaName());
+            bundle.putString("delivery_date", scheduleObject.getSchedule() + " " + restaurantDetail.getObject_min_delivery_time());
+
             management.sendRequestToServer(new RequestObject()
                     .setJson(jsonObject.toString())
                     .setConnectionType(Constant.CONNECTION_TYPE.UI)
@@ -401,11 +406,15 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
 
                                 usersRef.setValue(new RiderTrackingObject(userObject, riderObject, trackingObject, userChattingObject, typingObject));
 
-                            }
+                                stepView.go(2, true);
+                                stepView.done(true);
 
-                            CartObjectModal.setList(new ArrayList<CartObjectModal>());
-                            startActivity(new Intent(getApplicationContext(), Base.class));
-                            finish();
+                                bundle.putString("order_id", dtObject.getOrder_id());
+                                Fragment fragment = new ScheduleFragment();
+                                fragment.setArguments(bundle);
+                                openFragment(fragment);
+
+                            }
                         }
 
                         @Override

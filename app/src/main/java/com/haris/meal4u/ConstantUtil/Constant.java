@@ -51,6 +51,7 @@ public class Constant {
         public static String REST_API_URL = BASE_URL + FOLDER + "food_delivery_home.php";
 
         public static String PICTURE_URL = BASE_URL + FOLDER + "admin/uploads/image/";
+        public static String PROFILE_URL = BASE_URL + FOLDER + "admin/uploads/profile/";
         public static String VIDEO_URL = BASE_URL + FOLDER + "admin/uploads/video/";
         public static String FACEBOOK_HIGH_PIXEL_URL = "?type=large&redirect=true&width=300&height=300";
 

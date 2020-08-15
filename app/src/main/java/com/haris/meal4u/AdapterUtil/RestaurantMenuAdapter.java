@@ -23,6 +23,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import net.bohush.geometricprogressview.GeometricProgressView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -199,6 +200,8 @@ public abstract class RestaurantMenuAdapter extends RecyclerView.Adapter {
         private TextView txtDescription;
         private TextView txtPrice;
         private TextView txtCount;
+
+
 
         public MenuProductHolder(View view) {
             super(view);

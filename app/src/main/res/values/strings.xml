@@ -130,7 +130,7 @@
     <string name="need_camera_permission">It need camera permission for app to run</string>
     <string name="select_category">Select Category</string>
     <string name="popular_brands">Popular Brands</string>
-    <string name="delivery">Delivery</string>
+    <string name="delivery">Order Placed</string>
     <string name="minimum">Minimum</string>
     <string name="cost">Cost</string>
     <string name="most_nearest">Most Nearest</string>
@@ -172,7 +172,7 @@
     <string name="total">Total</string>
     <string name="proceed_to_checkout">Proceed to Checkout</string>
     <string name="coupon_title">Redeem Your Coupons</string>
-    <string name="coupon_tagline_01">Enter your Voucher or Coupon code to\nget the discount on all over the budget</string>
+    <string name="coupon_tagline_01">Enter or select your Voucher or Coupon code to\nget the discount on all over the budget</string>
     <string name="redeem_it">Redeem Now</string>
     <string name="coupon_code_tagline">Write Coupon Code</string>
     <string name="redeem_success">Redeem Successfully</string>
@@ -183,7 +183,7 @@
     <string name="billing">Billing</string>
     <string name="building">House No / Building </string>
     <string name="street_address">Street Address</string>
-    <string name="area">Area Name</string>
+    <string name="area">Landmark</string>
     <string name="floor_unit">Floor (Optional)</string>
     <string name="proceed_to_billing">Proceed to Billing</string>
     <string name="note_to_rider">Note to Rider (Optional)</string>

@@ -44,7 +44,6 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
     private EditText editEmail;
     private EditText editPhone;
     private EditText editPassword;
-    private EditText editBio;
     private TextView txtUpdate;
     private Management management;
     private PrefObject userData;
@@ -69,14 +68,14 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
 
         management = new Management(this);
 
-        imageProfile =  findViewById(R.id.image_profile);
-        editFName =  findViewById(R.id.edit_fName);
-        editLName =  findViewById(R.id.edit_lName);
-        editEmail =  findViewById(R.id.edit_email);
-        editPhone =  findViewById(R.id.edit_phone);
+        imageProfile = findViewById(R.id.image_profile);
+        editFName = findViewById(R.id.edit_fName);
+        editLName = findViewById(R.id.edit_lName);
+        editEmail = findViewById(R.id.edit_email);
+        editPhone = findViewById(R.id.edit_phone);
         ///editBio = findViewById(R.id.edit_bio);
-        editPassword =  findViewById(R.id.edit_password);
-        txtUpdate =  findViewById(R.id.txt_update);
+        editPassword = findViewById(R.id.edit_password);
+        txtUpdate = findViewById(R.id.txt_update);
 
         userData = management.getPreferences(new PrefObject()
                 .setRetrieveUserCredential(true));
@@ -88,9 +87,9 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
         //editBio.setText(userData.getDescription());
         editPhone.setText(userData.getUserPhone());
 
-        Utility.Logger("Picture Url", Constant.ServerInformation.PICTURE_URL + userData.getPictureUrl());
+        Utility.Logger("Picture Url", Constant.ServerInformation.PROFILE_URL + userData.getPictureUrl());
         if (userData.getLoginType().equalsIgnoreCase(Constant.LoginType.NATIVE_LOGIN)) {
-            pictureUrl = Constant.ServerInformation.PICTURE_URL + userData.getPictureUrl();
+            pictureUrl = Constant.ServerInformation.PROFILE_URL + userData.getPictureUrl();
 
         }
 
@@ -146,7 +145,9 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
             jsonObject.accumulate("last_name", "");
             jsonObject.accumulate("email", editEmail.getText().toString());
             jsonObject.accumulate("password", editPassword.getText().toString());
-            jsonObject.accumulate("picture", userPicture);
+
+            if (isPictureSelected)
+                jsonObject.accumulate("picture", userPicture);
 
 
         } catch (JSONException e) {
@@ -187,7 +188,7 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
         dialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
         dialog.setContentView(R.layout.custom_dialog_layout);
 
-        LinearLayout layout_camera =  dialog.findViewById(R.id.layout_camera);
+        LinearLayout layout_camera = dialog.findViewById(R.id.layout_camera);
         layout_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -196,7 +197,7 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
             }
         });
 
-        LinearLayout layout_gallery =  dialog.findViewById(R.id.layout_gallery);
+        LinearLayout layout_gallery = dialog.findViewById(R.id.layout_gallery);
         layout_gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -277,7 +278,9 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
                 .setUserPhone(userData.getUserPhone())
                 .setUserPassword(editPassword.getText().toString())
                 .setUserEmail(userData.getUserEmail())
-                .setPictureUrl(userData.getPictureUrl()));
+                .setPictureUrl("user_0" + userData.getUserId() + ".png"));
+
+        pictureUrl = Constant.ServerInformation.PROFILE_URL + "user_0" + userData.getUserId() + ".png";
 
         GlideApp.with(this).load(pictureUrl)
                 .apply(new RequestOptions()

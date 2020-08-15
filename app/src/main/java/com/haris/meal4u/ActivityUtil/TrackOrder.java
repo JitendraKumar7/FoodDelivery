@@ -9,7 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatRatingBar;
 import android.support.v7.widget.CardView;
 import android.util.Base64;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -60,11 +62,30 @@ public class TrackOrder extends AppCompatActivity implements View.OnClickListene
     private TextView txtMenu;
     private ImageView imageBack;
     private LinearLayout layoutTrack;
-    private OrderDetailAdapter orderDetailAdapter;
-    private ListView listViewOrderDetail;
+    private LinearLayout listViewOrderDetail;
     private PrefObject prefObject;
     private AppCompatRatingBar riderRating;
     private TextView txtDeliveryCharges;
+
+
+    public View getView(Object objects) {
+
+        View view = LayoutInflater.from(this).inflate(R.layout.order_detail_item_layout, null);
+
+        LinearLayout layoutProduct = view.findViewById(R.id.layout_product);
+        TextView txtProduct = view.findViewById(R.id.txt_product);
+        TextView txtQuantity = view.findViewById(R.id.txt_quantity);
+        TextView txtPrice = view.findViewById(R.id.txt_price);
+
+        txtProduct.setText(((DataObject) objects).getOrder_product_name());
+        txtQuantity.setText("(x" + ((DataObject) objects).getOrder_product_quantity() + ")");
+        txtPrice.setText(((DataObject) objects).getOrder_product_price().replace("INR", "₹"));
+
+        layoutProduct.setPadding(0, 12, 0, 12);
+
+        return view;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,17 +123,21 @@ public class TrackOrder extends AppCompatActivity implements View.OnClickListene
         cardRiderRating = findViewById(R.id.card_rider_rating);
         cardRiderRating.setVisibility(View.GONE);
 
-        txtDate.setText(dataObject.getOrder_delivery_date() + " , " + dataObject.getOrder_delivery_time());
-        txtAmount.setText(Utility.getStringFromRes(this, R.string.total) + " : " + dataObject.getOrder_price());
-        txtEta.setText(Utility.getStringFromRes(this, R.string.eta) + " : " + dataObject.getDelivery_time());
-        txtOrderId.setText(Utility.getStringFromRes(this, R.string.order_id) + " # " + dataObject.getOrder_id());
+        txtDate.setText(String.format("%s , %s", dataObject.getOrder_delivery_date(), dataObject.getOrder_delivery_time()));
+        txtAmount.setText(String.format("%s : %s", Utility.getStringFromRes(this, R.string.total), dataObject.getOrder_price().replace("INR", "₹")));
+        txtEta.setText(String.format("%s : %s", Utility.getStringFromRes(this, R.string.eta), dataObject.getDelivery_time()));
+        txtOrderId.setText(String.format("%s # %s", Utility.getStringFromRes(this, R.string.order_id), dataObject.getOrder_id()));
         txtPaymentType.setText(dataObject.getPaymentType());
 
         ///View listHeaderView = getLayoutInflater().inflate(R.layout.product_, null, false);
 
         listViewOrderDetail = findViewById(R.id.list_view_order_detail);
-        orderDetailAdapter = new OrderDetailAdapter(this, new ArrayList<Object>(dataObject.getProduct_order_detail_list()));
-        listViewOrderDetail.setAdapter(orderDetailAdapter);
+
+        ArrayList<Object> arrayList = new ArrayList<Object>(dataObject.getProduct_order_detail_list());
+        for (Object object : arrayList) {
+
+            listViewOrderDetail.addView(getView(object));
+        }
 
         txtDeliveryCharges.setText(dataObject.getDelivery_fee());
 
@@ -444,7 +469,6 @@ public class TrackOrder extends AppCompatActivity implements View.OnClickListene
             startActivity(intent);
         }
     }
-
 
 
     private JSONArray convertPicturesIntoJsonArray() {

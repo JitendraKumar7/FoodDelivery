@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,80 +14,44 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.dynamiclinks.DynamicLink;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.dynamiclinks.ShortDynamicLink;
 import com.haris.meal4u.ConstantUtil.Constant;
+import com.haris.meal4u.FragmentUtil.DashboardFragment;
 import com.haris.meal4u.InterfaceUtil.ConnectionCallback;
 import com.haris.meal4u.ManagementUtil.Management;
 import com.haris.meal4u.ObjectUtil.DataObject;
 import com.haris.meal4u.ObjectUtil.PrefObject;
 import com.haris.meal4u.ObjectUtil.RequestObject;
 import com.haris.meal4u.R;
+import com.haris.meal4u.TextviewUtil.NormalTextview;
 import com.haris.meal4u.Utility.Utility;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import ss.com.bannerslider.Slider;
+import ss.com.bannerslider.event.OnSlideClickListener;
+
+import static com.haris.meal4u.ConstantUtil.Constant.ServerInformation.REST_API_URL;
+
 public class RedeemCoupon extends AppCompatActivity implements View.OnClickListener, ConnectionCallback {
-    private String TAG = RedeemCoupon.class.getName();
     private TextView txtMenu;
     private ImageView imageBack;
     private Management management;
     private EditText editCouponCode;
-    private LinearLayout layoutRedeem;
-    private PrefObject prefObject;
+    private LinearLayout layoutCoupon;
+    private NormalTextview layoutRedeem;
     private DataObject dataObject;
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        Utility.changeAppTheme(this);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_redeem_coupon);
-
-        getIntentData(); // Retrieve Intent Data
-        initUI(); //Initialize UI
-
-
-    }
-
-
-    /**
-     * <p>It is used to get Intent Data</p>
-     */
-    private void getIntentData() {
-        dataObject = getIntent().getParcelableExtra(Constant.IntentKey.RESTAURANT_DETAIL);
-    }
-
-
-    /**
-     * <p>It is used to initialize UI</p>
-     */
-    private void initUI() {
-
-        management = new Management(this);
-        prefObject = management.getPreferences(new PrefObject()
-                .setRetrieveUserCredential(true)
-                .setRetrieveLogin(true));
-
-        txtMenu = findViewById(R.id.txt_menu);
-        txtMenu.setText(Utility.getStringFromRes(this, R.string.my_playlist));
-
-        imageBack = findViewById(R.id.image_back);
-        imageBack.setVisibility(View.VISIBLE);
-        imageBack.setImageResource(R.drawable.ic_back);
-
-        layoutRedeem = findViewById(R.id.layout_redeem);
-        editCouponCode = (EditText) findViewById(R.id.edit_coupon_code);
-
-        imageBack.setOnClickListener(this);
-        layoutRedeem.setOnClickListener(this);
-
-    }
-
 
     @Override
     public void onClick(View v) {
@@ -98,91 +64,119 @@ public class RedeemCoupon extends AppCompatActivity implements View.OnClickListe
             if (Utility.isEmptyString(editCouponCode.getText().toString()))
                 return;
 
-            management.sendRequestToServer(new RequestObject()
-                    .setJson(getJson(editCouponCode.getText().toString()))
-                    .setConnectionType(Constant.CONNECTION_TYPE.UI)
-                    .setConnection(Constant.CONNECTION.REDEEM_COUPON)
-                    .setConnectionCallback(this));
+
+            try {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.accumulate("functionality", "verify_coupon");
+                jsonObject.accumulate("coupon_code", editCouponCode.getText().toString());
+                jsonObject.accumulate("restaurant_id", dataObject.getObject_id());
+
+                management.sendRequestToServer(new RequestObject()
+                        .setJson(jsonObject.toString())
+                        .setConnectionType(Constant.CONNECTION_TYPE.UI)
+                        .setConnection(Constant.CONNECTION.REDEEM_COUPON)
+                        .setConnectionCallback(this));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
 
         }
 
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        Utility.changeAppTheme(this);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_redeem_coupon);
 
-    /**
-     * <p>It is used to build Deeplink for Direct Sharing</p>
-     *
-     * @param deepLink   the deep link your app will open. This link must be a valid URL and use the
-     *                   HTTP or HTTPS scheme.
-     * @param minVersion the {@code versionCode} of the minimum version of your app that can open
-     *                   the deep link. If the installed app is an older version, the userObject is taken
-     *                   to the Play store to upgrade the app. Pass 0 if you do not
-     *                   require a minimum version.
-     * @return a {@link Uri} representing a properly formed deep link.
-     */
-    public void buildDeepLink(@NonNull Uri deepLink, int minVersion) {
-        String uriPrefix = Constant.ServerInformation.DEFFERED_DEEP_LINK_URL;
+        dataObject = getIntent().getParcelableExtra(Constant.IntentKey.RESTAURANT_DETAIL);
 
-        final Uri[] uri = {null};
+        management = new Management(this);
 
-        Utility.Logger(TAG, "Link = " + deepLink.getPath());
+        txtMenu = findViewById(R.id.txt_menu);
+        txtMenu.setText(Utility.getStringFromRes(this, R.string.my_playlist));
 
-        Task<ShortDynamicLink> shortLinkTask = FirebaseDynamicLinks.getInstance().createDynamicLink()
-                .setDomainUriPrefix(uriPrefix)
-                .setAndroidParameters(new DynamicLink.AndroidParameters.Builder()
-                        .setMinimumVersion(minVersion)
-                        .build())
-                .setLink(deepLink)
-                .buildShortDynamicLink()
-                .addOnCompleteListener(this, new OnCompleteListener<ShortDynamicLink>() {
-                    @Override
-                    public void onComplete(@NonNull Task<ShortDynamicLink> task) {
+        imageBack = findViewById(R.id.image_back);
+        imageBack.setVisibility(View.VISIBLE);
+        imageBack.setImageResource(R.drawable.ic_back);
 
-                        if (task.isSuccessful()) {
-                            // Short link created
-                            uri[0] = task.getResult().getShortLink();
-                            Uri flowchartLink = task.getResult().getPreviewLink();
-                            Utility.Logger(TAG, "ShortLink = " + uri[0].toString() + " flowChartLink = " + flowchartLink.toString());
-                            Utility.shareApp(getApplicationContext(), uri[0].toString());
+        layoutCoupon = findViewById(R.id.layoutCoupon);
+        layoutRedeem = findViewById(R.id.layout_redeem);
+        editCouponCode = findViewById(R.id.edit_coupon_code);
 
-                        } else {
-                            Utility.Logger(TAG, "Error = " + task.getException().getMessage());
-                        }
-                    }
-                });
+        imageBack.setOnClickListener(this);
+        layoutRedeem.setOnClickListener(this);
 
-        // [END build_dynamic_link]
-
-
-    }
-
-
-    /**
-     * <p>It is used to convert Object into Json</p>
-     *
-     * @param
-     * @return
-     */
-    private String getJson(String couponCode) {
-        String json = null;
-
-        // 1. build jsonObject
-        JSONObject jsonObject = new JSONObject();
         try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.accumulate("functionality", "get_all_coupon");
 
-            jsonObject.accumulate("functionality", "verify_coupon");
-            jsonObject.accumulate("coupon_code", couponCode);
-            jsonObject.accumulate("restaurant_id", dataObject.getObject_id());
+
+            //{"code":200,"message":"Sucess","resutl":[
+            // {"id":"1",
+            // "coupon_code":"RCHOPEN",
+            // "coupon_reward":"99",
+            // "coupon_to_date":"2021-07-16 00:00:00",
+            // "coupon_from_date":"2020-07-16 00:00:00",
+            // "coupon_date_created":"2020-07-16 05:13:42"}]}
+            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, REST_API_URL, jsonObject,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            //["ring-12.jpg","ring-11.jpg"]
+
+                            Utility.Logger("TAG", response.toString());
+                            try {
+                                JSONArray coupons = response.getJSONArray("result");
+                                for (int i = 0; i < coupons.length(); i++) {
+                                    final JSONObject object = coupons.getJSONObject(i);
+                                    View view = LayoutInflater.from(RedeemCoupon.this).inflate(R.layout.item_redeem_coupon, null);
+
+                                    final LinearLayout layoutProduct = view.findViewById(R.id.layout_product);
+                                    final TextView txtProduct = view.findViewById(R.id.txt_product);
+                                    final TextView txtPrice = view.findViewById(R.id.txt_price);
+
+                                    txtProduct.setText(object.getString("coupon_code"));
+                                    txtPrice.setText(String.format("%s%% off", object.getString("coupon_reward")));
+
+                                    layoutProduct.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                          /*  management.sendRequestToServer(new RequestObject()
+                                                    .setJson(getJson(editCouponCode.getText().toString()))
+                                                    .setConnectionType(Constant.CONNECTION_TYPE.UI)
+                                                    .setConnection(Constant.CONNECTION.REDEEM_COUPON)
+                                                    .setConnectionCallback(RedeemCoupon.this));*/
+                                            CharSequence coupon = txtProduct.getText();
+                                            Utility.Toaster(RedeemCoupon.this, "To apply '" + coupon + "' Click Redeem Now.", Toast.LENGTH_SHORT);
+                                            editCouponCode.setText(coupon);
+                                        }
+                                    });
+
+                                    layoutCoupon.addView(view);
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            });
+
+            Volley.newRequestQueue(this).add(jsonRequest);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        // 2. convert JSONObject to JSON to String
-        json = jsonObject.toString();
-        Utility.Logger("JSON", json);
-
-        return json;
     }
 
     @Override

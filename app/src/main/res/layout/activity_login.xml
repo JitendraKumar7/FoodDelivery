@@ -46,18 +46,18 @@
                     android:id="@+id/edit_email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginStart="13dp"
-                    android:layout_marginEnd="5dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:background="@color/transparent"
                     android:hint="@string/phone_number"
+                    android:inputType="number"
+                    android:maxLength="10"
                     android:textColor="?attr/colorButton"
                     android:textColorHint="?attr/colorButton"
-                    android:textSize="14sp"
-
-                    />
+                    android:textSize="14sp" />
 
 
             </LinearLayout>
@@ -85,19 +85,17 @@
                     android:id="@+id/edit_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginStart="13dp"
-                    android:layout_marginEnd="5dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:background="@color/transparent"
                     android:hint="@string/password"
                     android:inputType="textPassword"
                     android:textColor="?attr/colorButton"
                     android:textColorHint="?attr/colorButton"
-                    android:textSize="14sp"
-
-                    />
+                    android:textSize="14sp" />
 
 
             </LinearLayout>
@@ -119,8 +117,7 @@
                     android:checked="true"
                     android:text="@string/remember_me"
                     android:textColor="?attr/colorHeading"
-                    android:textSize="14sp"
-                    />
+                    android:textSize="14sp" />
 
 
                 <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview

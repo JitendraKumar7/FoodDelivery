@@ -65,7 +65,6 @@ public class BillingFragment extends Fragment implements View.OnClickListener {
 
             if (imageMethodCod.getVisibility() == View.VISIBLE) {
 
-                ((CheckoutActivity) getActivity()).onStepClick(2);
                 ((CheckoutActivity) getActivity()).onBillingChangeListener(new BillingObject()
                         .setPaymentMethod(Utility.getStringFromRes(getActivity(), R.string.cod)));
 
@@ -82,7 +81,7 @@ public class BillingFragment extends Fragment implements View.OnClickListener {
 
             } else if (imageMethodLive.getVisibility() == View.VISIBLE) {
 
-                ((CheckoutActivity) getActivity()).onStepClick(3);
+                ((CheckoutActivity) getActivity()).onStepClick(2);
                 ((CheckoutActivity) getActivity()).onBillingChangeListener(new BillingObject()
                         .setPaymentMethod(Utility.getStringFromRes(getActivity(), R.string.credit_debit_card)));
 
