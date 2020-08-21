@@ -28,8 +28,8 @@
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/image_logo"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:src="@mipmap/ic_launcher_round" />
 
             </LinearLayout>

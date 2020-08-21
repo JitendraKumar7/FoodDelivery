@@ -51,7 +51,6 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
     int totalItemCharges = 0;
 
     private void updatePrice() {
-
         int totalCharges = 0;
 
         for (int i = 0; i < objectArrayList.size(); i++) {
@@ -59,9 +58,7 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
             totalCharges += Integer.parseInt(cartObject.getPostQtyPrice());
         }
 
-
         if (isCouponRedeem) {
-
             double discount = Double.parseDouble(discountOffer) / 100.0;
             int discountBill = (int) (totalCharges * discount);
             totalItemCharges = totalCharges - discountBill;
@@ -90,7 +87,6 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
             finish();
         }
         if (v == layoutCoupon) {
-
             if (objectArrayList.size() <= 0)
                 return;
 
@@ -139,12 +135,10 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onItemDeleteListener(int position) {
-
         objectArrayList.remove(position);
         cartAdapter.notifyDataSetChanged();
         CartObjectModal.setList(objectArrayList);
         updatePrice();
-
     }
 
     public int getDeliveryCharges(int totalCharges) {

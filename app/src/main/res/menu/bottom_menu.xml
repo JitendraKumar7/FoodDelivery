@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/action_home"
-        android:enabled="true"
-        android:icon="@drawable/ic_menu_home"
-        android:title="Home"
-        android:visible="false"
-        app:showAsAction="ifRoom" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MenuTitle">
 
     <item
         android:id="@+id/action_nearby"
         android:enabled="true"
         android:icon="@drawable/ic_clock"
-        android:title="Nearby"
+        android:title="History"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_wallet"
         android:enabled="true"
         android:title="Wallet"
-        android:icon="@drawable/ic_close"
+        android:icon="@drawable/wallet"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_home"
+        android:enabled="false"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_booking"
         android:enabled="true"
-        android:icon="@drawable/ic_shopping_cart_outline"
+        android:icon="@drawable/booking_ic"
         android:title="Booking"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_setting"
         android:enabled="true"
-        android:icon="@drawable/ic_menu_setting"
+        android:icon="@drawable/setting_new"
         android:title="Setting"
         app:showAsAction="ifRoom" />
 

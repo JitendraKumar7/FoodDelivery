@@ -1,6 +1,7 @@
 package com.haris.meal4u.ActivityUtil;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.haris.meal4u.CustomUtil.CurvedBottomNavigationView;
 import com.haris.meal4u.FragmentUtil.BookingFragment;
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 public class Base extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
     public static ArrayList<Object> objectArrayList = new ArrayList<>();
     private LinearLayout layoutSearch;
+    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,13 +63,15 @@ public class Base extends AppCompatActivity implements View.OnClickListener, Bot
     @Override
     public void onClick(View v) {
         if (v == layoutSearch) {
-            openFragment(new DashboardFragment());
+            if (!(getSupportFragmentManager().findFragmentById(R.id.layout_container) instanceof DashboardFragment)) {
+                openFragment(new DashboardFragment());
+            }
         }
     }
 
     @Override
     public void onBackPressed() {
-        ///super.onBackPressed();
+        super.onBackPressed();
     }
 
 
