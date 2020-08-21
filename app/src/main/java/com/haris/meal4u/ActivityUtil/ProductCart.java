@@ -75,7 +75,7 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
         }
         //  ot
         else {
-
+            lbl_discount.setVisibility(View.GONE);
             totalItemCharges = totalCharges + getDeliveryCharges(totalCharges);
 
             txtGrandTotal.setText(String.format("%s %s.00", dataObject.getObject_currency_symbol(), totalCharges));
@@ -131,6 +131,9 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
             remove_coupon_iv.setVisibility(View.GONE);
             txtApplyCoupon.setText("Apply Coupon");
             txtCouponTagline.setText("Redeem &amp; Earn Discounts");
+
+            isCouponRedeem = false;
+            updatePrice();
         }
     }
 

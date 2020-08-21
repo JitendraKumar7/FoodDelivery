@@ -185,6 +185,11 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         finish();
     }
 
+    public String getUserId() {
+
+        return prefObject.getUserId();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Utility.changeAppTheme(this);
@@ -229,9 +234,7 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         if (v == imageBack) {
             finish();
-
         }
-
     }
 
     private JSONArray convertProductIntoArray() {
