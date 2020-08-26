@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.haris.meal4u.ConstantUtil.Constant;
 import com.haris.meal4u.CustomUtil.GlideApp;
+import com.haris.meal4u.FragmentUtil.WalletFragment;
 import com.haris.meal4u.InterfaceUtil.OrderCallback;
 import com.haris.meal4u.ObjectUtil.DataObject;
 import com.haris.meal4u.ObjectUtil.EmptyObject;
@@ -40,7 +41,7 @@ public class OrderAdapter extends RecyclerView.Adapter {
     private OrderCallback orderCallback;
 
 
-    public OrderAdapter(Context context, ArrayList<Object> dataArray) {
+    public OrderAdapter(Context context, ArrayList<Object> dataArray, WalletFragment walletFragment) {
         this.context = context;
         this.dataArray = dataArray;
     }

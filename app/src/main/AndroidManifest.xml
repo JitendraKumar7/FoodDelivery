@@ -92,6 +92,10 @@
         <activity
             android:name=".ActivityUtil.ForgotPassword"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ActivityUtil.AddMoneyActivity"
+            android:screenOrientation="portrait" />
         <!--    <activity
                 android:name=".ActivityUtil.CustomNotificationOpener"
                 android:screenOrientation="portrait" />-->

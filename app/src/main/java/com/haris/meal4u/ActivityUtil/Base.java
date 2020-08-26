@@ -18,6 +18,7 @@ import com.haris.meal4u.FragmentUtil.BookingFragment;
 import com.haris.meal4u.FragmentUtil.DashboardFragment;
 import com.haris.meal4u.FragmentUtil.ListOfOrderFragment;
 import com.haris.meal4u.FragmentUtil.SettingFragment;
+import com.haris.meal4u.FragmentUtil.WalletFragment;
 import com.haris.meal4u.R;
 import com.haris.meal4u.Utility.Utility;
 
@@ -94,7 +95,7 @@ public class Base extends AppCompatActivity implements View.OnClickListener, Bot
             return true;
         }
         else if (menuItem.getItemId() == R.id.action_wallet) {
-            openFragment(new Fragment());
+            openFragment(new WalletFragment());
             //openFragment(new ProductCartFragment());
             return true;
         }

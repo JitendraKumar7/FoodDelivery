@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+   >
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/menu_layout" />
+
+        <LinearLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="horizontal"
+            android:layout_below="@+id/header"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/wallet_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:background="@drawable/image_bg"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Total ₹ 00.00"
+                android:textColor="@color/text_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/add_to_bag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_weight=".5"
+                android:background="@drawable/image_bg"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Add Money"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/main"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+</RelativeLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="@color/white">-->
+
+<!--    <include-->
+<!--        android:id="@+id/header"-->
+<!--        layout="@layout/menu_layout" />-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/main"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:weightSum="1"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/header">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/wallet_amount"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight=".5"-->
+<!--            android:background="@drawable/image_bg"-->
+<!--            android:gravity="center"-->
+<!--            android:padding="8dp"-->
+<!--            android:text="Total ₹ 00.00"-->
+<!--            android:textColor="@color/text_color"-->
+<!--            android:textSize="18sp"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/add_to_bag"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="2dp"-->
+<!--            android:layout_weight=".5"-->
+<!--            android:background="@drawable/image_bg"-->
+<!--            android:gravity="center"-->
+<!--            android:padding="8dp"-->
+<!--            android:text="Add Money"-->
+<!--            android:textColor="@color/colorPrimaryDark"-->
+<!--            android:textSize="18sp"-->
+<!--            android:textStyle="bold" />-->
+
+<!--    </LinearLayout>-->
+
+<!--    &lt;!&ndash;    <TextView&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:id="@+id/wallet_amount"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_marginStart="8dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_marginTop="8dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_marginEnd="8dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:background="@drawable/image_bg"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:gravity="center"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:padding="8dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:text="Total ₹ 00.00"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:textSize="18sp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:textStyle="bold"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:textColor="@color/text_color"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:layout_constraintTop_toBottomOf="@+id/header" />&ndash;&gt;-->
+
+<!--    <android.support.v7.widget.RecyclerView-->
+<!--        android:id="@+id/rv_wallet_transaction"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:background="@color/white"-->
+<!--        android:visibility="visible"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/main" />-->
+
+
+<!--    <ProgressBar-->
+<!--        android:id="@+id/progress_bar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/main"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+
+<!--</android.support.constraint.ConstraintLayout>-->
