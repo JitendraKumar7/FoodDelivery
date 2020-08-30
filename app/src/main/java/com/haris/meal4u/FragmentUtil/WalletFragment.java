@@ -49,52 +49,25 @@ import static com.facebook.share.internal.DeviceShareDialogFragment.TAG;
 import static com.haris.meal4u.ConstantUtil.Constant.ServerInformation.REST_API_URL;
 
 public class WalletFragment extends Fragment implements View.OnClickListener {
-    private TextView walletAmount;
+
+    private TextView txtMenu;
     private TextView addToWallet;
-    private RecyclerView rvWalletTransaction;
-    TextView txtMenu;
-    private OrderAdapter orderAdapter;
-    private ArrayList<Object> objectArrayList = new ArrayList<>();
-    private ProgressBar progress_bar;
+    private TextView walletAmount;
     private Management management;
     private PrefObject prefObject;
+    private ProgressBar progress_bar;
     private LinearLayout linearLayout;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.wallet_transaction, null);
-    }
+    public void onStart() {
+        super.onStart();
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        progress_bar = view.findViewById(R.id.progress_bar);
-        txtMenu = view.findViewById(R.id.txt_menu);
-        ImageView imageBack = view.findViewById(R.id.image_back);
-        imageBack.setImageResource(R.drawable.ic_back);
-        txtMenu.setText("Wallet Transaction History");
-        linearLayout = view.findViewById(R.id.linearLayout);
-        walletAmount = view.findViewById(R.id.wallet_amount);
-        addToWallet = view.findViewById(R.id.add_to_bag);
-        addToWallet.setOnClickListener(this);
-        management = new Management(getActivity());
-        prefObject = management.getPreferences(new PrefObject()
-                .setRetrieveUserCredential(true)
-                .setRetrieveLogin(true));
-        getBalance();
-        getWalletTranasaction();
-//        objectArrayList.add(new ProgressObject());
-//        Management management = new Management(getActivity());
-    }
-
-    public void getBalance() {
         try {
             progress_bar.setVisibility(View.VISIBLE);
             JSONObject jsonObject = new JSONObject();
             jsonObject.accumulate("functionality", "get_user_wallet_balance");
-            jsonObject.accumulate("user_id", "1");
-//            jsonObject.accumulate("user_id", prefObject.getUserId());
+            //jsonObject.accumulate("user_id", "1");
+            jsonObject.accumulate("user_id", prefObject.getUserId());
             JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, REST_API_URL, jsonObject,
                     new Response.Listener<JSONObject>() {
                         @Override
@@ -104,7 +77,7 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
                             try {
                                 if (response.getString("message").equalsIgnoreCase("Sucess")) {
                                     JSONObject address = response.getJSONObject("result");
-                                    walletAmount.setText("Rs " +  address.getString("amount"));
+                                    walletAmount.setText("Rs " + address.getString("amount"));
 
                                 } else {
                                     Toast.makeText(getActivity(), "No data found.\nPlease add balance", Toast.LENGTH_SHORT).show();
@@ -129,12 +102,22 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    public void getWalletTranasaction() {
+    @Override
+    public void onClick(View v) {
+        if (v == addToWallet) {
+            Intent intent = new Intent(getActivity(), AddMoneyActivity.class);
+            startActivity(intent);
+        }
+
+    }
+
+    public void getWalletTransaction() {
         try {
             progress_bar.setVisibility(View.VISIBLE);
             JSONObject jsonObject = new JSONObject();
             jsonObject.accumulate("functionality", "get_user_wallet_history");
-            jsonObject.accumulate("user_id", "1");
+            //jsonObject.accumulate("user_id", "1");
+            jsonObject.accumulate("user_id", prefObject.getUserId());
             JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, REST_API_URL, jsonObject,
                     new Response.Listener<JSONObject>() {
                         @Override
@@ -157,10 +140,10 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
                                         trans_date.setText(address.getJSONObject(i).getString("created_at"));
                                         if (address.getJSONObject(i).getString("type").equalsIgnoreCase("dr")) {
                                             type.setTextColor(Utility.getColourFromRes(getActivity(), R.color.colorSelectedFavouriteDay));
-                                        }else {
+                                        } else {
                                             type.setTextColor(Utility.getColourFromRes(getActivity(), R.color.order_on_the_way));
                                         }
-                                            type.setText(address.getJSONObject(i).getString("type"));
+                                        type.setText(address.getJSONObject(i).getString("type"));
                                         linearLayout.addView(view1);
 
 
@@ -188,89 +171,29 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-
-    //        PrefObject prefObject = management.getPreferences(new PrefObject()
-//                .setRetrieveLogin(true)
-//                .setRetrieveUserCredential(true));
-//
-//        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1, LinearLayoutManager.VERTICAL, false);
-//        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-//            @Override
-//            public int getSpanSize(int position) {
-//                if (objectArrayList.get(position) instanceof EmptyObject) {
-//                    return 1;
-//                } else if (objectArrayList.get(position) instanceof InternetObject) {
-//                    return 1;
-//                } else if (objectArrayList.get(position) instanceof ProgressObject) {
-//                    return 1;
-//                } else {
-//                    return 1;
-//                }
-//            }
-//        });
-//
-//        RecyclerView recyclerViewOrder = (RecyclerView) view.findViewById(R.id.rv_wallet_transaction);
-//        recyclerViewOrder.setLayoutManager(gridLayoutManager);
-//
-//        //Initialize & Setup Adapter with Recycler View
-//
-//        orderAdapter = new OrderAdapter(getActivity(), objectArrayList, this);
-//        recyclerViewOrder.setAdapter(orderAdapter);
-//
-//        try {
-//
-//
-//            JSONObject jsonObject = new JSONObject();
-//            jsonObject.accumulate("functionality", "order_history");
-//            jsonObject.accumulate("user_id", prefObject.getUserId());
-//
-//            management.sendRequestToServer(new RequestObject()
-//                    .setJson(jsonObject.toString())
-//                    .setConnectionType(Constant.CONNECTION_TYPE.UI)
-//                    .setConnection(Constant.CONNECTION.ORDER_HISTORY)
-//                    .setConnectionCallback(this));
-//
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//    }
-//
     @Override
-    public void onClick(View v) {
-        if (v == addToWallet) {
-            Intent intent = new Intent(getActivity(), AddMoneyActivity.class);
-            startActivity(intent);
-        }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.wallet_transaction, null);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        progress_bar = view.findViewById(R.id.progress_bar);
+        txtMenu = view.findViewById(R.id.txt_menu);
+        ImageView imageBack = view.findViewById(R.id.image_back);
+        imageBack.setImageResource(R.drawable.ic_back);
+        txtMenu.setText("Wallet Transaction History");
+        linearLayout = view.findViewById(R.id.linearLayout);
+        walletAmount = view.findViewById(R.id.wallet_amount);
+        addToWallet = view.findViewById(R.id.add_to_bag);
+        addToWallet.setOnClickListener(this);
+        management = new Management(getActivity());
+        prefObject = management.getPreferences(new PrefObject()
+                .setRetrieveUserCredential(true)
+                .setRetrieveLogin(true));
+        getWalletTransaction();
 
     }
-//
-//    @Override
-//    public void onSuccess(Object data, RequestObject requestObject) {
-//        if (getActivity() != null && isAdded()) {
-//            if (requestObject.getConnection() == Constant.CONNECTION.ORDER_HISTORY) {
-//
-//                objectArrayList.clear();
-//                DataObject dataObject = (DataObject) data;
-//
-//                for (int i = 0; i < dataObject.getObjectArrayList().size(); i++) {
-//                    objectArrayList.add(dataObject.getObjectArrayList().get(i));
-//                }
-//
-//                orderAdapter.notifyDataSetChanged();
-//            }
-//        }
-//    }
-
-//    @Override
-//    public void onError(String data, RequestObject requestObject) {
-//        Utility.Logger(TAG, "Setting = " + data);
-//        objectArrayList.clear();
-//        objectArrayList.add(new EmptyObject()
-//                .setTitle(Utility.getStringFromRes(getActivity(), R.string.no_order))
-//                .setDescription(Utility.getStringFromRes(getActivity(), R.string.no_order_tagline))
-//                .setPlaceHolderIcon(R.drawable.em_no_order));
-//        orderAdapter.notifyDataSetChanged();
-//    }
 }

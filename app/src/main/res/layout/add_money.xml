@@ -9,196 +9,213 @@
         android:id="@+id/header"
         layout="@layout/menu_layout" />
 
-    <android.support.v4.widget.NestedScrollView
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="2dp"
+        app:cardUseCompatPadding="true">
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/cardView2"
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="2dp"
-            app:cardUseCompatPadding="true">
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:paddingBottom="20dp">
 
-            <android.support.constraint.ConstraintLayout
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_amount"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:paddingBottom="20dp">
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent ">
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/input_layout_amount"
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_amount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="10dp"
                     android:backgroundTint="@color/colorPrimary"
-                    android:textColorHint="@color/colorPrimary"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent ">
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/et_amount"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/colorPrimary"
-                        android:hint="Amount (₹)"
-                        android:imeOptions="actionDone"
-                        android:inputType="number"
-                        android:maxLength="5"
-                        android:singleLine="true"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_color"
-                        android:textColorHint="@color/colorPrimary"
-                        android:textSize="18sp" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:text="It's easy,safe and secure"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/input_layout_amount"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/input_layout_amount" />
-
-                <TextView
-                    android:id="@+id/textView45"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Select Payment Method"
-                    android:textStyle="bold"
+                    android:hint="Amount (₹)"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:singleLine="true"
                     android:textColor="@color/text_color"
+                    android:textColorHint="@color/colorPrimary"
                     android:textSize="18sp"
-                    android:visibility="gone"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/input_layout_amount" />
+                    android:textStyle="bold" />
 
-<!--                <RadioGroup-->
-<!--                    android:id="@+id/radioGroup_payment"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="8dp"-->
-<!--                    android:layout_marginTop="16dp"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/textView45">-->
+            </android.support.design.widget.TextInputLayout>
 
-<!--                    <RadioButton-->
-<!--                        android:id="@+id/radio_Paypal"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="40dp"-->
-<!--                        android:buttonTint="@color/colorPrimaryDark"-->
-<!--                        android:drawableStart="@drawable/paypal"-->
-<!--                        android:drawablePadding="16dp"-->
-<!--                        android:theme="@style/RadioButtonStyleSecond" />-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="It's easy,safe and secure"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/input_layout_amount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/input_layout_amount" />
 
-<!--                    <RadioButton-->
-<!--                        android:id="@+id/radio_aeps"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="40dp"-->
-<!--                        android:buttonTint="@color/colorPrimaryDark"-->
-<!--                        android:drawableStart="@drawable/aeps"-->
-<!--                        android:drawablePadding="16dp"-->
-<!--                        android:theme="@style/RadioButtonStyleSecond"-->
-<!--                        android:visibility="visible" />-->
+            <TextView
+                android:id="@+id/textView45"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Select Payment Method"
+                android:textColor="@color/text_color"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_layout_amount" />
 
-<!--                    <RadioButton-->
-<!--                        android:id="@+id/radio_Paytm"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="40dp"-->
-<!--                        android:buttonTint="@color/colorPrimaryDark"-->
-<!--                        android:drawableStart="@drawable/paytm"-->
-<!--                        android:drawablePadding="16dp"-->
-<!--                        android:theme="@style/RadioButtonStyleSecond"-->
-<!--                        android:visibility="gone" />-->
+            <!--                <RadioGroup-->
+            <!--                    android:id="@+id/radioGroup_payment"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginStart="8dp"-->
+            <!--                    android:layout_marginTop="16dp"-->
+            <!--                    app:layout_constraintStart_toStartOf="parent"-->
+            <!--                    app:layout_constraintTop_toBottomOf="@+id/textView45">-->
 
-<!--                    <RadioButton-->
-<!--                        android:id="@+id/radio_upi"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="40dp"-->
-<!--                        android:buttonTint="@color/colorPrimaryDark"-->
-<!--                        android:drawableStart="@drawable/upi"-->
-<!--                        android:drawablePadding="16dp"-->
-<!--                        android:theme="@style/RadioButtonStyleSecond" />-->
+            <!--                    <RadioButton-->
+            <!--                        android:id="@+id/radio_Paypal"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="40dp"-->
+            <!--                        android:buttonTint="@color/colorPrimaryDark"-->
+            <!--                        android:drawableStart="@drawable/paypal"-->
+            <!--                        android:drawablePadding="16dp"-->
+            <!--                        android:theme="@style/RadioButtonStyleSecond" />-->
 
-<!--                    <RadioButton-->
-<!--                        android:id="@+id/radio_offline"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="40dp"-->
-<!--                        android:buttonTint="@color/colorPrimaryDark"-->
-<!--                        android:drawableStart="@drawable/museum"-->
-<!--                        android:drawablePadding="16dp"-->
-<!--                        android:drawableTint="@color/colorPrimaryDark"-->
-<!--                        android:padding="8dp"-->
-<!--                        android:theme="@style/RadioButtonStyleSecond"-->
-<!--                        android:visibility="visible" />-->
+            <!--                    <RadioButton-->
+            <!--                        android:id="@+id/radio_aeps"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="40dp"-->
+            <!--                        android:buttonTint="@color/colorPrimaryDark"-->
+            <!--                        android:drawableStart="@drawable/aeps"-->
+            <!--                        android:drawablePadding="16dp"-->
+            <!--                        android:theme="@style/RadioButtonStyleSecond"-->
+            <!--                        android:visibility="visible" />-->
+
+            <!--                    <RadioButton-->
+            <!--                        android:id="@+id/radio_Paytm"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="40dp"-->
+            <!--                        android:buttonTint="@color/colorPrimaryDark"-->
+            <!--                        android:drawableStart="@drawable/paytm"-->
+            <!--                        android:drawablePadding="16dp"-->
+            <!--                        android:theme="@style/RadioButtonStyleSecond"-->
+            <!--                        android:visibility="gone" />-->
+
+            <!--                    <RadioButton-->
+            <!--                        android:id="@+id/radio_upi"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="40dp"-->
+            <!--                        android:buttonTint="@color/colorPrimaryDark"-->
+            <!--                        android:drawableStart="@drawable/upi"-->
+            <!--                        android:drawablePadding="16dp"-->
+            <!--                        android:theme="@style/RadioButtonStyleSecond" />-->
+
+            <!--                    <RadioButton-->
+            <!--                        android:id="@+id/radio_offline"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="40dp"-->
+            <!--                        android:buttonTint="@color/colorPrimaryDark"-->
+            <!--                        android:drawableStart="@drawable/museum"-->
+            <!--                        android:drawablePadding="16dp"-->
+            <!--                        android:drawableTint="@color/colorPrimaryDark"-->
+            <!--                        android:padding="8dp"-->
+            <!--                        android:theme="@style/RadioButtonStyleSecond"-->
+            <!--                        android:visibility="visible" />-->
 
 
-<!--                    <RadioButton-->
-<!--                        android:id="@+id/radio_ccavenue"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="40dp"-->
-<!--                        android:buttonTint="@color/colorPrimaryDark"-->
-<!--                        android:drawableStart="@drawable/ccavenue"-->
-<!--                        android:drawablePadding="16dp"-->
-<!--                        android:theme="@style/RadioButtonStyleSecond"-->
-<!--                        android:visibility="gone" />-->
+            <!--                    <RadioButton-->
+            <!--                        android:id="@+id/radio_ccavenue"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="40dp"-->
+            <!--                        android:buttonTint="@color/colorPrimaryDark"-->
+            <!--                        android:drawableStart="@drawable/ccavenue"-->
+            <!--                        android:drawablePadding="16dp"-->
+            <!--                        android:theme="@style/RadioButtonStyleSecond"-->
+            <!--                        android:visibility="gone" />-->
 
-<!--                    <RadioButton-->
-<!--                        android:id="@+id/radio_easypay"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="40dp"-->
+            <!--                    <RadioButton-->
+            <!--                        android:id="@+id/radio_easypay"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="40dp"-->
 
-<!--                        android:buttonTint="@color/colorPrimaryDark"-->
-<!--                        android:drawableStart="@drawable/icici"-->
-<!--                        android:drawablePadding="16dp"-->
-<!--                        android:theme="@style/RadioButtonStyleSecond"-->
-<!--                        android:visibility="gone" />-->
+            <!--                        android:buttonTint="@color/colorPrimaryDark"-->
+            <!--                        android:drawableStart="@drawable/icici"-->
+            <!--                        android:drawablePadding="16dp"-->
+            <!--                        android:theme="@style/RadioButtonStyleSecond"-->
+            <!--                        android:visibility="gone" />-->
 
-<!--                </RadioGroup>-->
-<!--                <RelativeLayout-->
-<!--                    android:id="@+id/addmoney_btn"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="50dp"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:layout_marginStart="20dp"-->
-<!--                    android:layout_marginTop="24dp"-->
-<!--                    android:layout_marginEnd="20dp"-->
-<!--                    android:background="@drawable/rect_btn_bg_darkgreen"-->
-<!--                    android:gravity="center"-->
-<!--                    >-->
+            <!--                </RadioGroup>-->
+            <!--                <RelativeLayout-->
+            <!--                    android:id="@+id/addmoney_btn"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="50dp"-->
+            <!--                    android:layout_gravity="center"-->
+            <!--                    android:layout_marginStart="20dp"-->
+            <!--                    android:layout_marginTop="24dp"-->
+            <!--                    android:layout_marginEnd="20dp"-->
+            <!--                    android:background="@drawable/rect_btn_bg_darkgreen"-->
+            <!--                    android:gravity="center"-->
+            <!--                    >-->
 
-                    <TextView
-                        android:id="@+id/addmoney_btn"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_centerInParent="true"
-                        android:layout_margin="20dp"
-                        android:drawablePadding="8dp"
-                        android:text="Proceed to payment"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:background="@drawable/rect_btn_bg_darkgreen"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/input_layout_amount"/>
+            <TextView
+                android:id="@+id/addmoney_btn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:layout_margin="20dp"
+                android:background="@drawable/rect_btn_bg_darkgreen"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="Proceed to payment"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_layout_amount" />
 
-<!--                </RelativeLayout>-->
-            </android.support.constraint.ConstraintLayout>
-        </android.support.v7.widget.CardView>
-    </android.support.v4.widget.NestedScrollView>
+            <!--                </RelativeLayout>-->
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/txtMessage"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:text="Don't go back transaction is progress"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
 
 </LinearLayout>
