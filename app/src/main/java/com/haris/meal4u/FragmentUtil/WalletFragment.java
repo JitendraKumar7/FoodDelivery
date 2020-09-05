@@ -77,7 +77,7 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
                             try {
                                 if (response.getString("message").equalsIgnoreCase("Sucess")) {
                                     JSONObject address = response.getJSONObject("result");
-                                    walletAmount.setText("Rs " + address.getString("amount"));
+                                    walletAmount.setText(String.format("₹%s", address.getString("amount")));
 
                                 } else {
                                     Toast.makeText(getActivity(), "No data found.\nPlease add balance", Toast.LENGTH_SHORT).show();
@@ -128,24 +128,31 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
                                 if (response.getString("message").equalsIgnoreCase("Sucess")) {
                                     JSONArray address = response.getJSONArray("result");
                                     for (int i = 0; i <= address.length(); i++) {
-                                        View view1 = LayoutInflater.from(getActivity()).inflate(R.layout.adapter_wallet_trans, null);
-                                        final TextView amount = view1.findViewById(R.id.txt_charges);
-                                        final TextView transaction_id = view1.findViewById(R.id.txt_tran_id);
-                                        final TextView trans_date = view1.findViewById(R.id.txt_date);
-                                        final TextView type = view1.findViewById(R.id.type);
+                                        try {
+
+                                            View view1 = LayoutInflater.from(getActivity()).inflate(R.layout.adapter_wallet_trans, null);
+                                            final TextView amount = view1.findViewById(R.id.txt_charges);
+                                            final TextView transaction_id = view1.findViewById(R.id.txt_name);
+                                            final TextView trans_date = view1.findViewById(R.id.txt_date);
+                                            final TextView type = view1.findViewById(R.id.type);
 
 
-                                        amount.setText("Rs " + address.getJSONObject(i).getString("amount"));
-                                        transaction_id.setText(address.getJSONObject(i).getString("id"));
-                                        trans_date.setText(address.getJSONObject(i).getString("created_at"));
-                                        if (address.getJSONObject(i).getString("type").equalsIgnoreCase("dr")) {
-                                            type.setTextColor(Utility.getColourFromRes(getActivity(), R.color.colorSelectedFavouriteDay));
-                                        } else {
-                                            type.setTextColor(Utility.getColourFromRes(getActivity(), R.color.order_on_the_way));
+                                            amount.setText(String.format("₹ %s", address.getJSONObject(i).getString("amount")));
+                                            String id = address.getJSONObject(i).getString("id");
+                                            transaction_id.setText(String.format("Transaction Id - #%s", id));
+                                            trans_date.setText(address.getJSONObject(i).getString("created_at"));
+                                            if (address.getJSONObject(i).getString("type").equalsIgnoreCase("dr")) {
+                                                type.setTextColor(Utility.getColourFromRes(getActivity(), R.color.colorSelectedFavouriteDay));
+                                                type.setText("  Dr.");
+                                            } else {
+                                                type.setTextColor(Utility.getColourFromRes(getActivity(), R.color.order_on_the_way));
+                                                type.setText("  Cr.");
+                                            }
+
+                                            linearLayout.addView(view1);
+                                        } catch (NullPointerException ignore) {
+
                                         }
-                                        type.setText(address.getJSONObject(i).getString("type"));
-                                        linearLayout.addView(view1);
-
 
                                     }
                                 } else {

@@ -143,8 +143,8 @@ public class ProductCart extends AppCompatActivity implements View.OnClickListen
 
     public int getDeliveryCharges(int totalCharges) {
 
-        txtDeliveryCharge.setText(String.format("%s %s.00", dataObject.getObject_currency_symbol(), totalCharges > 200 ? 0 : 50));
-        return totalCharges > 200 ? 0 : 50;
+        txtDeliveryCharge.setText(String.format("%s %s.00", dataObject.getObject_currency_symbol(), totalCharges > 200 ? 0 : 30));
+        return totalCharges > 200 ? 0 : 30;
     }
 
     @Override

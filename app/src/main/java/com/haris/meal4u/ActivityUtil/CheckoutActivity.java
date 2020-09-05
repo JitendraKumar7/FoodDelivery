@@ -190,6 +190,11 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         return prefObject.getUserId();
     }
 
+    public int getAmount() {
+
+        return Integer.parseInt(restaurantDetail.getPost_price());
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Utility.changeAppTheme(this);
@@ -233,7 +238,7 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         if (v == imageBack) {
-            finish();
+            onBackPressed();
         }
     }
 
@@ -296,7 +301,7 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
 
             if (restaurantDetail.getPost_price() != null) {
 
-                int amount = Integer.parseInt(restaurantDetail.getPost_price());
+                int amount = getAmount();
 
                 String easy = RandomString.digits + "ACEFGHJKLMNPQRUVWXYabcdefhijkprstuvwx";
                 RandomString tickets = new RandomString(23, new SecureRandom(), easy);

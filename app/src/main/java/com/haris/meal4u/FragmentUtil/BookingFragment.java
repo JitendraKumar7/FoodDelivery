@@ -66,7 +66,7 @@ public class BookingFragment extends Fragment {
                     } else {
                         try {
                             Intent callIntent = new Intent(Intent.ACTION_CALL);
-                            callIntent.setData(Uri.parse("tel:9045496024"));
+                            callIntent.setData(Uri.parse("tel:9084496024"));
                             startActivity(callIntent);
                         } catch(SecurityException e) {
                             e.printStackTrace();
@@ -88,7 +88,7 @@ public class BookingFragment extends Fragment {
                 if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
                     try {
                         Intent callIntent = new Intent(Intent.ACTION_CALL);
-                        callIntent.setData(Uri.parse("tel:9045496024"));
+                        callIntent.setData(Uri.parse("tel:9084496024"));
                         startActivity(callIntent);
                     } catch(SecurityException e) {
                         e.printStackTrace();

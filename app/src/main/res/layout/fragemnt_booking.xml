@@ -15,17 +15,38 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:text="For any party / event booking such as Birthdays, Anniversary and kitty parties\n\nPlease call on this number"
+            android:textColor="?attr/colorHeading"
+            android:textSize="28sp"
+            android:visibility="visible" />
 
         <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:text="For any party / event booking, please call on this number :"
-            android:textColor="?attr/colorHeading"
+            android:text="₹499/-"
+            android:textColor="@color/tagline"
             android:textSize="18sp"
+            android:visibility="gone" />
+
+        <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="Now only on ₹99/-"
+            android:textColor="?attr/colorHeading"
+            android:textSize="20sp"
             android:visibility="visible" />
 
         <com.haris.meal4u.TextviewUtil.UbuntuBoldTextview
@@ -33,11 +54,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_margin="18dp"
             android:layout_toEndOf="@+id/image_profile"
             android:gravity="center"
-            android:text="@string/mobile_number"
+            android:text="+91-9084496024"
             android:textColor="@color/colorLinkNight"
-            android:textSize="20sp"
+            android:textSize="28sp"
             android:visibility="visible" />
 
     </LinearLayout>

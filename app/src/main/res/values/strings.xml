@@ -218,6 +218,7 @@
     <string name="validate_expiry_date">Invalid Expiry Date</string>
     <string name="validate_expiry_month">Invalid Expiry Month</string>
     <string name="cod">Cash On Delivery (COD)</string>
+    <string name="wallet">Wallet</string>
     <string name="cod_not_supported">Restaurant did not support Cash On Delivery</string>
     <string name="cards_not_supported">Credit / Debit Cards are not supported</string>
     <string name="select_payment_method">Kindly select payment method</string>

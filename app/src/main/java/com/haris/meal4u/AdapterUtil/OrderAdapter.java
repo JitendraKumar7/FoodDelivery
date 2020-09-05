@@ -116,11 +116,10 @@ public class OrderAdapter extends RecyclerView.Adapter {
             final OrderHolder orderHolder = (OrderHolder) holder;
             DataObject dataObject = (DataObject) dataArray.get(position);
 
-            orderHolder.txtName.setText(dataObject.getOrder_restaurant_name());
+            orderHolder.txtName.setText(String.format("Order Id - #%s", dataObject.getOrder_id()));
             orderHolder.txtDate.setText(dataObject.getOrder_delivery_date());
             orderHolder.txtTime.setText(dataObject.getOrder_delivery_time());
             orderHolder.txtCharges.setText(dataObject.getOrder_price().replace("INR", "₹"));
-            orderHolder.txtDeliveryTime.setText(dataObject.getDelivery_time());
             orderHolder.txtStatus.setText(StringUtils.capitalize(dataObject.getOrder_status()));
 
             if (dataObject.getOrder_status().equalsIgnoreCase(Utility.getStringFromRes(context, R.string.project_status_schedule))) {
@@ -181,7 +180,6 @@ public class OrderAdapter extends RecyclerView.Adapter {
 
     protected class OrderHolder extends RecyclerView.ViewHolder {
         private LinearLayout layoutOrder;
-        private RoundedImageView imageLogo;
         private TextView txtName;
         private TextView txtDate;
         private TextView txtTime;
@@ -195,7 +193,6 @@ public class OrderAdapter extends RecyclerView.Adapter {
             super(view);
 
             layoutOrder = (LinearLayout) view.findViewById(R.id.layout_order);
-            imageLogo = (RoundedImageView) view.findViewById(R.id.image_logo);
             txtName = (TextView) view.findViewById(R.id.txt_name);
             txtDate = (TextView) view.findViewById(R.id.txt_date);
             txtTime = (TextView) view.findViewById(R.id.txt_time);

@@ -27,7 +27,9 @@ import java.util.ArrayList;
 public class Base extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
     public static ArrayList<Object> objectArrayList = new ArrayList<>();
     private LinearLayout layoutSearch;
-    boolean doubleBackToExitPressedOnce = false;
+    CurvedBottomNavigationView curvedBottomNavigationView;
+
+    Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,8 @@ public class Base extends AppCompatActivity implements View.OnClickListener, Bot
 
         layoutSearch = findViewById(R.id.layout_search);
 
-        CurvedBottomNavigationView curvedBottomNavigationView = findViewById(R.id.customBottomBar);
+
+        curvedBottomNavigationView = findViewById(R.id.customBottomBar);
         curvedBottomNavigationView.inflateMenu(R.menu.bottom_menu);
 
         curvedBottomNavigationView.setOnNavigationItemSelectedListener(this);
@@ -51,13 +54,13 @@ public class Base extends AppCompatActivity implements View.OnClickListener, Bot
 
     public void openFragment(Fragment fragment) {
 
-        if (fragment != null) {
+        if (fragment != null && this.fragment != fragment) {
 
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.layout_container, fragment);
             fragmentTransaction.commit();
-
+            this.fragment = fragment;
         }
     }
 
@@ -65,6 +68,7 @@ public class Base extends AppCompatActivity implements View.OnClickListener, Bot
     public void onClick(View v) {
         if (v == layoutSearch) {
             if (!(getSupportFragmentManager().findFragmentById(R.id.layout_container) instanceof DashboardFragment)) {
+                curvedBottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
                 openFragment(new DashboardFragment());
             }
         }
@@ -94,6 +98,7 @@ public class Base extends AppCompatActivity implements View.OnClickListener, Bot
             //openFragment(new ProductCartFragment());
             return true;
         }
+        //
         else if (menuItem.getItemId() == R.id.action_wallet) {
             openFragment(new WalletFragment());
             //openFragment(new ProductCartFragment());

@@ -30,7 +30,7 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
 
     public int getDeliveryCharges(int totalCharges) {
 
-        return totalCharges > 200 ? 0 : 50;
+        return totalCharges > 200 ? 0 : 30;
     }
 
     @SuppressLint("SetTextI18n")
@@ -86,6 +86,13 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
 
         int totalOrderPrice = Integer.parseInt(order_price);
 
+        if (totalOrderPrice < 200) {
+
+            View order_placed5 = LayoutInflater.from(getActivity()).inflate(R.layout.order_placed_item_layout, null);
+            new ProductDetailHolder(order_placed5, "Delivery Charge", "₹30.00");
+            linearLayout.addView(order_placed5);
+        }
+
         if (totalCharges == totalOrderPrice) {
             View order_placed3 = LayoutInflater.from(getActivity()).inflate(R.layout.order_placed_item_layout, null);
             new ProductDetailHolder(order_placed3, "Total Price", order_price);
@@ -101,6 +108,13 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
 
             View order_placed5 = LayoutInflater.from(getActivity()).inflate(R.layout.order_placed_item_layout, null);
             new ProductDetailHolder(order_placed5, "Total Price", order_price);
+            linearLayout.addView(order_placed5);
+        }
+
+        if (totalOrderPrice < 200) {
+
+            View order_placed5 = LayoutInflater.from(getActivity()).inflate(R.layout.order_placed_item_layout, null);
+            new ProductDetailHolder(order_placed5, "Delivery Charge", "₹50.00");
             linearLayout.addView(order_placed5);
         }
 
@@ -140,7 +154,6 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         getActivity().finish();
-
     }
 
 }
