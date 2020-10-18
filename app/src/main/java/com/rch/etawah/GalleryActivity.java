@@ -163,6 +163,19 @@ public class GalleryActivity extends AppCompatActivity {
         }
     }*/
 
+    /*//http://gallery.rchetawah.com/apiGallery.php
+//http://gallery.rchetawah.com/photos/{gallery}/{photo[]}
+
+[{
+	"gallery": "RCH Etawah",
+	"photos": ["maggi puf.jpg", "rch_burger.jpeg", "rch_pizza.jpeg"]
+}, {
+	"gallery": "Random Photos",
+	"photos": ["Bugatti_Molsheim_PGOS_0735.0.jpg", "aaaaaaaaaaaaaaaaaa.jpg", "dfh.jpg", "mi-redmi-6-na-original-imaf8qtkgh6qhs3p.jpeg", "mi-redmi-note-5-pro-mzb6081in-mzb6089in-original-imaf52hhf3yy5bg8.jpeg", "mimix.jpg", "nokia.jpg"]
+}, {
+	"gallery": "Suits Collection",
+	"photos": ["IMG_20160812_171122.jpg", "IMG_20160812_171138.jpg", "IMG_20160812_171153.jpg", "IMG_20160829_204027.jpg", "alephant.jpg", "bird flowers.jpg", "bird painting.jpg", "mahapurush.jpg", "photo frame.jpg", "tree painting.jpg"]
+}]*/
 }
 
 /*https://meo.co.in/meoApiPro/konnectBusiness_v4/index.php/addNewCard
