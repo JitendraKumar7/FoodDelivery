@@ -26,7 +26,7 @@ public class GalleryActivity extends AppCompatActivity {
 
     private List<GalleryImage> mDataList;
 
-    @Override
+    /*@Override
     public void onCreateView(LayoutInflater inflater) {
 
         GridLayoutManager manager = new GridLayoutManager(getActivity(), 4);
@@ -161,7 +161,7 @@ public class GalleryActivity extends AppCompatActivity {
             });
 
         }
-    }
+    }*/
 
 }
 
