@@ -32,7 +32,7 @@
 
     </LinearLayout>
 
-    <com.haris.meal4u.CustomUtil.CurvedBottomNavigationView
+    <com.rch.etawah.CustomUtil.CurvedBottomNavigationView
         android:id="@+id/customBottomBar"
         android:layout_width="match_parent"
         android:layout_height="60dp"

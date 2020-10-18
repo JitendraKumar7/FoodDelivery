@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <com.haris.meal4u.TextviewUtil.NormalTextview
+    <com.rch.etawah.TextviewUtil.NormalTextview
         android:id="@+id/add_address_tv"
         android:layout_width="wrap_content"
         android:layout_height="35dp"

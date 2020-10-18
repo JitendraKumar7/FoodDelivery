@@ -36,7 +36,7 @@
                 android:tint="?attr/colorBottomNavigation" />
 
 
-            <com.haris.meal4u.TextviewUtil.NormalTextview
+            <com.rch.etawah.TextviewUtil.NormalTextview
                 android:id="@+id/edit_search"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

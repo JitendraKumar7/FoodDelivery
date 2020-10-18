@@ -66,7 +66,7 @@
             android:gravity="top">
 
 
-            <com.haris.meal4u.TextviewUtil.NormalTextview
+            <com.rch.etawah.TextviewUtil.NormalTextview
                 android:id="@+id/txt_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -74,9 +74,9 @@
                 android:layout_marginStart="15dp"
                 android:textColor="?attr/colorNormal"
                 android:text="Rider Name 01"
-                ></com.haris.meal4u.TextviewUtil.NormalTextview>
+                ></com.rch.etawah.TextviewUtil.NormalTextview>
 
-            <com.haris.meal4u.TextviewUtil.TaglineTextview
+            <com.rch.etawah.TextviewUtil.TaglineTextview
                 android:id="@+id/txt_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
                 android:layout_marginTop="2dp"
                 android:textColor="?attr/colorTagline"
                 android:text="25 km - 5 min"
-                ></com.haris.meal4u.TextviewUtil.TaglineTextview>
+                ></com.rch.etawah.TextviewUtil.TaglineTextview>
 
         </LinearLayout>
 
@@ -125,13 +125,13 @@
                 android:background="@drawable/bg_counter"
                 android:gravity="center">
 
-                <com.haris.meal4u.TextviewUtil.TaglineTextview
+                <com.rch.etawah.TextviewUtil.TaglineTextview
                     android:id="@+id/txt_counter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
                     android:text="1"
-                    android:textSize="@dimen/tagline_text_size"></com.haris.meal4u.TextviewUtil.TaglineTextview>
+                    android:textSize="@dimen/tagline_text_size"></com.rch.etawah.TextviewUtil.TaglineTextview>
 
             </LinearLayout>
 

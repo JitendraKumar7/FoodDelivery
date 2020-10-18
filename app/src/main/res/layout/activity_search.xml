@@ -45,7 +45,7 @@
                     android:tint="?attr/colorBottomNavigation"></ImageView>
 
 
-                <com.haris.meal4u.EditTextUtil.NormalEditText
+                <com.rch.etawah.EditTextUtil.NormalEditText
                     android:id="@+id/edit_search"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -59,7 +59,7 @@
                     android:textColor="?attr/colorNormal"
                     android:textColorHint="?attr/colorHeading"
                     android:background="?attr/colorCard"
-                    android:gravity="center_vertical"></com.haris.meal4u.EditTextUtil.NormalEditText>
+                    android:gravity="center_vertical"></com.rch.etawah.EditTextUtil.NormalEditText>
 
 
                 <ImageView

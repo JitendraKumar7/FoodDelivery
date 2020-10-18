@@ -13,7 +13,7 @@
         android:paddingStart="30dp"
         android:paddingEnd="30dp">
 
-        <com.haris.meal4u.TextviewUtil.LabelTextview
+        <com.rch.etawah.TextviewUtil.LabelTextview
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -24,7 +24,7 @@
             android:textSize="@dimen/label_text_size" />
 
 
-        <com.haris.meal4u.EditTextUtil.NormalEditText
+        <com.rch.etawah.EditTextUtil.NormalEditText
             android:id="@+id/edit_phone_no"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -52,7 +52,7 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <com.haris.meal4u.TextviewUtil.NormalTextview
+            <com.rch.etawah.TextviewUtil.NormalTextview
                 android:id="@+id/txt_done"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"

@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
 
-        <com.haris.meal4u.TextviewUtil.TaglineTextview
+        <com.rch.etawah.TextviewUtil.TaglineTextview
             android:id="@+id/txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

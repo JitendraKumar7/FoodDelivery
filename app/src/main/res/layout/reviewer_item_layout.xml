@@ -14,7 +14,7 @@
         android:src="@drawable/app_icon"
         ></com.makeramen.roundedimageview.RoundedImageView>
 
-    <com.haris.meal4u.TextviewUtil.TaglineTextview
+    <com.rch.etawah.TextviewUtil.TaglineTextview
         android:id="@+id/txt_count"
         android:layout_width="35dp"
         android:layout_height="35dp"
@@ -24,6 +24,6 @@
         android:textSize="@dimen/tagline_text_size"
         android:textColor="@color/white"
         android:text="12+"
-        ></com.haris.meal4u.TextviewUtil.TaglineTextview>
+        ></com.rch.etawah.TextviewUtil.TaglineTextview>
 
 </RelativeLayout>

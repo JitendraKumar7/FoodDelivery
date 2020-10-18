@@ -11,7 +11,7 @@
         android:minHeight="60dp"
         android:orientation="horizontal">
 
-        <com.haris.meal4u.TextviewUtil.NormalTextview
+        <com.rch.etawah.TextviewUtil.NormalTextview
             android:id="@+id/txt_post_title"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -21,7 +21,7 @@
             android:textColor="?attr/colorNormal"
             android:textSize="@dimen/tagline_text_size" />
 
-        <com.haris.meal4u.TextviewUtil.NormalTextview
+        <com.rch.etawah.TextviewUtil.NormalTextview
             android:id="@+id/txt_count"
             android:layout_width="50dp"
             android:layout_height="match_parent"
@@ -31,7 +31,7 @@
             android:textColor="?attr/colorNormal"
             android:textSize="@dimen/tagline_text_size" />
 
-        <com.haris.meal4u.TextviewUtil.NormalTextview
+        <com.rch.etawah.TextviewUtil.NormalTextview
             android:id="@+id/txt_price"
             android:layout_width="100dp"
             android:layout_height="wrap_content"

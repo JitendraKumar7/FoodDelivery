@@ -13,7 +13,7 @@
         android:paddingStart="10dp">
 
 
-        <com.haris.meal4u.TextviewUtil.LabelTextview
+        <com.rch.etawah.TextviewUtil.LabelTextview
             android:id="@+id/txt_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
             android:textSize="@dimen/label_text_size" />
 
 
-        <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+        <com.rch.etawah.TextviewUtil.UbuntuMediumTextview
             android:id="@+id/txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
             ></ImageView>
 
 
-        <com.haris.meal4u.TextviewUtil.NormalTextview
+        <com.rch.etawah.TextviewUtil.NormalTextview
             android:id="@+id/txt_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

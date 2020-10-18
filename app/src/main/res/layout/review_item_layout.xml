@@ -26,7 +26,7 @@
             android:id="@+id/image_user"></com.makeramen.roundedimageview.RoundedImageView>
 
 
-        <com.haris.meal4u.TextviewUtil.NormalTextview
+        <com.rch.etawah.TextviewUtil.NormalTextview
             android:id="@+id/txt_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -36,9 +36,9 @@
             android:text="Alex Smith"
             android:textSize="@dimen/normal_text_size"
             android:textColor="?attr/colorNormal"
-            app:layout_constraintStart_toEndOf="@+id/image_user"></com.haris.meal4u.TextviewUtil.NormalTextview>
+            app:layout_constraintStart_toEndOf="@+id/image_user"></com.rch.etawah.TextviewUtil.NormalTextview>
 
-        <com.haris.meal4u.TextviewUtil.TaglineTextview
+        <com.rch.etawah.TextviewUtil.TaglineTextview
             android:id="@+id/txt_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             android:layout_marginStart="15dp"
             android:text="May 15 , 2019"
             android:textSize="@dimen/tagline_text_size"
-            android:textColor="?attr/colorTagline"></com.haris.meal4u.TextviewUtil.TaglineTextview>
+            android:textColor="?attr/colorTagline"></com.rch.etawah.TextviewUtil.TaglineTextview>
 
 
         <ImageView
@@ -87,7 +87,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="10dp"></TextView>
 
-    <com.haris.meal4u.TextviewUtil.NormalTextview
+    <com.rch.etawah.TextviewUtil.NormalTextview
         android:id="@+id/txt_review"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
         android:layout_marginEnd="10dp"
         android:text="How are you , working fine  okay no more"
         android:textColor="?attr/colorTagline"
-        android:textSize="@dimen/normal_text_size"></com.haris.meal4u.TextviewUtil.NormalTextview>
+        android:textSize="@dimen/normal_text_size"></com.rch.etawah.TextviewUtil.NormalTextview>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_picture"

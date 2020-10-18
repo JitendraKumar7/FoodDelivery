@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"></TextView>
 
 
-    <com.haris.meal4u.TextviewUtil.NormalTextview
+    <com.rch.etawah.TextviewUtil.NormalTextview
         android:id="@+id/txt_heading"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_line" />
 
-    <com.haris.meal4u.TextviewUtil.TaglineTextview
+    <com.rch.etawah.TextviewUtil.TaglineTextview
         android:id="@+id/txt_tagline"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="@+id/txt_heading"
         app:layout_constraintTop_toBottomOf="@+id/txt_heading" />
 
-    <com.haris.meal4u.EditTextUtil.NormalEditText
+    <com.rch.etawah.EditTextUtil.NormalEditText
         android:id="@+id/edit_instruction"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

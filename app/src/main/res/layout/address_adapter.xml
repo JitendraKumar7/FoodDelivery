@@ -14,7 +14,7 @@
         android:layout_margin="5dp"
         android:padding="5dp">
 
-        <com.haris.meal4u.TextviewUtil.NormalTextview
+        <com.rch.etawah.TextviewUtil.NormalTextview
             android:id="@+id/tv_house_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <com.haris.meal4u.TextviewUtil.NormalTextview
+        <com.rch.etawah.TextviewUtil.NormalTextview
             android:id="@+id/tv_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_house_no" />
 
 
-        <com.haris.meal4u.TextviewUtil.NormalTextview
+        <com.rch.etawah.TextviewUtil.NormalTextview
             android:id="@+id/tv_landmark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_address" />
 
 
-        <com.haris.meal4u.TextviewUtil.NormalTextview
+        <com.rch.etawah.TextviewUtil.NormalTextview
             android:id="@+id/text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

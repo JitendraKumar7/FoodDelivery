@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
 
-        <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+        <com.rch.etawah.TextviewUtil.UbuntuMediumTextview
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -47,7 +47,7 @@
             android:visibility="gone"
             android:background="@drawable/bg_share_outline">
 
-            <com.haris.meal4u.EditTextUtil.UbuntuRegularEditText
+            <com.rch.etawah.EditTextUtil.UbuntuRegularEditText
                 android:id="@+id/txt_review"
                 android:layout_width="220dp"
                 android:layout_height="80dp"
@@ -78,7 +78,7 @@
 
 
 
-        <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+        <com.rch.etawah.TextviewUtil.UbuntuRegularTextview
             android:id="@+id/txt_submit"
             android:layout_width="120dp"
             android:layout_height="35dp"

@@ -18,7 +18,7 @@
             android:gravity="center_vertical"
             android:paddingStart="15dp">
 
-            <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+            <com.rch.etawah.TextviewUtil.UbuntuMediumTextview
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/picture_selector"
@@ -52,7 +52,7 @@
                     android:tint="?attr/colorHeading" />
 
 
-                <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                <com.rch.etawah.TextviewUtil.UbuntuRegularTextview
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -89,7 +89,7 @@
                     android:tint="?attr/colorHeading" />
 
 
-                <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                <com.rch.etawah.TextviewUtil.UbuntuRegularTextview
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"

@@ -25,13 +25,13 @@
             app:gp_type="triangle" />
 
 
-        <com.haris.meal4u.TextviewUtil.LabelTextview
+        <com.rch.etawah.TextviewUtil.LabelTextview
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/label_text_size"
             android:textColor="?attr/colorLabel"
             android:layout_marginTop="30dp"
-            android:text="@string/wait"></com.haris.meal4u.TextviewUtil.LabelTextview>
+            android:text="@string/wait"></com.rch.etawah.TextviewUtil.LabelTextview>
 
     </LinearLayout>
 

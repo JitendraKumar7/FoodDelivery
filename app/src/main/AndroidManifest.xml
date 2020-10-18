@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.haris.meal4u">
+    package="com.rch.etawah">
 
     <application
         android:name=".AppController"
         android:allowBackup="true"
-        android:appComponentFactory="whateverString"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        tools:replace="android:appComponentFactory">
+        android:usesCleartextTraffic="true">
+
         <activity android:name=".ActivityUtil.RestaurantInformation" />
         <activity android:name=".ActivityUtil.PlaceSelectionPluginActivity" />
         <activity android:name=".ActivityUtil.TrackOrder" />
@@ -48,10 +47,7 @@
         <activity
             android:name=".ActivityUtil.Chatting"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".ActivityUtil.Search"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+
         <activity
             android:name=".ActivityUtil.CheckoutActivity"
             android:screenOrientation="portrait"
@@ -100,27 +96,24 @@
                 android:name=".ActivityUtil.CustomNotificationOpener"
                 android:screenOrientation="portrait" />-->
 
-        <activity android:name=".ActivityUtil.DeeplinkViewer">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+        <!-- <activity android:name=".ActivityUtil.DeeplinkViewer">
+             <intent-filter>
+                 <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
+                 <category android:name="android.intent.category.DEFAULT" />
+                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data
-                    android:host="${hostName}"
-                    android:pathPrefix="/food_delivery"
-                    android:scheme="http" />
-                <data
-                    android:host="${hostName}"
-                    android:pathPrefix="/food_delivery"
-                    android:scheme="https" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.facebook.FacebookActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
+                 <data
+                     android:host="rchetawah.com/"
+                     android:pathPrefix="/food_delivery"
+                     android:scheme="http" />
+                 <data
+                     android:host="rchetawah.com/"
+                     android:pathPrefix="/food_delivery"
+                     android:scheme="https" />
+             </intent-filter>
+         </activity>-->
+
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
@@ -134,25 +127,6 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_map_key" />
-        <!--
-             A receiver that will receive media buttons and send as
-            intents to your MediaBrowserServiceCompat implementation.
-            Required on pre-Lollipop. More information at <data android:scheme="content" />  <data android:mimeType="application/pdf" />
-            http://developer.android.com/reference/android/support/v4/media/session/MediaButtonReceiver.html
-        -->
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
-        <!--<meta-data
-            android:name="com.onesignal.NotificationOpened.DEFAULT"
-            android:value="DISABLE" />
--->
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"

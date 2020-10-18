@@ -41,7 +41,7 @@
                     android:src="@drawable/ic_search"
                     android:tint="?attr/colorBottomNavigation" />
 
-                <com.haris.meal4u.EditTextUtil.NormalEditText
+                <com.rch.etawah.EditTextUtil.NormalEditText
                     android:id="@+id/edit_search"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

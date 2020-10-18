@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.haris.meal4u.TextviewUtil.TaglineTextview
+    <com.rch.etawah.TextviewUtil.TaglineTextview
         android:id="@+id/txt_attr_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

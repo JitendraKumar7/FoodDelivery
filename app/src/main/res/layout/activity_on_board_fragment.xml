@@ -23,7 +23,7 @@
             android:visibility="visible" />
 
 
-        <com.haris.meal4u.TextviewUtil.LemonMilkTextview
+        <com.rch.etawah.TextviewUtil.LemonMilkTextview
             android:id="@+id/txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
             android:textSize="15sp" />
 
 
-        <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+        <com.rch.etawah.TextviewUtil.UbuntuRegularTextview
             android:id="@+id/txt_tagline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

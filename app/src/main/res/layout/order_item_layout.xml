@@ -50,7 +50,7 @@
                     android:layout_weight="1">
 
 
-                    <com.haris.meal4u.TextviewUtil.NormalTextview
+                    <com.rch.etawah.TextviewUtil.NormalTextview
                         android:id="@+id/txt_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                             android:src="@drawable/ic_calendar_outline"
                             android:tint="?attr/colorTagline"/>
 
-                        <com.haris.meal4u.TextviewUtil.TaglineTextview
+                        <com.rch.etawah.TextviewUtil.TaglineTextview
                             android:id="@+id/txt_date"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -93,14 +93,14 @@
                             android:src="@drawable/ic_clock_outline"
                             android:tint="?attr/colorTagline"></ImageView>
 
-                        <com.haris.meal4u.TextviewUtil.TaglineTextview
+                        <com.rch.etawah.TextviewUtil.TaglineTextview
                             android:id="@+id/txt_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:text="05:30 Pm"
                             android:textColor="?attr/colorTagline"
-                            android:textSize="@dimen/tagline_text_size"></com.haris.meal4u.TextviewUtil.TaglineTextview>
+                            android:textSize="@dimen/tagline_text_size"></com.rch.etawah.TextviewUtil.TaglineTextview>
 
 
                     </LinearLayout>
@@ -133,7 +133,7 @@
                             android:tint="?attr/colorDefaultFavouriteIcon"></ImageView>
 
 
-                        <com.haris.meal4u.TextviewUtil.TaglineTextview
+                        <com.rch.etawah.TextviewUtil.TaglineTextview
                             android:id="@+id/txt_rating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
                             android:gravity="center"
                             android:text="4.5"
                             android:textColor="?attr/colorCard"
-                            android:textSize="@dimen/tagline_text_size"></com.haris.meal4u.TextviewUtil.TaglineTextview>
+                            android:textSize="@dimen/tagline_text_size"></com.rch.etawah.TextviewUtil.TaglineTextview>
 
 
                     </LinearLayout>
@@ -164,14 +164,14 @@
                         android:orientation="vertical">
 
 
-                        <com.haris.meal4u.TextviewUtil.TaglineTextview
+                        <com.rch.etawah.TextviewUtil.TaglineTextview
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/delivery"
                             android:textColor="?attr/colorTagline"
                             android:textSize="@dimen/tagline_text_size"/>
 
-                        <com.haris.meal4u.TextviewUtil.NormalTextview
+                        <com.rch.etawah.TextviewUtil.NormalTextview
                             android:id="@+id/txt_delivery_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -190,14 +190,14 @@
                         android:orientation="vertical">
 
 
-                        <com.haris.meal4u.TextviewUtil.TaglineTextview
+                        <com.rch.etawah.TextviewUtil.TaglineTextview
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/cost"
                             android:textColor="?attr/colorTagline"
                             android:textSize="@dimen/tagline_text_size" />
 
-                        <com.haris.meal4u.TextviewUtil.NormalTextview
+                        <com.rch.etawah.TextviewUtil.NormalTextview
                             android:id="@+id/txt_charges"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -216,20 +216,20 @@
                         android:orientation="vertical">
 
 
-                        <com.haris.meal4u.TextviewUtil.TaglineTextview
+                        <com.rch.etawah.TextviewUtil.TaglineTextview
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/status"
                             android:textColor="?attr/colorTagline"
-                            android:textSize="@dimen/tagline_text_size"></com.haris.meal4u.TextviewUtil.TaglineTextview>
+                            android:textSize="@dimen/tagline_text_size"></com.rch.etawah.TextviewUtil.TaglineTextview>
 
-                        <com.haris.meal4u.TextviewUtil.NormalTextview
+                        <com.rch.etawah.TextviewUtil.NormalTextview
                             android:id="@+id/txt_status"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Delivered"
                             android:textColor="?attr/colorNormal"
-                            android:textSize="@dimen/normal_text_size"></com.haris.meal4u.TextviewUtil.NormalTextview>
+                            android:textSize="@dimen/normal_text_size"></com.rch.etawah.TextviewUtil.NormalTextview>
 
 
                     </LinearLayout>

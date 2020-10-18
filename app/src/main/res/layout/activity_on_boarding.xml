@@ -68,7 +68,7 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp" />
 
-            <com.haris.meal4u.CustomUtil.ExtensiblePageIndicator
+            <com.rch.etawah.CustomUtil.ExtensiblePageIndicator
                 android:id="@+id/flexibleIndicator"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
             android:minHeight="170dp"
             android:orientation="vertical">
 
-            <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+            <com.rch.etawah.TextviewUtil.UbuntuMediumTextview
                 android:id="@+id/txt_login"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -120,7 +120,7 @@
                     android:layout_height="1px"
                     android:background="?attr/colorTagline" />
 
-                <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+                <com.rch.etawah.TextviewUtil.UbuntuRegularTextview
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -137,7 +137,7 @@
             </LinearLayout>
 
 
-            <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+            <com.rch.etawah.TextviewUtil.UbuntuMediumTextview
                 android:id="@+id/txt_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -178,7 +178,7 @@
 
                         android:src="@drawable/ic_google_login" />
 
-                    <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+                    <com.rch.etawah.TextviewUtil.UbuntuMediumTextview
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/google_login"
@@ -205,7 +205,7 @@
                         android:layout_marginEnd="15dp"
                         android:src="@drawable/ic_facebook_login" />
 
-                    <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+                    <com.rch.etawah.TextviewUtil.UbuntuMediumTextview
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -222,15 +222,6 @@
 
 
     </LinearLayout>
-
-
-    <com.facebook.login.widget.LoginButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:visibility="gone" />
 
 
 </RelativeLayout>

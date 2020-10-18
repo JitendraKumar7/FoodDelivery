@@ -25,7 +25,7 @@
             android:padding="0dp"
             android:src="@drawable/app_icon" />
 
-        <com.haris.meal4u.TextviewUtil.NeuroTextView
+        <com.rch.etawah.TextviewUtil.NeuroTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/image_app"
@@ -47,7 +47,7 @@
             android:orientation="vertical">
 
 
-            <com.haris.meal4u.TextviewUtil.UbuntuRegularTextview
+            <com.rch.etawah.TextviewUtil.UbuntuRegularTextview
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"

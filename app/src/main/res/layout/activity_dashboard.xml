@@ -163,7 +163,7 @@
                 android:paddingStart="10dp">
 
 
-                <com.haris.meal4u.TextviewUtil.NormalTextview
+                <com.rch.etawah.TextviewUtil.NormalTextview
                     android:id="@+id/txt_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -173,7 +173,7 @@
                     android:textSize="@dimen/normal_text_size" />
 
 
-                <com.haris.meal4u.TextviewUtil.NormalTextview
+                <com.rch.etawah.TextviewUtil.NormalTextview
                     android:id="@+id/txt_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -193,7 +193,7 @@
                     android:textSize="@dimen/tagline_text_size" />
 
 
-                <com.haris.meal4u.TextviewUtil.TaglineTextview
+                <com.rch.etawah.TextviewUtil.TaglineTextview
                     android:id="@+id/txt_tags"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -239,14 +239,14 @@
                     android:orientation="vertical">
 
 
-                    <com.haris.meal4u.TextviewUtil.TaglineTextview
+                    <com.rch.etawah.TextviewUtil.TaglineTextview
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/delivery"
                         android:textColor="?attr/colorTagline"
                         android:textSize="@dimen/tagline_text_size" />
 
-                    <com.haris.meal4u.TextviewUtil.NormalTextview
+                    <com.rch.etawah.TextviewUtil.NormalTextview
                         android:id="@+id/txt_delivery_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -265,14 +265,14 @@
                     android:orientation="vertical">
 
 
-                    <com.haris.meal4u.TextviewUtil.TaglineTextview
+                    <com.rch.etawah.TextviewUtil.TaglineTextview
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/minimum"
                         android:textColor="?attr/colorTagline"
-                        android:textSize="@dimen/tagline_text_size"></com.haris.meal4u.TextviewUtil.TaglineTextview>
+                        android:textSize="@dimen/tagline_text_size"></com.rch.etawah.TextviewUtil.TaglineTextview>
 
-                    <com.haris.meal4u.TextviewUtil.NormalTextview
+                    <com.rch.etawah.TextviewUtil.NormalTextview
                         android:id="@+id/txt_minimum_charges"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -291,14 +291,14 @@
                     android:orientation="vertical">
 
 
-                    <com.haris.meal4u.TextviewUtil.TaglineTextview
+                    <com.rch.etawah.TextviewUtil.TaglineTextview
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/cost"
                         android:textColor="?attr/colorTagline"
                         android:textSize="@dimen/tagline_text_size" />
 
-                    <com.haris.meal4u.TextviewUtil.NormalTextview
+                    <com.rch.etawah.TextviewUtil.NormalTextview
                         android:id="@+id/txt_expense"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -317,14 +317,14 @@
                     android:orientation="vertical">
 
 
-                    <com.haris.meal4u.TextviewUtil.TaglineTextview
+                    <com.rch.etawah.TextviewUtil.TaglineTextview
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/rating"
                         android:textColor="?attr/colorTagline"
                         android:textSize="@dimen/tagline_text_size" />
 
-                    <com.haris.meal4u.TextviewUtil.NormalTextview
+                    <com.rch.etawah.TextviewUtil.NormalTextview
                         android:id="@+id/txt_rating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -371,7 +371,7 @@
 
             </RelativeLayout>
 
-            <com.haris.meal4u.TextviewUtil.TaglineTextview
+            <com.rch.etawah.TextviewUtil.TaglineTextview
                 android:id="@+id/txt_review_tagline"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -455,7 +455,7 @@
             android:visibility="visible">
 
 
-            <com.haris.meal4u.TextviewUtil.NormalTextview
+            <com.rch.etawah.TextviewUtil.NormalTextview
                 android:id="@+id/txt_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -463,13 +463,13 @@
                 android:padding="3dp"
                 android:text="0"
                 android:textColor="?attr/colorBottomNavigation"
-                android:textSize="@dimen/tagline_text_size"></com.haris.meal4u.TextviewUtil.NormalTextview>
+                android:textSize="@dimen/tagline_text_size"></com.rch.etawah.TextviewUtil.NormalTextview>
 
 
         </LinearLayout>
 
 
-        <com.haris.meal4u.TextviewUtil.NormalTextview
+        <com.rch.etawah.TextviewUtil.NormalTextview
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -478,7 +478,7 @@
             android:textSize="@dimen/normal_text_size" />
 
 
-        <com.haris.meal4u.TextviewUtil.NormalTextview
+        <com.rch.etawah.TextviewUtil.NormalTextview
             android:id="@+id/txt_total_budget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

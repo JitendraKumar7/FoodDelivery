@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:paddingBottom="16dp">
 
-        <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+        <com.rch.etawah.TextviewUtil.UbuntuMediumTextview
             android:id="@+id/error_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.haris.meal4u.TextviewUtil.UbuntuMediumTextview
+        <com.rch.etawah.TextviewUtil.UbuntuMediumTextview
             android:id="@+id/ok_btn"
             android:layout_width="70dp"
             android:layout_height="34dp"

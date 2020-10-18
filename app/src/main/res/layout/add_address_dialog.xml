@@ -25,7 +25,7 @@
         android:layout_margin="12dp"
         android:orientation="vertical">
 
-        <com.haris.meal4u.EditTextUtil.NormalEditText
+        <com.rch.etawah.EditTextUtil.NormalEditText
             android:id="@+id/edit_building"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -38,7 +38,7 @@
             android:textColorHint="?attr/colorTagline"
             android:textSize="@dimen/tagline_text_size" />
 
-        <com.haris.meal4u.EditTextUtil.NormalEditText
+        <com.rch.etawah.EditTextUtil.NormalEditText
             android:id="@+id/edit_unit"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -52,7 +52,7 @@
             android:textSize="@dimen/tagline_text_size"
             android:visibility="gone" />
 
-        <com.haris.meal4u.EditTextUtil.NormalEditText
+        <com.rch.etawah.EditTextUtil.NormalEditText
             android:id="@+id/edit_street_address"
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -67,7 +67,7 @@
             android:textColorHint="?attr/colorTagline"
             android:textSize="@dimen/tagline_text_size" />
 
-        <com.haris.meal4u.EditTextUtil.NormalEditText
+        <com.rch.etawah.EditTextUtil.NormalEditText
             android:id="@+id/edit_area"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -79,7 +79,7 @@
             android:textColorHint="?attr/colorTagline"
             android:textSize="@dimen/tagline_text_size" />
 
-        <com.haris.meal4u.EditTextUtil.NormalEditText
+        <com.rch.etawah.EditTextUtil.NormalEditText
             android:id="@+id/edit_comment"
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -95,7 +95,7 @@
             android:textSize="@dimen/tagline_text_size"
             android:visibility="gone" />
 
-        <com.haris.meal4u.TextviewUtil.NormalTextview
+        <com.rch.etawah.TextviewUtil.NormalTextview
             android:id="@+id/txt_submit"
             android:layout_width="match_parent"
             android:layout_height="45dp"
