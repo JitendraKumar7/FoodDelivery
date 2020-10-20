@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.rch.etawah.AdapterUtil.ScheduleAdapter;
 import com.rch.etawah.ConstantUtil.Constant;
-import com.rch.etawah.CustomUtil.GlideApp;
+import com.rch.etawah.CustomUtil.MyGlideApp;
 import com.rch.etawah.ObjectUtil.DataObject;
 import com.rch.etawah.R;
 import com.rch.etawah.Utility.Utility;
@@ -70,7 +70,7 @@ public class RestaurantInformation extends AppCompatActivity implements View.OnC
 
         txtName.setText(dataObject.getObject_name());
         txtAddress.setText(dataObject.getObject_address());
-        GlideApp.with(this).load(Constant.ServerInformation.PICTURE_URL + dataObject.getObject_picture()).into(imageCover);
+        //MyGlideApp.with(this).load(Constant.ServerInformation.PICTURE_URL + dataObject.getObject_picture()).into(imageCover);
 
         gridLayoutManager = new GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false);
         recyclerViewSchedule = (RecyclerView) findViewById(R.id.recycler_view_schedule);

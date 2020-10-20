@@ -8,6 +8,13 @@ public class GalleryImage implements Serializable {
 
     private String[] photos;
 
+    public void setGallery(String gallery) {
+        this.gallery = gallery;
+    }
+
+    public void setPhotos(String[] photos) {
+        this.photos = photos;
+    }
 
     public String getGallery() {
 

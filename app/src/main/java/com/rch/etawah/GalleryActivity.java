@@ -3,10 +3,15 @@ package com.rch.etawah;
 import android.graphics.Color;
 
 
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +20,110 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.rch.etawah.ActivityUtil.SignUp;
+import com.rch.etawah.Utility.Utility;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
+import static android.widget.Toast.LENGTH_SHORT;
 
 public class GalleryActivity extends AppCompatActivity {
 
     private List<GalleryImage> mDataList;
+
+    public class GalleryIvAdapter extends RecyclerView.Adapter<CustomViewHolder> {
+
+        @Override
+        public int getItemCount() {
+
+            return mDataList.size();
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            return isHeader(position) ?
+                    ITEM_VIEW_TYPE_HEADER : ITEM_VIEW_TYPE_ITEM;
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
+
+        }
+
+        @NonNull
+        @Override
+        public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
+                View view = inflater.inflate(R.layout.ui_row_testimonial, parent, Boolean.FALSE);
+                return new CustomViewHolder(view);
+
+        }
+
+    }
+
+    public final class CustomViewHolder extends RecyclerView.ViewHolder {
+
+
+        CustomViewHolder(View itemView) {
+            super(itemView);
+        }
+
+        void onBindView(GalleryImage bean) {
+
+            ivProduct.setOnClickListener(v -> {
+                // View Full Screen
+                new FullScreenPopup(getActivity(), bean.getTitle());
+            });
+
+        }
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_gallery);
+
+        mDataList = new ArrayList<>();
+
+        RecyclerView mRecyclerView = findViewById(R.id.recyclerView);
+
+        String url = "http://gallery.rchetawah.com/apiGallery.php";
+        Volley.newRequestQueue(GalleryActivity.this).add(new StringRequest(
+                url, response -> {
+            Gson gson = new Gson();
+            Log.e("gallery", response);
+
+            GalleryImage[] images = gson.fromJson(response, GalleryImage[].class);
+            mDataList.addAll(Arrays.asList(images));
+
+
+            LinearLayoutManager manager = new LinearLayoutManager(GalleryActivity.this);
+
+            mRecyclerView.setLayoutManager(manager);
+            mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+            mRecyclerView.setAdapter(new GalleryIvAdapter(manager));
+
+        }, error -> {
+            Log.e("gallery", Objects.requireNonNull(error.getMessage()));
+            Log.e("gallery", Objects.requireNonNull(error.getMessage()));
+        }
+        ));
+    }
 
     /*@Override
     public void onCreateView(LayoutInflater inflater) {

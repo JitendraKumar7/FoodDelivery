@@ -28,49 +28,48 @@
                 android:id="@+id/image_cover"
                 android:layout_width="match_parent"
                 android:layout_height="170dp"
-                app:riv_corner_radius="5dp"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="6dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="6dp"
-                android:src="@drawable/app_icon"
                 android:layout_gravity="bottom"
-                android:scaleType="centerCrop" />
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="6dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/app_icon"
+                app:riv_corner_radius="5dp" />
 
 
             <com.rch.etawah.TextviewUtil.NormalTextview
                 android:id="@+id/txt_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pizza Hut"
                 android:layout_marginStart="6dp"
-                android:textSize="@dimen/normal_text_size"
-                android:textColor="?attr/colorTagline"></com.rch.etawah.TextviewUtil.NormalTextview>
+                android:text="Pizza Hut"
+                android:textColor="?attr/colorTagline"
+                android:textSize="@dimen/normal_text_size" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:gravity="center_vertical">
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
 
                 <com.rch.etawah.TextviewUtil.LemonMilkTextview
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Address"
                     android:layout_marginStart="6dp"
-                    android:textSize="12sp"
-                    android:textColor="?attr/colorNormal"></com.rch.etawah.TextviewUtil.LemonMilkTextview>
+                    android:text="Address"
+                    android:textColor="?attr/colorNormal"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:layout_marginStart="7dp"
-                    android:background="?attr/colorTagline"
-                    ></TextView>
+                    android:background="?attr/colorTagline" />
 
 
             </LinearLayout>
@@ -80,45 +79,44 @@
                 android:id="@+id/txt_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pizza Hut"
                 android:layout_marginStart="6dp"
-                android:textSize="@dimen/normal_text_size"
-                android:textColor="?attr/colorTagline"></com.rch.etawah.TextviewUtil.NormalTextview>
+                android:text="Pizza Hut"
+                android:textColor="?attr/colorTagline"
+                android:textSize="@dimen/normal_text_size" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:gravity="center_vertical">
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
 
                 <com.rch.etawah.TextviewUtil.LemonMilkTextview
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Schedule"
                     android:layout_marginStart="6dp"
-                    android:textSize="12sp"
-                    android:textColor="?attr/colorNormal"></com.rch.etawah.TextviewUtil.LemonMilkTextview>
+                    android:text="Schedule"
+                    android:textColor="?attr/colorNormal"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:layout_marginStart="7dp"
-                    android:background="?attr/colorTagline"
-                    ></TextView>
+                    android:background="?attr/colorTagline" />
 
 
             </LinearLayout>
 
 
-           <android.support.v7.widget.RecyclerView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginStart="6dp"
-               android:layout_marginEnd="6dp"
-               android:id="@+id/recycler_view_schedule"></android.support.v7.widget.RecyclerView>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_schedule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp" />
 
         </LinearLayout>
 
