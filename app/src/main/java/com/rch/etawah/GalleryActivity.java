@@ -53,11 +53,7 @@ public class GalleryActivity extends AppCompatActivity {
             return mDataList.size();
         }
 
-        @Override
-        public int getItemViewType(int position) {
-            return isHeader(position) ?
-                    ITEM_VIEW_TYPE_HEADER : ITEM_VIEW_TYPE_ITEM;
-        }
+
 
         @Override
         public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
@@ -69,8 +65,9 @@ public class GalleryActivity extends AppCompatActivity {
         public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
-                View view = inflater.inflate(R.layout.ui_row_testimonial, parent, Boolean.FALSE);
-                return new CustomViewHolder(view);
+                //View view = inflater.inflate(R.layout.ui_row_testimonial, parent, Boolean.FALSE);
+                //return new CustomViewHolder(view);
+            return null;
 
         }
 
@@ -85,10 +82,10 @@ public class GalleryActivity extends AppCompatActivity {
 
         void onBindView(GalleryImage bean) {
 
-            ivProduct.setOnClickListener(v -> {
+           /* ivProduct.setOnClickListener(v -> {
                 // View Full Screen
                 new FullScreenPopup(getActivity(), bean.getTitle());
-            });
+            });*/
 
         }
     }
@@ -116,7 +113,7 @@ public class GalleryActivity extends AppCompatActivity {
 
             mRecyclerView.setLayoutManager(manager);
             mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-            mRecyclerView.setAdapter(new GalleryIvAdapter(manager));
+            //mRecyclerView.setAdapter(new GalleryIvAdapter(manager));
 
         }, error -> {
             Log.e("gallery", Objects.requireNonNull(error.getMessage()));
