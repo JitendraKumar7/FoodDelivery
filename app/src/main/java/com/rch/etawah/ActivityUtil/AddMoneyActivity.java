@@ -125,8 +125,8 @@ public class AddMoneyActivity extends AppCompatActivity implements PaymentResult
             txtMessage.setVisibility(View.VISIBLE);
             JSONObject jsonObject = new JSONObject();
             jsonObject.accumulate("functionality", "add_user_wallet_amount");
+            jsonObject.accumulate("amount", String.valueOf((amount * 0.10) + amount));
             jsonObject.accumulate("user_id", prefObject.getUserId());
-            jsonObject.accumulate("amount", String.valueOf(amount));
             jsonObject.accumulate("type", "cr");
 
             JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, REST_API_URL, jsonObject,
@@ -138,7 +138,7 @@ public class AddMoneyActivity extends AppCompatActivity implements PaymentResult
                             try {
                                 if (response.getString("code").equalsIgnoreCase("200")) {
                                     JSONObject result = response.getJSONObject("result");
-                                    txtMessage.setText(String.format("Rs %s Added Sucess", result.getString("amount")));
+                                    txtMessage.setText(String.format("Rs %s Added Success", result.getString("amount")));
                                     Toast.makeText(AddMoneyActivity.this, "Rs " + result.getString("amount"), Toast.LENGTH_SHORT).show();
                                     AddMoneyActivity.this.finish();
                                 }
