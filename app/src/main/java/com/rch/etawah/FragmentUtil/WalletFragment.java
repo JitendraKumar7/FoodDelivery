@@ -100,51 +100,48 @@ public class WalletFragment extends Fragment implements View.OnClickListener {
             //jsonObject.accumulate("user_id", "1");
             jsonObject.accumulate("user_id", prefObject.getUserId());
             JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, REST_API_URL, jsonObject,
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            progress_bar.setVisibility(View.GONE);
-                            Utility.Logger("TAG", response.toString());
-                            try {
-                                if (response.getString("message").equalsIgnoreCase("Sucess")) {
-                                    JSONArray address = response.getJSONArray("result");
-                                    for (int i = 0; i <= address.length(); i++) {
-                                        try {
+                    response -> {
+                        progress_bar.setVisibility(View.GONE);
+                        Utility.Logger("TAG", response.toString());
+                        try {
+                            if (response.getString("message").equalsIgnoreCase("Sucess")) {
+                                JSONArray address = response.getJSONArray("result");
+                                for (int i = address.length(); i > -1; i--) {
+                                    try {
 
-                                            View view1 = LayoutInflater.from(getActivity()).inflate(R.layout.adapter_wallet_trans, null);
-                                            final TextView amount = view1.findViewById(R.id.txt_charges);
-                                            final TextView transaction_id = view1.findViewById(R.id.txt_name);
-                                            final TextView trans_date = view1.findViewById(R.id.txt_date);
-                                            final TextView type = view1.findViewById(R.id.type);
+                                        View view1 = LayoutInflater.from(getActivity()).inflate(R.layout.adapter_wallet_trans, null);
+                                        final TextView amount = view1.findViewById(R.id.txt_charges);
+                                        final TextView transaction_id = view1.findViewById(R.id.txt_name);
+                                        final TextView trans_date = view1.findViewById(R.id.txt_date);
+                                        final TextView type = view1.findViewById(R.id.type);
 
 
-                                            amount.setText(String.format("₹ %s", address.getJSONObject(i).getString("amount")));
-                                            String id = address.getJSONObject(i).getString("id");
-                                            transaction_id.setText(String.format("Transaction Id - #%s", id));
-                                            trans_date.setText(address.getJSONObject(i).getString("created_at"));
-                                            if (address.getJSONObject(i).getString("type").equalsIgnoreCase("dr")) {
-                                                type.setTextColor(Utility.getColourFromRes(getActivity(), R.color.colorSelectedFavouriteDay));
-                                                type.setText("  Dr.");
-                                            } else {
-                                                type.setTextColor(Utility.getColourFromRes(getActivity(), R.color.order_on_the_way));
-                                                type.setText("  Cr.");
-                                            }
-
-                                            linearLayout.addView(view1);
-                                        } catch (NullPointerException ignore) {
-
+                                        amount.setText(String.format("₹ %s", address.getJSONObject(i).getString("amount")));
+                                        String id = address.getJSONObject(i).getString("id");
+                                        transaction_id.setText(String.format("Transaction Id - #%s", id));
+                                        trans_date.setText(address.getJSONObject(i).getString("created_at"));
+                                        if (address.getJSONObject(i).getString("type").equalsIgnoreCase("dr")) {
+                                            type.setTextColor(Utility.getColourFromRes(getActivity(), R.color.colorSelectedFavouriteDay));
+                                            type.setText("  Dr.");
+                                        } else {
+                                            type.setTextColor(Utility.getColourFromRes(getActivity(), R.color.order_on_the_way));
+                                            type.setText("  Cr.");
                                         }
 
+                                        linearLayout.addView(view1);
+                                    } catch (NullPointerException ignore) {
+
                                     }
-                                } else {
-                                    Toast.makeText(getActivity(), "No data found.", Toast.LENGTH_SHORT).show();
+
                                 }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                            } else {
+                                Toast.makeText(getActivity(), "No data found.", Toast.LENGTH_SHORT).show();
                             }
-
-
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
+
+
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {

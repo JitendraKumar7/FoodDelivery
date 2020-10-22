@@ -36,9 +36,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-
 public class TrackOrder extends AppCompatActivity implements View.OnClickListener {
-    private String TAG = TrackOrder.class.getSimpleName();
     private VerticalStepperView listStepper;
     private MainStepperAdapter mainStepperAdapter;
     private ArrayList<Object> objectArrayList = new ArrayList<>();
@@ -179,12 +177,11 @@ public class TrackOrder extends AppCompatActivity implements View.OnClickListene
 
         }
 
-
         cardRating.setOnClickListener(this);
         cardRiderRating.setOnClickListener(this);
+
         imageBack.setOnClickListener(this);
         layoutTrack.setOnClickListener(this);
-
 
     }
 

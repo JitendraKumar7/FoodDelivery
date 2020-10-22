@@ -23,7 +23,6 @@ import com.downloader.OnStartOrResumeListener;
 import com.downloader.PRDownloader;
 import com.downloader.Progress;
 import com.google.gson.Gson;
-import com.rch.etawah.BuildConfig;
 import com.rch.etawah.ConstantUtil.Constant;
 import com.rch.etawah.FontUtil.Font;
 import com.rch.etawah.JsonUtil.AppOfferUtil.AppOfferJson;
@@ -52,6 +51,7 @@ import cc.cloudist.acplibrary.ACProgressConstant;
 import cc.cloudist.acplibrary.ACProgressFlower;
 import needle.Needle;
 import needle.UiRelatedProgressTask;
+import rx.android.BuildConfig;
 
 
 public class ConnectionBuilder {
@@ -218,17 +218,17 @@ public class ConnectionBuilder {
                         object = gson.fromJson(data, OrderJson.class);
                         dataObject = DataObject.getDataObject(requestObject, object);
 
-                    }else if (requestObject.getConnection() == Constant.CONNECTION.DELIVERY_CHARGES) {
+                    } else if (requestObject.getConnection() == Constant.CONNECTION.DELIVERY_CHARGES) {
 
                         object = gson.fromJson(data, DeliveryDetailJson.class);
                         dataObject = DataObject.getDataObject(requestObject, object);
 
-                    }else if (requestObject.getConnection() == Constant.CONNECTION.FORGOT) {
+                    } else if (requestObject.getConnection() == Constant.CONNECTION.FORGOT) {
 
                         object = gson.fromJson(data, UserJson.class);
                         dataObject = DataObject.getDataObject(requestObject, object);
 
-                        }else if (requestObject.getConnection() == Constant.CONNECTION.UPDATE) {
+                    } else if (requestObject.getConnection() == Constant.CONNECTION.UPDATE) {
 
                         object = gson.fromJson(data, UserJson.class);
                         dataObject = DataObject.getDataObject(requestObject, object);
@@ -269,8 +269,7 @@ public class ConnectionBuilder {
 
             });
 
-        }
-        else if (requestObject.getConnectionType() == Constant.CONNECTION_TYPE.BACKGROUND) {
+        } else if (requestObject.getConnectionType() == Constant.CONNECTION_TYPE.BACKGROUND) {
 
             //region All background tasking functionalites
 
@@ -301,8 +300,7 @@ public class ConnectionBuilder {
 
             //endregion
 
-        }
-        else if (requestObject.getConnectionType() == Constant.CONNECTION_TYPE.DOWNLOAD) {
+        } else if (requestObject.getConnectionType() == Constant.CONNECTION_TYPE.DOWNLOAD) {
 
 
             //region All Downloading functionalities

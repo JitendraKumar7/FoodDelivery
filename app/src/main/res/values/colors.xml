@@ -88,11 +88,11 @@
     <color name="bg_facebook">#3A559F</color>
 
 
-    <!--Color for Bubble Picker-->
 
     <color name="order_ready">#FF6A00</color>
     <color name="order_on_the_way">#11c612</color>
     <color name="order_delivered">#00695C</color>
+    <!--Color for Bubble Picker-->
 
 
     <color name="text_color">#434343</color>
