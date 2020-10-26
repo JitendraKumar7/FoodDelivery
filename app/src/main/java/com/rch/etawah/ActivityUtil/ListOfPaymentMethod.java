@@ -302,7 +302,6 @@ public class ListOfPaymentMethod extends AppCompatActivity implements View.OnCli
                     return;
                 }
 
-                Stripe stripe = AppController.getStripe();
                 Card.Builder builder = new Card.Builder(editCardNumber.getText().toString().trim()
                         , Integer.parseInt(editExpiryMonth.getText().toString())
                         , Integer.parseInt(editExpiryYear.getText().toString())
@@ -338,58 +337,6 @@ public class ListOfPaymentMethod extends AppCompatActivity implements View.OnCli
                 }
 
                 Utility.Logger(TAG, "Card Brand = " + card.getBrand());
-                stripe.createToken(card, new TokenCallback() {
-                    @Override
-                    public void onError(@NonNull Exception error) {
-                        txtDone.setText(Utility.getStringFromRes(context, R.string.try_again));
-                        Utility.Toaster(context, error.getMessage(), Toast.LENGTH_SHORT);
-                    }
-
-                    @Override
-                    public void onSuccess(@NonNull final Token token) {
-                        Utility.Logger(TAG, "Token = " + token.getId());
-
-                        management.sendRequestToServer(new RequestObject()
-                                .setJson(getAddingCardJson(prefObject.getUserId(), editCardNumber.getText().toString().trim(), card.getBrand(), token.getId()))
-                                .setConnectionType(Constant.CONNECTION_TYPE.UI)
-                                .setConnection(Constant.CONNECTION.ADD_CARD)
-                                .setConnectionCallback(new ConnectionCallback() {
-                                    @Override
-                                    public void onSuccess(Object data, RequestObject requestObject) {
-                                        if (data != null && requestObject != null) {
-
-                                            objectArrayList.clear();
-                                            objectArrayList.add(new DataObject()
-                                                    .setStripe_customer_no(token.getId())
-                                                    .setPayment_card_company(card.getBrand())
-                                                    .setPayment_card_no(Utility.maskSomeCharacter(editCardNumber.getText().toString())));
-
-                                            cardAdapter.notifyDataSetChanged();
-                                            txtDone.setVisibility(View.VISIBLE);
-                                            txtDone.setText(Utility.getStringFromRes(context, R.string.successfully_added));
-                                            progressBar.setVisibility(View.GONE);
-                                            bottomSheetDialog.dismiss();
-
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onError(String data, RequestObject requestObject) {
-
-                                        txtDone.setVisibility(View.VISIBLE);
-                                        txtDone.setText(Utility.getStringFromRes(context, R.string.try_again));
-                                        progressBar.setVisibility(View.GONE);
-                                        bottomSheetDialog.dismiss();
-
-                                    }
-                                }));
-
-
-                    }
-                });
-
-                //SourceParams.createSourceFromTokenParams("");
-
 
             }
         });
