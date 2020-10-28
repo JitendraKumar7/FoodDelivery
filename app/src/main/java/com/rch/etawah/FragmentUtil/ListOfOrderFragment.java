@@ -127,7 +127,7 @@ public class ListOfOrderFragment extends Fragment implements ConnectionCallback,
             }
         });
 
-        RecyclerView recyclerViewOrder = (RecyclerView) view.findViewById(R.id.recycler_view_categories);
+        RecyclerView recyclerViewOrder =  view.findViewById(R.id.recycler_view_categories);
         recyclerViewOrder.setLayoutManager(gridLayoutManager);
 
         //Initialize & Setup Adapter with Recycler View

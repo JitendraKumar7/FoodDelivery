@@ -69,9 +69,13 @@ public class TrackOrder extends AppCompatActivity implements View.OnClickListene
         TextView txtQuantity = view.findViewById(R.id.txt_quantity);
         TextView txtPrice = view.findViewById(R.id.txt_price);
 
-        txtProduct.setText(((DataObject) objects).getOrder_product_name());
-        txtQuantity.setText("(x" + ((DataObject) objects).getOrder_product_quantity() + ")");
-        txtPrice.setText(((DataObject) objects).getOrder_product_price().replace("INR", "₹"));
+        try {
+            txtProduct.setText(((DataObject) objects).getOrder_product_name());
+            txtQuantity.setText("(x" + ((DataObject) objects).getOrder_product_quantity() + ")");
+            txtPrice.setText(((DataObject) objects).getOrder_product_price().replace("INR", "₹"));
+        } catch (Exception ignore) {
+
+        }
 
         layoutProduct.setPadding(0, 12, 0, 12);
 
