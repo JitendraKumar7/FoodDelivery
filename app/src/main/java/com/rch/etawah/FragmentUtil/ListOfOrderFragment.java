@@ -135,13 +135,9 @@ public class ListOfOrderFragment extends Fragment implements ConnectionCallback,
         orderAdapter = new OrderAdapter(getActivity(), objectArrayList, this);
         recyclerViewOrder.setAdapter(orderAdapter);
 
-
         //Send request to Server for retrieving TrendingPhotos Wallpapers
 
-
         try {
-
-
             JSONObject jsonObject = new JSONObject();
             jsonObject.accumulate("functionality", "order_history");
             jsonObject.accumulate("user_id", prefObject.getUserId());
