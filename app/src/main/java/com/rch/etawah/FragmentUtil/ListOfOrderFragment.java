@@ -152,9 +152,7 @@ public class ListOfOrderFragment extends Fragment implements ConnectionCallback,
             e.printStackTrace();
         }
 
-
     }
-
 
 }
 
